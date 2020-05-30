@@ -1,0 +1,5 @@
+#
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+.ipynb_checkpoints/Maya socket client Get Info-checkpoint.ipynb
+.ipynb_checkpoints/Maya socket client Set Info-checkpoint.ipynb
