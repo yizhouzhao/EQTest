@@ -1,0 +1,18 @@
+This dataset is collected using Kinect v2.
+
+This is the small version of the dataset. In each folder, there are 2 subfolders containing annotations and skeletons from Kinect. If you need the RGB-D images, please download the full version.
+
+-------- Format of the annotation file --------
+Each line indicates a complete interaction; from left to right, the numbers represent 1) ID, 2) starting frame, 3) ending frame, 4) the role of the first agent, and 5) the role of the second agent respectively. Note that role 1 is the red agent in the paper/demo, and role 2 is the green agent in the paper/demo.
+
+-------- Format of the skeleton file --------
+i) The name of the file indicates the frame number and the agent ID. For instance, “skeleton_00150_01.txt” is for the skeleton of agent 1 at frame #150. There are exactly two agents in each video.
+ii) Each skeleton file starts with the time stamp (in ms) of that frame; then there are 25 lines showing the coordinates of the 25 joints, where in each line, the numbers from left to right represent 1) joint ID, 2) x, 3) y, 4) z, 5) the tracking state of the joint, 6) x on the 2D screen, 7) y on the 2D screen, 8) x on the depth image, and 9) y on the depth image respectively. The tracking state of the joint: it can be "tracked" for a clearly visible joint (code 2), "inferred" when a joint is not clearly visible and Kinect is inferring its position (code 1), or "non-tracked" (code 0). For the joint types, please refer to: https://msdn.microsoft.com/en-us/library/microsoft.kinect.kinect.jointtype.aspx
+iii) The rest of the numbers in a skeleton file show the hand state and the orientations of the joints.
+
+-------- MATLAB code for skeleton visualization --------
+We also provide the MATLAB skeleton visualization code written by Yixin Zhu.
+
+
+Please contact Tianmin Shu (tianmin.shu@ucla.edu) if you have any questions.
+

@@ -1,0 +1,100 @@
+//blink more 
+proc BlinkMore()
+{
+    float $blink = `getAttr ctrlEye_R.blink`;
+    //print($blink);
+    float $blink_plus_2 = $blink + 2;
+    $blink = `min 10 $blink_plus_2`;  
+    setAttr ctrlEye_R.blink $blink;  
+}
+
+BlinkMore();
+
+//blink more 
+proc FingerRCurl()
+{
+    string $fingerNames[] = {"thumb","index","middle","ring","pinky"};
+    for($finger in $fingerNames)
+    {
+        string $command = "getAttr " + "Fingers_R." + $finger + "Curl;";
+        float $x = eval($command);
+    }
+    $blink = `min 10 $blink_plus_2`;  
+    setAttr ctrlEye_R.blink $blink;  
+}
+
+FingerCurl();
+
+//blink less
+proc BlinkLess()
+{
+    float $blink = `getAttr ctrlEye_R.blink`;
+    //print($blink);
+    float $blink_plus_2 = $blink - 2;
+    $blink = `max -2 $blink_plus_2`;  
+    setAttr ctrlEye_R.blink $blink;  
+}
+
+BlinkLess();
+
+//plus 
+proc Plus($what)
+{
+    string $selectedObject[] = `ls -sl`;
+    string $selected = $selectedObject[0];
+    //print($selected);
+    float $x = `getAttr $selected + "." + $what`;
+    print("\n" + $x);
+    $x = $x + 0.1;
+    setAttr ($selected + $what) $x;
+}
+
+TranslateXPlus("translateX");
+
+//new plus something
+proc Plus(string $what, int $plusOrMinus)
+{
+    string $selectedObject[] = `ls -sl`;
+    //string $selected = $selectedObject[0];
+    for ($selected in $selectedObject)
+    {
+        //print($selected);
+        string $command = "getAttr " + $selected + "." + $what + ";";
+        //print($command);
+        float $x = eval($command);
+        //print("\n" + $x);
+        if($plusOrMinus == 1)
+        {
+            $x = $x + 0.1;
+        }
+        else
+        {
+            $x = $x - 0.1;
+        }
+        setAttr ($selected + "." + $what) $x;
+    }
+}
+
+Plus("translateX", 0);
+
+//rotation plus something
+proc DeltaAttr(string $what, float $value)
+{
+    string $selectedObject[] = `ls -sl`;
+    //string $selected = $selectedObject[0];
+    if (size($selectedObject) > 0)
+    {
+        for ($selected in $selectedObject)
+        {
+            //print($selected);
+            string $command = "getAttr " + $selected + "." + $what + ";";
+            //print($command);
+            float $x = eval($command);
+            //print("\n" + $x);
+            $x = $x + $value;
+            setAttr ($selected + "." + $what) $x;
+        }
+    }
+}
+
+DeltaAttr("rotateX", 10.0);
