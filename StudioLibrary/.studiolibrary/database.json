@@ -1,0 +1,83 @@
+{
+    "../../Basic": {
+        "category": "StudioLibrary", 
+        "name": "Basic", 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
+        "modified": 1593469378.603183, 
+        "path": "../../Basic", 
+        "folder": "../..", 
+        "type": "Folder"
+    }, 
+    "../../Basic/Mirror_Body.mirror": {
+        "category": "Basic", 
+        "name": "Mirror_Body.mirror", 
+        "__class__": "studiolibrarymaya.mirroritem.MirrorItem", 
+        "modified": 1593470412.729868, 
+        "path": "../../Basic/Mirror_Body.mirror", 
+        "folder": "../../Basic", 
+        "type": ".mirror"
+    }, 
+    "../../Basic/Stand.pose": {
+        "category": "Basic", 
+        "name": "Stand.pose", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "modified": 1593469722.309093, 
+        "path": "../../Basic/Stand.pose", 
+        "folder": "../../Basic", 
+        "type": ".pose"
+    }, 
+    "../../Basic/T-pose.pose": {
+        "category": "Basic", 
+        "name": "T-pose.pose", 
+        "modified": 1593469393.380335, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Basic/T-pose.pose", 
+        "folder": "../../Basic", 
+        "type": ".pose"
+    }, 
+    "../../Hand": {
+        "category": "StudioLibrary", 
+        "name": "Hand", 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
+        "modified": 1593470579.180902, 
+        "path": "../../Hand", 
+        "folder": "../..", 
+        "type": "Folder"
+    }, 
+    "../../Hand/Hand_R_Push_Forward.pose": {
+        "category": "Hand", 
+        "name": "Hand_R_Push_Forward.pose", 
+        "modified": 1593470478.588837, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Hand/Hand_R_Push_Forward.pose", 
+        "folder": "../../Hand", 
+        "type": ".pose"
+    }, 
+    "../../Hand/Hand_R_Up.pose": {
+        "category": "Hand", 
+        "name": "Hand_R_Up.pose", 
+        "modified": 1593470391.043813, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Hand/Hand_R_Up.pose", 
+        "folder": "../../Hand", 
+        "type": ".pose"
+    }, 
+    "../../Hand/Hand_R_Wave_To_Left.pose": {
+        "category": "Hand", 
+        "name": "Hand_R_Wave_To_Left.pose", 
+        "modified": 1593470724.601178, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Hand/Hand_R_Wave_To_Left.pose", 
+        "folder": "../../Hand", 
+        "type": ".pose"
+    }, 
+    "../../Hand/Hand_R_Wave_To_Right.pose": {
+        "category": "Hand", 
+        "name": "Hand_R_Wave_To_Right.pose", 
+        "path": "../../Hand/Hand_R_Wave_To_Right.pose", 
+        "folder": "../../Hand", 
+        "type": ".pose", 
+        "modified": 1593470750.829068, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem"
+    }
+}
