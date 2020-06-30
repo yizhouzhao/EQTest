@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "ctime": "1593470478", 
+    "ctime": "1593494444", 
     "version": "1.0.0", 
     "references": [], 
-    "user": "Yizhou Zhao", 
-    "mayaSceneFile": "E:/researches/EQTest/Animation/High Five.mb", 
-    "mayaVersion": "2020", 
+    "user": "zhaoy", 
+    "mayaSceneFile": "C:/Users/zhaoy/Desktop/Vince/EQTest/Animation/High Five.mb", 
+    "mayaVersion": "2019", 
     "description": ""
   }
 ,
@@ -42,7 +42,7 @@
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": -25.0
+          "value": -29.999999999999996
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
@@ -146,7 +146,7 @@
       "attrs": {
         "middleCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 2.0
         }, 
         "cup": {
           "type": "float", 
@@ -154,7 +154,7 @@
         }, 
         "indexCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 2.0
         }, 
         "spread": {
           "type": "float", 
@@ -162,15 +162,15 @@
         }, 
         "pinkyCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 2.0
         }, 
         "thumbCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 2.0
         }, 
         "ringCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 2.0
         }
       }
     }, 
@@ -210,7 +210,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 5.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -514,7 +514,7 @@
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 85.0
+          "value": 90.0
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
@@ -530,7 +530,7 @@
       "attrs": {
         "middleCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 0.0
         }, 
         "cup": {
           "type": "float", 
@@ -538,7 +538,7 @@
         }, 
         "indexCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 0.0
         }, 
         "spread": {
           "type": "float", 
@@ -546,15 +546,15 @@
         }, 
         "pinkyCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 0.0
         }, 
         "thumbCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 0.0
         }, 
         "ringCurl": {
           "type": "float", 
-          "value": 1.0
+          "value": 0.0
         }
       }
     }, 

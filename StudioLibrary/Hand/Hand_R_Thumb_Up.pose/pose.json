@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "ctime": "1593494291", 
+    "ctime": "1593493486", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
-    "mayaSceneFile": "C:/Users/zhaoy/Desktop/Vince/EQTest/Animation/High Five.mb", 
+    "mayaSceneFile": "C:/Users/zhaoy/Desktop/Vince/EQTest/Animation/Thumb Up.mb", 
     "mayaVersion": "2019", 
     "description": ""
   }
@@ -38,7 +38,7 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": -90.0
+          "value": 0.0
         }, 
         "rotateY": {
           "type": "doubleAngle", 
@@ -430,7 +430,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 50.0
+          "value": 45.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -530,7 +530,7 @@
       "attrs": {
         "middleCurl": {
           "type": "float", 
-          "value": 0.0
+          "value": 9.0
         }, 
         "cup": {
           "type": "float", 
@@ -538,7 +538,7 @@
         }, 
         "indexCurl": {
           "type": "float", 
-          "value": 0.0
+          "value": 9.0
         }, 
         "spread": {
           "type": "float", 
@@ -546,15 +546,15 @@
         }, 
         "pinkyCurl": {
           "type": "float", 
-          "value": 0.0
+          "value": 9.0
         }, 
         "thumbCurl": {
           "type": "float", 
-          "value": 0.0
+          "value": -3.0
         }, 
         "ringCurl": {
           "type": "float", 
-          "value": 0.0
+          "value": 9.0
         }
       }
     }, 
@@ -726,7 +726,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 119.99999999999999
+          "value": 50.0
         }, 
         "scaleZ": {
           "type": "double", 
