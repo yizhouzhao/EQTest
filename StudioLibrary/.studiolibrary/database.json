@@ -17,6 +17,15 @@
         "folder": "../../Basic", 
         "type": ".pose"
     }, 
+    "../../Basic/Bow.pose": {
+        "category": "Basic", 
+        "name": "Bow.pose", 
+        "path": "../../Basic/Bow.pose", 
+        "folder": "../../Basic", 
+        "type": ".pose", 
+        "modified": 1593500975.0175984, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem"
+    }, 
     "../../Basic/Hug.pose": {
         "category": "Basic", 
         "name": "Hug.pose", 
@@ -74,20 +83,29 @@
     "../../Hand": {
         "category": "StudioLibrary", 
         "name": "Hand", 
-        "modified": 1593496216.4666567, 
+        "modified": 1593496753.1639001, 
         "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Hand", 
         "folder": "../..", 
         "type": "Folder"
     }, 
+    "../../Hand/Hand_Akimbo.pose": {
+        "category": "Hand", 
+        "name": "Hand_Akimbo.pose", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "modified": 1593498795.7204182, 
+        "path": "../../Hand/Hand_Akimbo.pose", 
+        "folder": "../../Hand", 
+        "type": ".pose"
+    }, 
     "../../Hand/Hand_R_Critisize.pose": {
         "category": "Hand", 
         "name": "Hand_R_Critisize.pose", 
+        "modified": 1593497042.4516602, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Hand/Hand_R_Critisize.pose", 
         "folder": "../../Hand", 
-        "type": ".pose", 
-        "modified": 1593496753.161905, 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem"
+        "type": ".pose"
     }, 
     "../../Hand/Hand_R_High_Five.pose": {
         "category": "Hand", 
@@ -95,6 +113,15 @@
         "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593494530.4967191, 
         "path": "../../Hand/Hand_R_High_Five.pose", 
+        "folder": "../../Hand", 
+        "type": ".pose"
+    }, 
+    "../../Hand/Hand_R_Lift.pose": {
+        "category": "Hand", 
+        "name": "Hand_R_Lift.pose", 
+        "modified": 1593499336.9062586, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Hand/Hand_R_Lift.pose", 
         "folder": "../../Hand", 
         "type": ".pose"
     }, 
@@ -152,24 +179,6 @@
         "folder": "../../Hand", 
         "type": ".pose"
     }, 
-    "../../Hand/Point forward Right.pose": {
-        "category": "Hand", 
-        "name": "Point forward Right.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
-        "modified": 1593454596.2132697, 
-        "path": "../../Hand/Point forward Right.pose", 
-        "folder": "../../Hand", 
-        "type": ".pose"
-    }, 
-    "../../Hand/Pre Critisize Right.pose": {
-        "category": "Hand", 
-        "name": "Pre Critisize Right.pose", 
-        "modified": 1593455581.1051688, 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
-        "path": "../../Hand/Pre Critisize Right.pose", 
-        "folder": "../../Hand", 
-        "type": ".pose"
-    }, 
     "../../Hand/ShankHand.anim": {
         "category": "Hand", 
         "name": "ShankHand.anim", 
@@ -179,19 +188,56 @@
         "folder": "../../Hand", 
         "type": ".anim"
     }, 
+    "../../Trash": {
+        "category": "StudioLibrary", 
+        "name": "Trash", 
+        "modified": 1593496753.1190205, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
+        "path": "../../Trash", 
+        "folder": "../..", 
+        "type": "Folder", 
+        "icon": "trash.svg"
+    }, 
+    "../../Trash/Bow.pose": {
+        "category": "Trash", 
+        "name": "Bow.pose", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1593500877.6737657, 
+        "path": "../../Trash/Bow.pose", 
+        "folder": "../../Trash", 
+        "type": ".pose"
+    }, 
+    "../../Trash/Hand_Akimbo.pose": {
+        "category": "Trash", 
+        "name": "Hand_Akimbo.pose", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1593498290.9566867, 
+        "path": "../../Trash/Hand_Akimbo.pose", 
+        "folder": "../../Trash", 
+        "type": ".pose"
+    }, 
     "../../Trash/Hand_R_Critisize (2).pose": {
         "category": "Trash", 
         "name": "Hand_R_Critisize (2).pose", 
-        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593496456.7068229, 
         "path": "../../Trash/Hand_R_Critisize (2).pose", 
+        "folder": "../../Trash", 
+        "type": ".pose"
+    }, 
+    "../../Trash/Hand_R_Critisize (3).pose": {
+        "category": "Trash", 
+        "name": "Hand_R_Critisize (3).pose", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1593496753.161905, 
+        "path": "../../Trash/Hand_R_Critisize (3).pose", 
         "folder": "../../Trash", 
         "type": ".pose"
     }, 
     "../../Trash/Hand_R_Critisize.pose": {
         "category": "Trash", 
         "name": "Hand_R_Critisize.pose", 
-        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593496366.4550283, 
         "path": "../../Trash/Hand_R_Critisize.pose", 
         "folder": "../../Trash", 
