@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "ctime": "1593751389", 
+    "version": "1.0.0", 
+    "references": [], 
+    "user": "zhaoy", 
+    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/clairee/clairee.mb", 
+    "mayaVersion": "2019", 
+    "description": ""
+  }
+,
+  "objects": {
+    "ctrlBrow_L": {
+      "attrs": {
+        "outerUpDown": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squeeze": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": 0.0
+        }
+      }
+    }
+  }
+}
