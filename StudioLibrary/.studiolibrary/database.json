@@ -2,7 +2,7 @@
     "../../Basic": {
         "category": "StudioLibrary", 
         "name": "Basic", 
-        "modified": 1593495272.476695, 
+        "modified": 1593581751.406351, 
         "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Basic", 
         "folder": "../..", 
@@ -75,7 +75,7 @@
         "category": "StudioLibrary", 
         "name": "Face", 
         "__class__": "studiolibrary.folderitem.FolderItem", 
-        "modified": 1593671246.6058166, 
+        "modified": 1593752935.040706, 
         "path": "../../Face", 
         "folder": "../..", 
         "type": "Folder"
@@ -89,19 +89,37 @@
         "folder": "../../Face", 
         "type": ".pose"
     }, 
-    "../../Face/Contempt.pose": {
+    "../../Face/Confused.pose": {
         "category": "Face", 
-        "name": "Contempt.pose", 
-        "path": "../../Face/Contempt.pose", 
+        "name": "Confused.pose", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "modified": 1593755318.242186, 
+        "path": "../../Face/Confused.pose", 
         "folder": "../../Face", 
-        "type": ".pose", 
-        "modified": 1593752765.2760613, 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem"
+        "type": ".pose"
+    }, 
+    "../../Face/Curious.pose": {
+        "category": "Face", 
+        "name": "Curious.pose", 
+        "modified": 1593755483.1143954, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Face/Curious.pose", 
+        "folder": "../../Face", 
+        "type": ".pose"
+    }, 
+    "../../Face/Frustrated.pose": {
+        "category": "Face", 
+        "name": "Frustrated.pose", 
+        "modified": 1593752903.7493641, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Face/Frustrated.pose", 
+        "folder": "../../Face", 
+        "type": ".pose"
     }, 
     "../../Face/Happy.pose": {
         "category": "Face", 
         "name": "Happy.pose", 
-        "modified": 1593749796.7772658, 
+        "modified": 1593754919.828832, 
         "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Face/Happy.pose", 
         "folder": "../../Face", 
@@ -125,14 +143,23 @@
         "folder": "../../Face", 
         "type": ".pose"
     }, 
-    "../../Face/Surprise.pose": {
+    "../../Face/Scared.pose": {
         "category": "Face", 
-        "name": "Surprise.pose", 
-        "modified": 1593752332.399851, 
+        "name": "Scared.pose", 
+        "modified": 1593754858.67433, 
         "__class__": "studiolibrarymaya.poseitem.PoseItem", 
-        "path": "../../Face/Surprise.pose", 
+        "path": "../../Face/Scared.pose", 
         "folder": "../../Face", 
         "type": ".pose"
+    }, 
+    "../../Face/Shy.pose": {
+        "category": "Face", 
+        "name": "Shy.pose", 
+        "path": "../../Face/Shy.pose", 
+        "folder": "../../Face", 
+        "type": ".pose", 
+        "modified": 1593755647.7253034, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem"
     }, 
     "../../Finger": {
         "category": "StudioLibrary", 
@@ -155,7 +182,7 @@
     "../../Hand": {
         "category": "StudioLibrary", 
         "name": "Hand", 
-        "modified": 1593496753.1639001, 
+        "modified": 1593582261.3127975, 
         "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Hand", 
         "folder": "../..", 
@@ -263,7 +290,7 @@
     "../../Trash": {
         "category": "StudioLibrary", 
         "name": "Trash", 
-        "modified": 1593496753.1190205, 
+        "modified": 1593752765.2351708, 
         "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Trash", 
         "folder": "../..", 
@@ -273,25 +300,43 @@
     "../../Trash/Bow.pose": {
         "category": "Trash", 
         "name": "Bow.pose", 
-        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593500877.6737657, 
         "path": "../../Trash/Bow.pose", 
+        "folder": "../../Trash", 
+        "type": ".pose"
+    }, 
+    "../../Trash/Confused.pose": {
+        "category": "Trash", 
+        "name": "Confused.pose", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1593755267.2355542, 
+        "path": "../../Trash/Confused.pose", 
         "folder": "../../Trash", 
         "type": ".pose"
     }, 
     "../../Trash/Contempt.pose": {
         "category": "Trash", 
         "name": "Contempt.pose", 
-        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593752700.415468, 
         "path": "../../Trash/Contempt.pose", 
+        "folder": "../../Trash", 
+        "type": ".pose"
+    }, 
+    "../../Trash/Curious.pose": {
+        "category": "Trash", 
+        "name": "Curious.pose", 
+        "modified": 1593752332.399851, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Curious.pose", 
         "folder": "../../Trash", 
         "type": ".pose"
     }, 
     "../../Trash/Hand_Akimbo.pose": {
         "category": "Trash", 
         "name": "Hand_Akimbo.pose", 
-        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593498290.9566867, 
         "path": "../../Trash/Hand_Akimbo.pose", 
         "folder": "../../Trash", 
@@ -309,7 +354,7 @@
     "../../Trash/Hand_R_Critisize (3).pose": {
         "category": "Trash", 
         "name": "Hand_R_Critisize (3).pose", 
-        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593496753.161905, 
         "path": "../../Trash/Hand_R_Critisize (3).pose", 
         "folder": "../../Trash", 
@@ -324,12 +369,30 @@
         "folder": "../../Trash", 
         "type": ".pose"
     }, 
+    "../../Trash/Happy.pose": {
+        "category": "Trash", 
+        "name": "Happy.pose", 
+        "modified": 1593749796.7772658, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Happy.pose", 
+        "folder": "../../Trash", 
+        "type": ".pose"
+    }, 
     "../../Trash/Neutral.pose": {
         "category": "Trash", 
         "name": "Neutral.pose", 
         "modified": 1593751389.175542, 
-        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Trash/Neutral.pose", 
+        "folder": "../../Trash", 
+        "type": ".pose"
+    }, 
+    "../../Trash/Scared.pose": {
+        "category": "Trash", 
+        "name": "Scared.pose", 
+        "modified": 1593754790.4896245, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Scared.pose", 
         "folder": "../../Trash", 
         "type": ".pose"
     }, 

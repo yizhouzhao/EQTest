@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1593754919", 
+    "ctime": "1593752903", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -34,7 +34,7 @@
         }, 
         "squint": {
           "type": "double", 
-          "value": 0.0
+          "value": 2.0
         }
       }
     }, 
@@ -42,11 +42,11 @@
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 
-          "value": 2.7755575615628914e-17
+          "value": -0.19999999999999998
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 1.0
+          "value": 0.0
         }
       }
     }, 
@@ -66,7 +66,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0999999999999929
+          "value": -0.1
         }
       }
     }, 
@@ -74,15 +74,15 @@
       "attrs": {
         "lowerSqueeze": {
           "type": "double", 
-          "value": 0.0
+          "value": 5.0
         }, 
         "lowerRoll": {
           "type": "double", 
-          "value": 0.0
+          "value": -7.0
         }, 
         "upperSqueeze": {
           "type": "double", 
-          "value": 0.0
+          "value": 5.0
         }, 
         "translateY": {
           "type": "doubleLinear", 
@@ -106,7 +106,7 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.5
+          "value": 0.0
         }, 
         "lowerPucker": {
           "type": "double", 
@@ -142,7 +142,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0999999999999929
+          "value": -0.1
         }
       }
     }, 
@@ -150,11 +150,11 @@
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 
-          "value": 2.7755575615628914e-17
+          "value": 0.20000000000000004
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.9999999999999999
+          "value": -0.3999999999999999
         }
       }
     }, 
@@ -182,7 +182,7 @@
         }, 
         "squint": {
           "type": "double", 
-          "value": 0.0
+          "value": 2.0
         }
       }
     }

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1593754919", 
+    "ctime": "1593755267", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -18,7 +18,7 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.5
         }, 
         "translateY": {
           "type": "doubleLinear", 
@@ -34,7 +34,7 @@
         }, 
         "squint": {
           "type": "double", 
-          "value": 0.0
+          "value": 4.0
         }
       }
     }, 
@@ -46,7 +46,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 1.0
+          "value": 0.0
         }
       }
     }, 
@@ -62,11 +62,11 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": -0.5
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0999999999999929
+          "value": -0.1
         }
       }
     }, 
@@ -74,7 +74,7 @@
       "attrs": {
         "lowerSqueeze": {
           "type": "double", 
-          "value": 0.0
+          "value": 10.0
         }, 
         "lowerRoll": {
           "type": "double", 
@@ -102,11 +102,11 @@
         }, 
         "lowerPress": {
           "type": "double", 
-          "value": 0.0
+          "value": 10.0
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.5
+          "value": 0.1
         }, 
         "lowerPucker": {
           "type": "double", 
@@ -134,15 +134,15 @@
         }, 
         "squeeze": {
           "type": "double", 
-          "value": 0.0
+          "value": 10.0
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": -0.30000000000000004
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0999999999999929
+          "value": -0.1
         }
       }
     }, 
@@ -150,11 +150,11 @@
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 
-          "value": 2.7755575615628914e-17
+          "value": 0.4
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.9999999999999999
+          "value": -0.4
         }
       }
     }, 
@@ -166,7 +166,7 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.5
         }, 
         "translateY": {
           "type": "doubleLinear", 
@@ -182,7 +182,7 @@
         }, 
         "squint": {
           "type": "double", 
-          "value": 0.0
+          "value": 3.0
         }
       }
     }

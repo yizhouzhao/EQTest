@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1593752765", 
+    "ctime": "1593754790", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -26,7 +26,7 @@
         }, 
         "blink": {
           "type": "double", 
-          "value": 0.0
+          "value": -2.0
         }, 
         "pupil": {
           "type": "double", 
@@ -34,7 +34,7 @@
         }, 
         "squint": {
           "type": "double", 
-          "value": 2.0
+          "value": 0.0
         }
       }
     }, 
@@ -42,7 +42,7 @@
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 
-          "value": -0.19999999999999998
+          "value": 2.7755575615628914e-17
         }, 
         "translateY": {
           "type": "doubleLinear", 
@@ -62,11 +62,11 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.4
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.1
         }
       }
     }, 
@@ -74,19 +74,19 @@
       "attrs": {
         "lowerSqueeze": {
           "type": "double", 
-          "value": 5.0
+          "value": 0.0
         }, 
         "lowerRoll": {
           "type": "double", 
-          "value": -7.0
+          "value": 0.0
         }, 
         "upperSqueeze": {
           "type": "double", 
-          "value": 5.0
+          "value": 0.0
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": -0.5
         }, 
         "jawSide": {
           "type": "double", 
@@ -106,7 +106,7 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 2.7755575615628914e-17
+          "value": 0.2
         }, 
         "lowerPucker": {
           "type": "double", 
@@ -122,7 +122,7 @@
         }, 
         "jawForward": {
           "type": "double", 
-          "value": 0.0
+          "value": -5.0
         }
       }
     }, 
@@ -138,11 +138,11 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.4
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.1
         }
       }
     }, 
@@ -150,11 +150,11 @@
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.20000000000000004
+          "value": 2.7755575615628914e-17
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": -0.4
+          "value": 0.0
         }
       }
     }, 
@@ -174,7 +174,7 @@
         }, 
         "blink": {
           "type": "double", 
-          "value": 0.0
+          "value": -2.0
         }, 
         "pupil": {
           "type": "double", 
@@ -182,7 +182,7 @@
         }, 
         "squint": {
           "type": "double", 
-          "value": 2.0
+          "value": 0.0
         }
       }
     }

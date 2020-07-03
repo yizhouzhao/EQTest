@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1593754919", 
+    "ctime": "1593755483", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -26,7 +26,7 @@
         }, 
         "blink": {
           "type": "double", 
-          "value": 0.0
+          "value": -1.0
         }, 
         "pupil": {
           "type": "double", 
@@ -46,7 +46,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 1.0
+          "value": 0.2
         }
       }
     }, 
@@ -54,7 +54,7 @@
       "attrs": {
         "outerUpDown": {
           "type": "double", 
-          "value": 0.0
+          "value": 3.0
         }, 
         "squeeze": {
           "type": "double", 
@@ -62,11 +62,11 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.30000000000000004
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0999999999999929
+          "value": 0.0
         }
       }
     }, 
@@ -86,7 +86,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": -0.3
         }, 
         "jawSide": {
           "type": "double", 
@@ -106,7 +106,7 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.5
+          "value": 0.0
         }, 
         "lowerPucker": {
           "type": "double", 
@@ -130,7 +130,7 @@
       "attrs": {
         "outerUpDown": {
           "type": "double", 
-          "value": 0.0
+          "value": 3.0
         }, 
         "squeeze": {
           "type": "double", 
@@ -138,11 +138,11 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": 0.30000000000000004
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0999999999999929
+          "value": 0.0
         }
       }
     }, 
@@ -154,7 +154,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.9999999999999999
+          "value": 0.2
         }
       }
     }, 
@@ -174,7 +174,7 @@
         }, 
         "blink": {
           "type": "double", 
-          "value": 0.0
+          "value": -1.0
         }, 
         "pupil": {
           "type": "double", 
