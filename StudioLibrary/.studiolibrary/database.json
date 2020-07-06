@@ -2,8 +2,8 @@
     "../../Animations": {
         "category": "StudioLibrary", 
         "name": "Animations", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594007689.4824748, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Animations", 
         "folder": "../..", 
         "type": "Folder"
@@ -11,8 +11,8 @@
     "../../Animations/Body": {
         "category": "Animations", 
         "name": "Body", 
+        "modified": 1594076818.9691741, 
         "__class__": "studiolibrary.folderitem.FolderItem", 
-        "modified": 1594075977.047092, 
         "path": "../../Animations/Body", 
         "folder": "../../Animations", 
         "type": "Folder"
@@ -20,17 +20,35 @@
     "../../Animations/Body/Bow.anim": {
         "category": "Body", 
         "name": "Bow.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594070031.9867227, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Bow.anim", 
+        "folder": "../../Animations/Body", 
+        "type": ".anim"
+    }, 
+    "../../Animations/Body/Head_Nod.anim": {
+        "category": "Body", 
+        "name": "Head_Nod.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594076818.244086, 
+        "path": "../../Animations/Body/Head_Nod.anim", 
+        "folder": "../../Animations/Body", 
+        "type": ".anim"
+    }, 
+    "../../Animations/Body/Head_Shake.anim": {
+        "category": "Body", 
+        "name": "Head_Shake.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594076626.382457, 
+        "path": "../../Animations/Body/Head_Shake.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
     }, 
     "../../Animations/Body/High_Five.anim": {
         "category": "Body", 
         "name": "High_Five.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594070032.0086634, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/High_Five.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -38,8 +56,8 @@
     "../../Animations/Body/Pointing.anim": {
         "category": "Body", 
         "name": "Pointing.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594070032.0286105, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Pointing.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -47,8 +65,8 @@
     "../../Animations/Body/Shanke_Hands.anim": {
         "category": "Body", 
         "name": "Shanke_Hands.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594007742.278959, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Shanke_Hands.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -56,8 +74,8 @@
     "../../Animations/Body/Squat-Stand.anim": {
         "category": "Body", 
         "name": "Squat-Stand.anim", 
-        "modified": 1594074825.819601, 
         "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594074825.819601, 
         "path": "../../Animations/Body/Squat-Stand.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -65,8 +83,8 @@
     "../../Animations/Body/Stand-Hug.anim": {
         "category": "Body", 
         "name": "Stand-Hug.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594074996.86696, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Stand-Hug.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -74,8 +92,8 @@
     "../../Animations/Body/Stand_Bow_Hand_Forward.anim": {
         "category": "Body", 
         "name": "Stand_Bow_Hand_Forward.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594075504.085936, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Stand_Bow_Hand_Forward.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -83,17 +101,26 @@
     "../../Animations/Body/Thumb_Up.anim": {
         "category": "Body", 
         "name": "Thumb_Up.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594070032.0505517, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Thumb_Up.anim", 
+        "folder": "../../Animations/Body", 
+        "type": ".anim"
+    }, 
+    "../../Animations/Body/Tilt_Head.anim": {
+        "category": "Body", 
+        "name": "Tilt_Head.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594076458.272434, 
+        "path": "../../Animations/Body/Tilt_Head.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
     }, 
     "../../Animations/Body/Walk.anim": {
         "category": "Body", 
         "name": "Walk.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594075722.242036, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Walk.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -101,8 +128,8 @@
     "../../Animations/Body/Walk_Forward_Hold_Arm.anim": {
         "category": "Body", 
         "name": "Walk_Forward_Hold_Arm.anim", 
-        "modified": 1594075976.250196, 
         "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594075976.250196, 
         "path": "../../Animations/Body/Walk_Forward_Hold_Arm.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -110,8 +137,8 @@
     "../../Animations/Body/Wave.anim": {
         "category": "Body", 
         "name": "Wave.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594070032.0734909, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Wave.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -119,8 +146,8 @@
     "../../Animations/Face": {
         "category": "Animations", 
         "name": "Face", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594007817.1536179, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Animations/Face", 
         "folder": "../../Animations", 
         "type": "Folder"
@@ -128,8 +155,8 @@
     "../../Animations/Face/Neutral_Sad.anim": {
         "category": "Face", 
         "name": "Neutral_Sad.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594007816.226536, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Face/Neutral_Sad.anim", 
         "folder": "../../Animations/Face", 
         "type": ".anim"
@@ -137,8 +164,8 @@
     "../../Animations/Shake_Hands_colleagues.anim": {
         "category": "Animations", 
         "name": "Shake_Hands_colleagues.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1594007461.219873, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Shake_Hands_colleagues.anim", 
         "folder": "../../Animations", 
         "type": ".anim"
@@ -146,8 +173,8 @@
     "../../Hand": {
         "category": "StudioLibrary", 
         "name": "Hand", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594070025.0454712, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Hand", 
         "folder": "../..", 
         "type": "Folder"
@@ -155,8 +182,8 @@
     "../../Hand/Hand_Spread_R.pose": {
         "category": "Hand", 
         "name": "Hand_Spread_R.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1594070025.0464513, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Hand/Hand_Spread_R.pose", 
         "folder": "../../Hand", 
         "type": ".pose"
@@ -164,8 +191,8 @@
     "../../Poses": {
         "category": "StudioLibrary", 
         "name": "Poses", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594071982.1234837, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Poses", 
         "folder": "../..", 
         "type": "Folder"
@@ -173,8 +200,8 @@
     "../../Poses/Basic": {
         "category": "Poses", 
         "name": "Basic", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594075241.461846, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Poses/Basic", 
         "folder": "../../Poses", 
         "type": "Folder"
@@ -182,8 +209,8 @@
     "../../Poses/Basic/Akimbo.pose": {
         "category": "Basic", 
         "name": "Akimbo.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.853148, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Basic/Akimbo.pose", 
         "folder": "../../Poses/Basic", 
         "type": ".pose"
@@ -191,8 +218,8 @@
     "../../Poses/Basic/Arms_Forward.pose": {
         "category": "Basic", 
         "name": "Arms_Forward.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593477754.081362, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Basic/Arms_Forward.pose", 
         "folder": "../../Poses/Basic", 
         "type": ".pose"
@@ -200,8 +227,8 @@
     "../../Poses/Basic/Bow.pose": {
         "category": "Basic", 
         "name": "Bow.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1594075241.460875, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Basic/Bow.pose", 
         "folder": "../../Poses/Basic", 
         "type": ".pose"
@@ -209,8 +236,8 @@
     "../../Poses/Basic/Hug.pose": {
         "category": "Basic", 
         "name": "Hug.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593483455.270414, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Basic/Hug.pose", 
         "folder": "../../Poses/Basic", 
         "type": ".pose"
@@ -218,8 +245,8 @@
     "../../Poses/Basic/Mirror_Body.mirror": {
         "category": "Basic", 
         "name": "Mirror_Body.mirror", 
-        "__class__": "studiolibrarymaya.mirroritem.MirrorItem", 
         "modified": 1593472558.6001954, 
+        "__class__": "studiolibrarymaya.mirroritem.MirrorItem", 
         "path": "../../Poses/Basic/Mirror_Body.mirror", 
         "folder": "../../Poses/Basic", 
         "type": ".mirror"
@@ -227,8 +254,8 @@
     "../../Poses/Basic/Stand.pose": {
         "category": "Basic", 
         "name": "Stand.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8541453, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Basic/Stand.pose", 
         "folder": "../../Poses/Basic", 
         "type": ".pose"
@@ -236,8 +263,8 @@
     "../../Poses/Basic/T-pose.pose": {
         "category": "Basic", 
         "name": "T-pose.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593472558.6051817, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Basic/T-pose.pose", 
         "folder": "../../Poses/Basic", 
         "type": ".pose"
@@ -245,8 +272,8 @@
     "../../Poses/Face": {
         "category": "Poses", 
         "name": "Face", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594007153.091158, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Poses/Face", 
         "folder": "../../Poses", 
         "type": "Folder"
@@ -254,8 +281,8 @@
     "../../Poses/Face/Angry.pose": {
         "category": "Face", 
         "name": "Angry.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8551426, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Angry.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -263,8 +290,8 @@
     "../../Poses/Face/Confused.pose": {
         "category": "Face", 
         "name": "Confused.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8551426, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Confused.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -272,8 +299,8 @@
     "../../Poses/Face/Curious.pose": {
         "category": "Face", 
         "name": "Curious.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.85614, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Curious.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -281,8 +308,8 @@
     "../../Poses/Face/Frustrated.pose": {
         "category": "Face", 
         "name": "Frustrated.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.85614, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Frustrated.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -290,8 +317,8 @@
     "../../Poses/Face/Happy.pose": {
         "category": "Face", 
         "name": "Happy.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593974627.971815, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Happy.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -299,8 +326,8 @@
     "../../Poses/Face/Neutral.pose": {
         "category": "Face", 
         "name": "Neutral.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1594007153.09016, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Neutral.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -308,8 +335,8 @@
     "../../Poses/Face/Sad.pose": {
         "category": "Face", 
         "name": "Sad.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593974678.454792, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Sad.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -317,8 +344,8 @@
     "../../Poses/Face/Scared.pose": {
         "category": "Face", 
         "name": "Scared.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8581347, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Scared.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -326,8 +353,8 @@
     "../../Poses/Face/Shy.pose": {
         "category": "Face", 
         "name": "Shy.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8591323, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Face/Shy.pose", 
         "folder": "../../Poses/Face", 
         "type": ".pose"
@@ -335,8 +362,8 @@
     "../../Poses/Finger": {
         "category": "Poses", 
         "name": "Finger", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1593472558.6082063, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Poses/Finger", 
         "folder": "../../Poses", 
         "type": "Folder"
@@ -344,8 +371,8 @@
     "../../Poses/Finger/Thumb_Up_R.pose": {
         "category": "Finger", 
         "name": "Thumb_Up_R.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593472558.609198, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Finger/Thumb_Up_R.pose", 
         "folder": "../../Poses/Finger", 
         "type": ".pose"
@@ -353,8 +380,8 @@
     "../../Poses/Foot": {
         "category": "Poses", 
         "name": "Foot", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594074620.743109, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Poses/Foot", 
         "folder": "../../Poses", 
         "type": "Folder"
@@ -362,8 +389,8 @@
     "../../Poses/Foot/Half_Squat.pose": {
         "category": "Foot", 
         "name": "Half_Squat.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1594074620.742134, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Foot/Half_Squat.pose", 
         "folder": "../../Poses/Foot", 
         "type": ".pose"
@@ -371,8 +398,8 @@
     "../../Poses/Foot/Squat.pose": {
         "category": "Foot", 
         "name": "Squat.pose", 
-        "modified": 1594072033.601433, 
         "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "modified": 1594072033.601433, 
         "path": "../../Poses/Foot/Squat.pose", 
         "folder": "../../Poses/Foot", 
         "type": ".pose"
@@ -380,8 +407,8 @@
     "../../Poses/Hand": {
         "category": "Poses", 
         "name": "Hand", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1594075411.7435613, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Poses/Hand", 
         "folder": "../../Poses", 
         "type": "Folder"
@@ -389,8 +416,8 @@
     "../../Poses/Hand/Hand_On_Head.pose": {
         "category": "Hand", 
         "name": "Hand_On_Head.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593975151.170317, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_On_Head.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -398,8 +425,8 @@
     "../../Poses/Hand/Hand_R_Critisize.pose": {
         "category": "Hand", 
         "name": "Hand_R_Critisize.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8601298, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Critisize.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -407,8 +434,8 @@
     "../../Poses/Hand/Hand_R_Forward.pose": {
         "category": "Hand", 
         "name": "Hand_R_Forward.pose", 
-        "modified": 1594075411.742593, 
         "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "modified": 1594075411.742593, 
         "path": "../../Poses/Hand/Hand_R_Forward.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -416,8 +443,8 @@
     "../../Poses/Hand/Hand_R_High_Five.pose": {
         "category": "Hand", 
         "name": "Hand_R_High_Five.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.861127, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_High_Five.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -425,8 +452,8 @@
     "../../Poses/Hand/Hand_R_Hold_Arm.pose": {
         "category": "Hand", 
         "name": "Hand_R_Hold_Arm.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1594070032.0744872, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Hold_Arm.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -434,8 +461,8 @@
     "../../Poses/Hand/Hand_R_Lift.pose": {
         "category": "Hand", 
         "name": "Hand_R_Lift.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8631234, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Lift.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -443,8 +470,8 @@
     "../../Poses/Hand/Hand_R_Point_Forward.pose": {
         "category": "Hand", 
         "name": "Hand_R_Point_Forward.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.864119, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Point_Forward.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -452,8 +479,8 @@
     "../../Poses/Hand/Hand_R_Shake_Start.pose": {
         "category": "Hand", 
         "name": "Hand_R_Shake_Start.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593472558.6181471, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Shake_Start.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -461,8 +488,8 @@
     "../../Poses/Hand/Hand_R_Shake_Up.pose": {
         "category": "Hand", 
         "name": "Hand_R_Shake_Up.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593472558.6201696, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Shake_Up.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -470,8 +497,8 @@
     "../../Poses/Hand/Hand_R_Up.pose": {
         "category": "Hand", 
         "name": "Hand_R_Up.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8651161, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Up.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -479,8 +506,8 @@
     "../../Poses/Hand/Hand_R_Wave_To_Left.pose": {
         "category": "Hand", 
         "name": "Hand_R_Wave_To_Left.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.8661132, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Wave_To_Left.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -488,8 +515,8 @@
     "../../Poses/Hand/Hand_R_Wave_To_Right.pose": {
         "category": "Hand", 
         "name": "Hand_R_Wave_To_Right.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593798287.867111, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Hand/Hand_R_Wave_To_Right.pose", 
         "folder": "../../Poses/Hand", 
         "type": ".pose"
@@ -497,8 +524,8 @@
     "../../Poses/Hand/ShankHand.anim": {
         "category": "Hand", 
         "name": "ShankHand.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "modified": 1593473182.137079, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Poses/Hand/ShankHand.anim", 
         "folder": "../../Poses/Hand", 
         "type": ".anim"
@@ -506,17 +533,53 @@
     "../../Poses/Head": {
         "category": "Poses", 
         "name": "Head", 
+        "modified": 1594076749.5305574, 
         "__class__": "studiolibrary.folderitem.FolderItem", 
-        "modified": 1593818710.9813402, 
         "path": "../../Poses/Head", 
         "folder": "../../Poses", 
         "type": "Folder"
     }, 
+    "../../Poses/Head/Head_Nod_D.pose": {
+        "category": "Head", 
+        "name": "Head_Nod_D.pose", 
+        "modified": 1594076702.475841, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Poses/Head/Head_Nod_D.pose", 
+        "folder": "../../Poses/Head", 
+        "type": ".pose"
+    }, 
+    "../../Poses/Head/Head_Shake_R.pose": {
+        "category": "Head", 
+        "name": "Head_Shake_R.pose", 
+        "modified": 1594076551.542032, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "path": "../../Poses/Head/Head_Shake_R.pose", 
+        "folder": "../../Poses/Head", 
+        "type": ".pose"
+    }, 
+    "../../Poses/Head/Head_Tilt_R.pose": {
+        "category": "Head", 
+        "name": "Head_Tilt_R.pose", 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
+        "modified": 1594076248.113633, 
+        "path": "../../Poses/Head/Head_Tilt_R.pose", 
+        "folder": "../../Poses/Head", 
+        "type": ".pose"
+    }, 
+    "../../Poses/Head/mirror_head.mirror": {
+        "category": "Head", 
+        "name": "mirror_head.mirror", 
+        "modified": 1594076270.821914, 
+        "__class__": "studiolibrarymaya.mirroritem.MirrorItem", 
+        "path": "../../Poses/Head/mirror_head.mirror", 
+        "folder": "../../Poses/Head", 
+        "type": ".mirror"
+    }, 
     "../../Poses/Walk": {
         "category": "Poses", 
         "name": "Walk", 
-        "__class__": "studiolibrary.folderitem.FolderItem", 
         "modified": 1593490942.004806, 
+        "__class__": "studiolibrary.folderitem.FolderItem", 
         "path": "../../Poses/Walk", 
         "folder": "../../Poses", 
         "type": "Folder"
@@ -524,8 +587,8 @@
     "../../Poses/Walk/Turn_Right.pose": {
         "category": "Walk", 
         "name": "Turn_Right.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593490942.00383, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Walk/Turn_Right.pose", 
         "folder": "../../Poses/Walk", 
         "type": ".pose"
@@ -533,8 +596,8 @@
     "../../Poses/Walk/Turn_Right_Left_Knee_Up.pose": {
         "category": "Walk", 
         "name": "Turn_Right_Left_Knee_Up.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593490766.0916, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Walk/Turn_Right_Left_Knee_Up.pose", 
         "folder": "../../Poses/Walk", 
         "type": ".pose"
@@ -542,8 +605,8 @@
     "../../Poses/Walk/Walk_Middle_Left_Knee_Up.pose": {
         "category": "Walk", 
         "name": "Walk_Middle_Left_Knee_Up.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593472558.632137, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Walk/Walk_Middle_Left_Knee_Up.pose", 
         "folder": "../../Poses/Walk", 
         "type": ".pose"
@@ -551,8 +614,8 @@
     "../../Poses/Walk/Walk_Start_Forward_Right_Foot.pose": {
         "category": "Walk", 
         "name": "Walk_Start_Forward_Right_Foot.pose", 
-        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "modified": 1593472558.6341043, 
+        "__class__": "studiolibrarymaya.poseitem.PoseItem", 
         "path": "../../Poses/Walk/Walk_Start_Forward_Right_Foot.pose", 
         "folder": "../../Poses/Walk", 
         "type": ".pose"
@@ -560,8 +623,8 @@
     "../../Poses/Walk/mirror_body.mirror": {
         "category": "Walk", 
         "name": "mirror_body.mirror", 
-        "__class__": "studiolibrarymaya.mirroritem.MirrorItem", 
         "modified": 1593473717.880491, 
+        "__class__": "studiolibrarymaya.mirroritem.MirrorItem", 
         "path": "../../Poses/Walk/mirror_body.mirror", 
         "folder": "../../Poses/Walk", 
         "type": ".mirror"
@@ -569,8 +632,8 @@
     "../../Trash": {
         "category": "StudioLibrary", 
         "name": "Trash", 
+        "modified": 1594076827.9181015, 
         "__class__": "studiolibrary.folderitem.FolderItem", 
-        "modified": 1594076121.1405787, 
         "path": "../../Trash", 
         "folder": "../..", 
         "type": "Folder", 
