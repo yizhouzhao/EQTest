@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1594075241", 
+    "ctime": "1594075411", 
     "version": "1.0.0", 
     "references": [], 
     "user": "Yizhou Zhao", 
@@ -38,15 +38,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -1.5679726958078835
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -1.1203287053442306
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -8.172183696561882
         }, 
         "scaleZ": {
           "type": "double", 
@@ -134,7 +134,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 10.0
+          "value": 0.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -210,7 +210,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 65.0
+          "value": 5.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -298,7 +298,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 20.0
+          "value": 0.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -338,7 +338,7 @@
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 3.1805528119534518e-15
+          "value": 3.180552811953453e-15
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
@@ -426,15 +426,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 30.165182296421147
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 90.0
+          "value": 91.9315826615644
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 8.965291267147467
         }, 
         "scaleZ": {
           "type": "double", 
@@ -690,7 +690,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 20.0
+          "value": 0.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -726,15 +726,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 2.9538353400412315e-14
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -0.004078613532318732
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 65.0
+          "value": 41.58672134832748
         }, 
         "scaleZ": {
           "type": "double", 
@@ -770,15 +770,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": -4.352336988280144e-05
+          "value": -4.340564025680865e-05
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": -5.90293296070826e-06
+          "value": -5.3535509836775565e-06
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 4.3913654297657075e-05
+          "value": 8.405504942958192e-05
         }, 
         "scaleZ": {
           "type": "double", 
