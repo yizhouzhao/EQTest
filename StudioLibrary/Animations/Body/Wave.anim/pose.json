@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/chubby/chubby.mb", 
+    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/max/max.mb", 
     "angularUnit": "deg", 
-    "description": "Wave RIght", 
+    "description": "Wave Hand Right", 
     "endFrame": 71, 
     "linearUnit": "cm", 
     "version": "1.0.0", 
@@ -11,7 +11,7 @@
     "startFrame": 0, 
     "timeUnit": "film", 
     "mayaVersion": "2019", 
-    "ctime": "1594011193"
+    "ctime": "1594095720"
   }
 ,
   "objects": {
@@ -503,6 +503,10 @@
           "type": "doubleLinear", 
           "value": 0.0
         }, 
+        "Global": {
+          "type": "double", 
+          "value": 0.0
+        }, 
         "scaleX": {
           "curve": "CURVE100", 
           "type": "double", 
@@ -609,6 +613,10 @@
         "translateZ": {
           "curve": "CURVE121", 
           "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "Global": {
+          "type": "double", 
           "value": 0.0
         }, 
         "scaleX": {
@@ -959,10 +967,6 @@
     }, 
     "Main": {
       "attrs": {
-        "shrinkSkinUnderClothes": {
-          "type": "double", 
-          "value": 1.0
-        }, 
         "translateX": {
           "type": "doubleLinear", 
           "value": 0.0
