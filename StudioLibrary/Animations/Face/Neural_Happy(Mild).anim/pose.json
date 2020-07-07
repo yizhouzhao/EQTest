@@ -1,0 +1,232 @@
+{
+  "metadata": {
+    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/max/max.mb", 
+    "angularUnit": "deg", 
+    "description": "From neutral to a little smile", 
+    "endFrame": 71, 
+    "linearUnit": "cm", 
+    "version": "1.0.0", 
+    "references": [], 
+    "user": "zhaoy", 
+    "startFrame": 0, 
+    "timeUnit": "film", 
+    "mayaVersion": "2019", 
+    "ctime": "1594097645"
+  }
+,
+  "objects": {
+    "ctrlEye_R": {
+      "attrs": {
+        "iris": {
+          "curve": "CURVE1", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "curve": "CURVE2", 
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "curve": "CURVE3", 
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "blink": {
+          "curve": "CURVE4", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "pupil": {
+          "curve": "CURVE5", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squint": {
+          "curve": "CURVE6", 
+          "type": "double", 
+          "value": 0.0
+        }
+      }
+    }, 
+    "ctrlMouthCorner_L": {
+      "attrs": {
+        "translateX": {
+          "curve": "CURVE8", 
+          "type": "doubleLinear", 
+          "value": 0.30000000000000004
+        }, 
+        "translateY": {
+          "curve": "CURVE9", 
+          "type": "doubleLinear", 
+          "value": 1.0
+        }
+      }
+    }, 
+    "ctrlBrow_L": {
+      "attrs": {
+        "outerUpDown": {
+          "curve": "CURVE11", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squeeze": {
+          "curve": "CURVE12", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "curve": "CURVE13", 
+          "type": "doubleLinear", 
+          "value": 0.025823912883344652
+        }, 
+        "translateY": {
+          "curve": "CURVE14", 
+          "type": "doubleLinear", 
+          "value": -0.20000000000000007
+        }
+      }
+    }, 
+    "ctrlMouth_M": {
+      "attrs": {
+        "lowerSqueeze": {
+          "curve": "CURVE16", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "lowerRoll": {
+          "curve": "CURVE17", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperSqueeze": {
+          "curve": "CURVE18", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "curve": "CURVE19", 
+          "type": "doubleLinear", 
+          "value": -0.16020811342701768
+        }, 
+        "jawSide": {
+          "curve": "CURVE20", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "lipSide": {
+          "curve": "CURVE21", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperPucker": {
+          "curve": "CURVE22", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "lowerPress": {
+          "curve": "CURVE23", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "curve": "CURVE24", 
+          "type": "doubleLinear", 
+          "value": 0.4
+        }, 
+        "lowerPucker": {
+          "curve": "CURVE25", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperPress": {
+          "curve": "CURVE26", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperRoll": {
+          "curve": "CURVE27", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "jawForward": {
+          "curve": "CURVE28", 
+          "type": "double", 
+          "value": 0.0
+        }
+      }
+    }, 
+    "ctrlBrow_R": {
+      "attrs": {
+        "outerUpDown": {
+          "curve": "CURVE30", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squeeze": {
+          "curve": "CURVE31", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "curve": "CURVE32", 
+          "type": "doubleLinear", 
+          "value": 0.025823912883344652
+        }, 
+        "translateY": {
+          "curve": "CURVE33", 
+          "type": "doubleLinear", 
+          "value": -0.2
+        }
+      }
+    }, 
+    "ctrlMouthCorner_R": {
+      "attrs": {
+        "translateX": {
+          "curve": "CURVE35", 
+          "type": "doubleLinear", 
+          "value": 0.30000000000000004
+        }, 
+        "translateY": {
+          "curve": "CURVE36", 
+          "type": "doubleLinear", 
+          "value": 1.0
+        }
+      }
+    }, 
+    "ctrlEye_L": {
+      "attrs": {
+        "iris": {
+          "curve": "CURVE38", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "curve": "CURVE39", 
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "curve": "CURVE40", 
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "blink": {
+          "curve": "CURVE41", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "pupil": {
+          "curve": "CURVE42", 
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squint": {
+          "curve": "CURVE43", 
+          "type": "double", 
+          "value": 0.0
+        }
+      }
+    }
+  }
+}
