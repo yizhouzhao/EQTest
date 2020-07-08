@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "ctime": "1594177722", 
+    "ctime": "1594096284", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
     "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/clairee/clairee.mb", 
     "mayaVersion": "2019", 
-    "description": ""
+    "description": "Frustrated"
   }
 ,
   "objects": {
@@ -26,7 +26,7 @@
         }, 
         "blink": {
           "type": "double", 
-          "value": 2.0
+          "value": 0.0
         }, 
         "pupil": {
           "type": "double", 
@@ -66,7 +66,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": -0.30000000000000004
+          "value": -0.1
         }
       }
     }, 
@@ -142,7 +142,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": -0.30000000000000004
+          "value": -0.1
         }
       }
     }, 
@@ -174,7 +174,7 @@
         }, 
         "blink": {
           "type": "double", 
-          "value": 2.0
+          "value": 0.0
         }, 
         "pupil": {
           "type": "double", 

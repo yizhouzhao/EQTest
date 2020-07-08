@@ -1,12 +1,12 @@
 {
   "metadata": {
-    "ctime": "1594178110", 
+    "ctime": "1594180942", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
     "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/clairee/clairee.mb", 
     "mayaVersion": "2019", 
-    "description": ""
+    "description": "Grab with right hand"
   }
 ,
   "objects": {
@@ -38,7 +38,7 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -90.0
         }, 
         "rotateY": {
           "type": "doubleAngle", 
@@ -422,15 +422,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 60.0000000000001
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 90.0
+          "value": 70.0
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 10.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -530,7 +530,7 @@
       "attrs": {
         "middleCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 5.0
         }, 
         "cup": {
           "type": "float", 
@@ -538,7 +538,7 @@
         }, 
         "indexCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 5.0
         }, 
         "spread": {
           "type": "float", 
@@ -546,15 +546,15 @@
         }, 
         "pinkyCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 5.0
         }, 
         "thumbCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 5.0
         }, 
         "ringCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 5.0
         }
       }
     }, 
@@ -718,15 +718,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -2.1431884876190574
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 23.144254695795208
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 5.0
+          "value": 5.438896027637019
         }, 
         "scaleZ": {
           "type": "double", 

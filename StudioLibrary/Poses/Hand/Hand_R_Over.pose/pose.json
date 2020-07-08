@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1594178110", 
+    "ctime": "1594180039", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -38,7 +38,7 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 90.0
         }, 
         "rotateY": {
           "type": "doubleAngle", 
@@ -422,15 +422,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 60.0000000000001
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 90.0
+          "value": 70.0
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 8.53431121532468e-15
         }, 
         "scaleZ": {
           "type": "double", 
@@ -718,15 +718,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -2.1431884876190574
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 23.144254695795208
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 5.0
+          "value": 5.438896027637019
         }, 
         "scaleZ": {
           "type": "double", 
