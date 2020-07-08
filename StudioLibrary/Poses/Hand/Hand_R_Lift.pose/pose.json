@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "ctime": "1593499336", 
+    "ctime": "1594176826", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
-    "mayaSceneFile": "", 
+    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/clairee/clairee.mb", 
     "mayaVersion": "2019", 
     "description": ""
   }
@@ -38,15 +38,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": -44.969565132347164
+          "value": -46.74377812356143
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": -2.0621472132105794
+          "value": 16.33517906425259
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 5.378268357610072
+          "value": 5.6015747924680195
         }, 
         "scaleZ": {
           "type": "double", 
@@ -202,15 +202,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": -160.8
+          "value": -41.78430063008989
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 74.161
+          "value": 82.51987259022596
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 168.054
+          "value": 42.027708046820806
         }, 
         "scaleZ": {
           "type": "double", 
@@ -514,7 +514,7 @@
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 35.0
+          "value": 29.999999999999996
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
@@ -718,15 +718,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": -180.6935238900113
+          "value": 218.05020752124793
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 63.3535901422219
+          "value": 6.036897164896228
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 338.60244874235684
+          "value": -68.64253428059385
         }, 
         "scaleZ": {
           "type": "double", 
@@ -850,7 +850,7 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": -103.956
+          "value": -110.86199185653211
         }, 
         "rotateY": {
           "type": "doubleAngle", 

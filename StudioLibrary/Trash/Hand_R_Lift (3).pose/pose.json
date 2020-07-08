@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1594175367", 
+    "ctime": "1594176727", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -38,15 +38,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -46.74377812356143
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 16.33517906425259
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 5.6015747924680195
         }, 
         "scaleZ": {
           "type": "double", 
@@ -126,7 +126,7 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 59.99999999999999
         }, 
         "rotateY": {
           "type": "doubleAngle", 
@@ -146,7 +146,7 @@
       "attrs": {
         "middleCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 1.0
         }, 
         "cup": {
           "type": "float", 
@@ -154,7 +154,7 @@
         }, 
         "indexCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 1.0
         }, 
         "spread": {
           "type": "float", 
@@ -162,15 +162,15 @@
         }, 
         "pinkyCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 1.0
         }, 
         "thumbCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 0.0
         }, 
         "ringCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 1.0
         }
       }
     }, 
@@ -202,15 +202,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -41.784300630089895
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 82.51987259022596
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 5.0
+          "value": 42.0277080468208
         }, 
         "scaleZ": {
           "type": "double", 
@@ -338,7 +338,7 @@
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 3.180552811953453e-15
+          "value": 3.1805528119534518e-15
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
@@ -422,15 +422,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -15.531983429567575
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 90.0
+          "value": 21.8433798176451
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 47.42431320254032
         }, 
         "scaleZ": {
           "type": "double", 
@@ -514,7 +514,7 @@
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 90.0
+          "value": 29.999999999999996
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
@@ -530,7 +530,7 @@
       "attrs": {
         "middleCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 0.0
         }, 
         "cup": {
           "type": "float", 
@@ -538,7 +538,7 @@
         }, 
         "indexCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 0.0
         }, 
         "spread": {
           "type": "float", 
@@ -546,15 +546,15 @@
         }, 
         "pinkyCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 0.0
         }, 
         "thumbCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 0.0
         }, 
         "ringCurl": {
           "type": "float", 
-          "value": 2.0
+          "value": 0.0
         }
       }
     }, 
@@ -718,15 +718,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 218.05020752124793
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 6.036897164896228
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 5.0
+          "value": -68.64253428059385
         }, 
         "scaleZ": {
           "type": "double", 
@@ -771,50 +771,6 @@
         "rotateZ": {
           "type": "doubleAngle", 
           "value": 4.3913654297657075e-05
-        }, 
-        "scaleZ": {
-          "type": "double", 
-          "value": 1.0
-        }
-      }
-    }, 
-    "Main": {
-      "attrs": {
-        "translateX": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "translateY": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "translateZ": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "scaleX": {
-          "type": "double", 
-          "value": 1.0
-        }, 
-        "scaleY": {
-          "type": "double", 
-          "value": 1.0
-        }, 
-        "visibility": {
-          "type": "bool", 
-          "value": true
-        }, 
-        "rotateX": {
-          "type": "doubleAngle", 
-          "value": 0.0
-        }, 
-        "rotateY": {
-          "type": "doubleAngle", 
-          "value": 0.0
-        }, 
-        "rotateZ": {
-          "type": "doubleAngle", 
-          "value": 0.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -894,15 +850,15 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -110.86199185653211
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": -14.28374880184486
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 26.062865915968693
         }, 
         "scaleZ": {
           "type": "double", 
