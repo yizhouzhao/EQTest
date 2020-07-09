@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "mayaSceneFile": "C:/Users/Yizhou Zhao/Desktop/temp/max.mb", 
+    "angularUnit": "deg", 
+    "description": "", 
+    "endFrame": 48, 
+    "linearUnit": "cm", 
+    "version": "1.0.0", 
+    "references": [], 
+    "user": "Yizhou Zhao", 
+    "startFrame": 0, 
+    "timeUnit": "pal", 
+    "mayaVersion": "2020", 
+    "ctime": "1594076625"
+  }
+,
+  "objects": {
+    "FKNeck_M": {
+      "attrs": {
+        "translateX": {
+          "curve": "CURVE1", 
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "curve": "CURVE2", 
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "translateZ": {
+          "curve": "CURVE3", 
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "scaleX": {
+          "curve": "CURVE4", 
+          "type": "double", 
+          "value": 1.0
+        }, 
+        "scaleY": {
+          "curve": "CURVE5", 
+          "type": "double", 
+          "value": 1.0
+        }, 
+        "visibility": {
+          "curve": "CURVE6", 
+          "type": "bool", 
+          "value": true
+        }, 
+        "rotateX": {
+          "curve": "CURVE7", 
+          "type": "doubleAngle", 
+          "value": 0.0
+        }, 
+        "rotateY": {
+          "curve": "CURVE8", 
+          "type": "doubleAngle", 
+          "value": 0.0
+        }, 
+        "rotateZ": {
+          "curve": "CURVE9", 
+          "type": "doubleAngle", 
+          "value": 0.0
+        }, 
+        "scaleZ": {
+          "curve": "CURVE10", 
+          "type": "double", 
+          "value": 1.0
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1593754790", 
+    "ctime": "1593754858", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -62,11 +62,11 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.4
+          "value": 0.5
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.1
+          "value": 0.09999999999999998
         }
       }
     }, 
@@ -86,7 +86,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": -0.5
+          "value": -0.7
         }, 
         "jawSide": {
           "type": "double", 
@@ -122,7 +122,7 @@
         }, 
         "jawForward": {
           "type": "double", 
-          "value": -5.0
+          "value": -7.0
         }
       }
     }, 
@@ -138,11 +138,11 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.4
+          "value": 0.5
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.1
+          "value": 0.09999999999999998
         }
       }
     }, 

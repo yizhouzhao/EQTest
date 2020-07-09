@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "ctime": "1593755267", 
+    "ctime": "1593755318", 
     "version": "1.0.0", 
     "references": [], 
     "user": "zhaoy", 
@@ -46,7 +46,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.0
+          "value": -0.1
         }
       }
     }, 

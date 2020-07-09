@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "ctime": "1594097024", 
+    "version": "1.0.0", 
+    "references": [], 
+    "user": "zhaoy", 
+    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/chubby/chubby.mb", 
+    "mayaVersion": "2019", 
+    "description": "Happy with mild smile"
+  }
+,
+  "objects": {
+    "ctrlEye_R": {
+      "attrs": {
+        "iris": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "blink": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "pupil": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squint": {
+          "type": "double", 
+          "value": 0.0
+        }
+      }
+    }, 
+    "ctrlMouthCorner_L": {
+      "attrs": {
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.30000000000000004
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": 1.0
+        }
+      }
+    }, 
+    "ctrlBrow_L": {
+      "attrs": {
+        "outerUpDown": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squeeze": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.025823912883344652
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": -0.20000000000000007
+        }
+      }
+    }, 
+    "ctrlMouth_M": {
+      "attrs": {
+        "lowerSqueeze": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "lowerRoll": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperSqueeze": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": -0.16020811342701768
+        }, 
+        "jawSide": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "lipSide": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperPucker": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "lowerPress": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.4
+        }, 
+        "lowerPucker": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperPress": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "upperRoll": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "jawForward": {
+          "type": "double", 
+          "value": 0.0
+        }
+      }
+    }, 
+    "ctrlBrow_R": {
+      "attrs": {
+        "outerUpDown": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squeeze": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.025823912883344652
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": -0.2
+        }
+      }
+    }, 
+    "ctrlMouthCorner_R": {
+      "attrs": {
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.30000000000000004
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": 1.0
+        }
+      }
+    }, 
+    "ctrlEye_L": {
+      "attrs": {
+        "iris": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "translateX": {
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "translateY": {
+          "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "blink": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "pupil": {
+          "type": "double", 
+          "value": 0.0
+        }, 
+        "squint": {
+          "type": "double", 
+          "value": 0.0
+        }
+      }
+    }
+  }
+}

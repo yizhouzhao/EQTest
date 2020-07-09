@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "mirrorPlane": [
+      -1, 
+      1, 
+      1
+    ], 
+    "right": "", 
+    "description": "", 
+    "mayaVersion": "2020", 
+    "version": "1.0.0", 
+    "references": [], 
+    "user": "Yizhou Zhao", 
+    "mayaSceneFile": "C:/Users/Yizhou Zhao/Desktop/temp/max.mb", 
+    "left": "", 
+    "ctime": "1594076270"
+  }
+,
+  "objects": {
+    "FKNeck_M": {
+      "mirrorAxis": [
+        1, 
+        1, 
+        -1
+      ]
+    }
+  }
+}

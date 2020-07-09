@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "ctime": "1593500975", 
+    "ctime": "1594075241", 
     "version": "1.0.0", 
     "references": [], 
-    "user": "zhaoy", 
-    "mayaSceneFile": "", 
-    "mayaVersion": "2019", 
+    "user": "Yizhou Zhao", 
+    "mayaSceneFile": "C:/Users/Yizhou Zhao/Desktop/temp/max.mb", 
+    "mayaVersion": "2020", 
     "description": ""
   }
 ,
@@ -134,7 +134,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 10.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -298,7 +298,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 59.99999999999999
+          "value": 20.0
         }, 
         "scaleZ": {
           "type": "double", 
@@ -408,6 +408,10 @@
           "type": "doubleLinear", 
           "value": 0.0
         }, 
+        "Global": {
+          "type": "double", 
+          "value": 0.0
+        }, 
         "scaleX": {
           "type": "double", 
           "value": 1.0
@@ -494,6 +498,10 @@
         }, 
         "translateZ": {
           "type": "doubleLinear", 
+          "value": 0.0
+        }, 
+        "Global": {
+          "type": "double", 
           "value": 0.0
         }, 
         "scaleX": {
@@ -682,7 +690,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 20.0
         }, 
         "scaleZ": {
           "type": "double", 
