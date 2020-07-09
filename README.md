@@ -1,5 +1,25 @@
 # EQTest: Learning to Act: A Social Relational Perspective
 
+## Maya
+
+Advanced Skeleton
+
+:watermelon: https://www.animationstudios.com.au/advanced-skeleton
+
+:watermelon: :watermelon: Studio Library
+
+https://www.studiolibrary.com/
+
+
+## CG
+
+:lollipop: :lollipop: CGMeetup
+
+https://cgmeetup.com/gallery
+
+:lollipop: Mixamo
+
+https://www.mixamo.com/#/
 
 ## Reference
 
