@@ -119,11 +119,11 @@
     "../../Animations/Body/Stand_Grab.anim": {
         "category": "Body", 
         "name": "Stand_Grab.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594181005.5809996, 
         "path": "../../Animations/Body/Stand_Grab.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim", 
-        "modified": 1594181005.5809996, 
-        "__class__": "studiolibrarymaya.animitem.AnimItem"
+        "type": ".anim"
     }, 
     "../../Animations/Body/Stand_Pat.anim": {
         "category": "Body", 
@@ -137,11 +137,11 @@
     "../../Animations/Body/Thumb_Up.anim": {
         "category": "Body", 
         "name": "Thumb_Up.anim", 
-        "modified": 1594093425.566716, 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
         "path": "../../Animations/Body/Thumb_Up.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim"
+        "type": ".anim", 
+        "modified": 1594448723.3366728, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem"
     }, 
     "../../Animations/Body/Tilt_Head.anim": {
         "category": "Body", 
@@ -155,8 +155,8 @@
     "../../Animations/Body/Walk.anim": {
         "category": "Body", 
         "name": "Walk.anim", 
-        "modified": 1594093425.620572, 
         "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594446846.4890208, 
         "path": "../../Animations/Body/Walk.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -935,5 +935,23 @@
         "path": "../../Trash/Stand.pose", 
         "folder": "../../Trash", 
         "type": ".pose"
+    }, 
+    "../../Trash/Thumb_Up.anim": {
+        "category": "Trash", 
+        "name": "Thumb_Up.anim", 
+        "modified": 1594093425.566716, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Thumb_Up.anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
+    }, 
+    "../../Trash/Walk.anim": {
+        "category": "Trash", 
+        "name": "Walk.anim", 
+        "modified": 1594093425.620572, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Walk.anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
     }
 }

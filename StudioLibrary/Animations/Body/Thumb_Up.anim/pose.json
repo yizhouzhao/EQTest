@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/clairee/clairee.mb", 
+    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/max/max.mb", 
     "angularUnit": "deg", 
-    "description": "Thumb Up Right", 
+    "description": "", 
     "endFrame": 71, 
     "linearUnit": "cm", 
     "version": "1.0.0", 
@@ -11,7 +11,7 @@
     "startFrame": 0, 
     "timeUnit": "film", 
     "mayaVersion": "2019", 
-    "ctime": "1594010919"
+    "ctime": "1594448721"
   }
 ,
   "objects": {
@@ -50,7 +50,7 @@
         "rotateX": {
           "curve": "CURVE7", 
           "type": "doubleAngle", 
-          "value": -0.04757333333333334
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE8", 
@@ -104,17 +104,17 @@
         "rotateX": {
           "curve": "CURVE18", 
           "type": "doubleAngle", 
-          "value": 3.296328297589148e-11
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE19", 
           "type": "doubleAngle", 
-          "value": 4.498722291636904e-05
+          "value": 0.0
         }, 
         "rotateZ": {
           "curve": "CURVE20", 
           "type": "doubleAngle", 
-          "value": -4.3365977098648217e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE21", 
@@ -182,7 +182,7 @@
         "middleCurl": {
           "curve": "CURVE34", 
           "type": "float", 
-          "value": 1.9994714260101318
+          "value": 2.0
         }, 
         "cup": {
           "curve": "CURVE35", 
@@ -192,7 +192,7 @@
         "indexCurl": {
           "curve": "CURVE36", 
           "type": "float", 
-          "value": 1.9994714260101318
+          "value": 2.0
         }, 
         "spread": {
           "curve": "CURVE37", 
@@ -202,17 +202,17 @@
         "pinkyCurl": {
           "curve": "CURVE38", 
           "type": "float", 
-          "value": 1.9994714260101318
+          "value": 2.0
         }, 
         "thumbCurl": {
           "curve": "CURVE39", 
           "type": "float", 
-          "value": 1.9994714260101318
+          "value": 2.0
         }, 
         "ringCurl": {
           "curve": "CURVE40", 
           "type": "float", 
-          "value": 1.9994714260101318
+          "value": 2.0
         }
       }
     }, 
@@ -261,7 +261,7 @@
         "rotateZ": {
           "curve": "CURVE50", 
           "type": "doubleAngle", 
-          "value": 4.997357037037037
+          "value": 5.0
         }, 
         "scaleZ": {
           "curve": "CURVE51", 
@@ -305,17 +305,17 @@
         "rotateX": {
           "curve": "CURVE59", 
           "type": "doubleAngle", 
-          "value": -1.271549816246018e-14
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE60", 
           "type": "doubleAngle", 
-          "value": 6.357738313257932e-15
+          "value": 0.0
         }, 
         "rotateZ": {
           "curve": "CURVE61", 
           "type": "doubleAngle", 
-          "value": 7.759141664571444e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE62", 
@@ -413,17 +413,17 @@
         "rotateX": {
           "curve": "CURVE81", 
           "type": "doubleAngle", 
-          "value": 6.357747861897704e-15
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE82", 
           "type": "doubleAngle", 
-          "value": 3.178871595296705e-15
+          "value": 0.0
         }, 
         "rotateZ": {
           "curve": "CURVE83", 
           "type": "doubleAngle", 
-          "value": -3.366029484507676e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE84", 
@@ -467,17 +467,17 @@
         "rotateX": {
           "curve": "CURVE92", 
           "type": "doubleAngle", 
-          "value": -4.352050539027518e-05
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE93", 
           "type": "doubleAngle", 
-          "value": -5.9121791338299715e-06
+          "value": 0.0
         }, 
         "rotateZ": {
           "curve": "CURVE94", 
           "type": "doubleAngle", 
-          "value": 4.391218182787213e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE95", 
@@ -503,6 +503,10 @@
           "type": "doubleLinear", 
           "value": 0.0
         }, 
+        "Global": {
+          "type": "double", 
+          "value": 0.0
+        }, 
         "scaleX": {
           "curve": "CURVE100", 
           "type": "double", 
@@ -526,12 +530,12 @@
         "rotateY": {
           "curve": "CURVE104", 
           "type": "doubleAngle", 
-          "value": 89.99735703703703
+          "value": 85.0
         }, 
         "rotateZ": {
           "curve": "CURVE105", 
           "type": "doubleAngle", 
-          "value": 0.026429629629629633
+          "value": 45.0
         }, 
         "scaleZ": {
           "curve": "CURVE106", 
@@ -575,17 +579,17 @@
         "rotateX": {
           "curve": "CURVE114", 
           "type": "doubleAngle", 
-          "value": -1.2715476626515474e-14
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE115", 
           "type": "doubleAngle", 
-          "value": -2.5430996324920557e-14
+          "value": 0.0
         }, 
         "rotateZ": {
           "curve": "CURVE116", 
           "type": "doubleAngle", 
-          "value": 7.759141840045259e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE117", 
@@ -611,6 +615,10 @@
           "type": "doubleLinear", 
           "value": 0.0
         }, 
+        "Global": {
+          "type": "double", 
+          "value": 0.0
+        }, 
         "scaleX": {
           "curve": "CURVE122", 
           "type": "double", 
@@ -634,7 +642,7 @@
         "rotateY": {
           "curve": "CURVE126", 
           "type": "doubleAngle", 
-          "value": 89.99735703703703
+          "value": 90.0
         }, 
         "rotateZ": {
           "curve": "CURVE127", 
@@ -653,7 +661,7 @@
         "middleCurl": {
           "curve": "CURVE130", 
           "type": "float", 
-          "value": 1.9989428520202637
+          "value": 9.0
         }, 
         "cup": {
           "curve": "CURVE131", 
@@ -663,7 +671,7 @@
         "indexCurl": {
           "curve": "CURVE132", 
           "type": "float", 
-          "value": 1.9989428520202637
+          "value": 9.0
         }, 
         "spread": {
           "curve": "CURVE133", 
@@ -673,17 +681,17 @@
         "pinkyCurl": {
           "curve": "CURVE134", 
           "type": "float", 
-          "value": 1.9989428520202637
+          "value": 9.0
         }, 
         "thumbCurl": {
           "curve": "CURVE135", 
           "type": "float", 
-          "value": 1.9989428520202637
+          "value": -3.0
         }, 
         "ringCurl": {
           "curve": "CURVE136", 
           "type": "float", 
-          "value": 1.9989428520202637
+          "value": 9.0
         }
       }
     }, 
@@ -722,17 +730,17 @@
         "rotateX": {
           "curve": "CURVE144", 
           "type": "doubleAngle", 
-          "value": 3.306271764724281e-11
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE145", 
           "type": "doubleAngle", 
-          "value": 4.500938107265283e-05
+          "value": 0.0
         }, 
         "rotateZ": {
           "curve": "CURVE146", 
           "type": "doubleAngle", 
-          "value": -4.338733650257554e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE147", 
@@ -786,7 +794,7 @@
         "rotateZ": {
           "curve": "CURVE157", 
           "type": "doubleAngle", 
-          "value": -3.363865532517747e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE158", 
@@ -894,7 +902,7 @@
         "rotateZ": {
           "curve": "CURVE179", 
           "type": "doubleAngle", 
-          "value": 6.229001481481482
+          "value": 75.0
         }, 
         "scaleZ": {
           "curve": "CURVE180", 
@@ -938,17 +946,17 @@
         "rotateX": {
           "curve": "CURVE188", 
           "type": "doubleAngle", 
-          "value": -4.350036375187673e-05
+          "value": 0.0
         }, 
         "rotateY": {
           "curve": "CURVE189", 
           "type": "doubleAngle", 
-          "value": -5.8998127140706595e-06
+          "value": 0.0
         }, 
         "rotateZ": {
           "curve": "CURVE190", 
           "type": "doubleAngle", 
-          "value": 4.3890441865281664e-05
+          "value": 0.0
         }, 
         "scaleZ": {
           "curve": "CURVE191", 
