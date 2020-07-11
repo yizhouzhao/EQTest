@@ -26,11 +26,20 @@
         "folder": "../../Animations/Body", 
         "type": ".anim"
     }, 
+    "../../Animations/Body/Catch.anim": {
+        "category": "Body", 
+        "name": "Catch.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594499975.2228637, 
+        "path": "../../Animations/Body/Catch.anim", 
+        "folder": "../../Animations/Body", 
+        "type": ".anim"
+    }, 
     "../../Animations/Body/Head_Nod.anim": {
         "category": "Body", 
         "name": "Head_Nod.anim", 
         "__class__": "studiolibrarymaya.animitem.AnimItem", 
-        "modified": 1594093425.3961718, 
+        "modified": 1594500749.818812, 
         "path": "../../Animations/Body/Head_Nod.anim", 
         "folder": "../../Animations/Body", 
         "type": ".anim"
@@ -38,11 +47,11 @@
     "../../Animations/Body/Head_Shake.anim": {
         "category": "Body", 
         "name": "Head_Shake.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
-        "modified": 1594093425.418113, 
         "path": "../../Animations/Body/Head_Shake.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim"
+        "type": ".anim", 
+        "modified": 1594501068.7196362, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem"
     }, 
     "../../Animations/Body/High_Five.anim": {
         "category": "Body", 
@@ -128,11 +137,20 @@
     "../../Animations/Body/Stand_Pat.anim": {
         "category": "Body", 
         "name": "Stand_Pat.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594454428.8923123, 
         "path": "../../Animations/Body/Stand_Pat.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim", 
-        "modified": 1594454428.8923123, 
-        "__class__": "studiolibrarymaya.animitem.AnimItem"
+        "type": ".anim"
+    }, 
+    "../../Animations/Body/Throw.anim": {
+        "category": "Body", 
+        "name": "Throw.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594500277.062724, 
+        "path": "../../Animations/Body/Throw.anim", 
+        "folder": "../../Animations/Body", 
+        "type": ".anim"
     }, 
     "../../Animations/Body/Thumb_Up.anim": {
         "category": "Body", 
@@ -891,6 +909,24 @@
         "folder": "../../Trash", 
         "type": ".pose"
     }, 
+    "../../Trash/Head_Nod.anim": {
+        "category": "Trash", 
+        "name": "Head_Nod.anim", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1594093425.3961718, 
+        "path": "../../Trash/Head_Nod.anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
+    }, 
+    "../../Trash/Head_Shake.anim": {
+        "category": "Trash", 
+        "name": "Head_Shake.anim", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1594093425.418113, 
+        "path": "../../Trash/Head_Shake.anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
+    }, 
     "../../Trash/Neutral_Sad.anim": {
         "category": "Trash", 
         "name": "Neutral_Sad.anim", 
@@ -969,6 +1005,33 @@
         "__class__": "studiolibrary.libraryitem.LibraryItem", 
         "modified": 1594178997.9679167, 
         "path": "../../Trash/Stand_Pat.anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
+    }, 
+    "../../Trash/Throw (2).anim": {
+        "category": "Trash", 
+        "name": "Throw (2).anim", 
+        "modified": 1594498890.4015439, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Throw (2).anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
+    }, 
+    "../../Trash/Throw (3).anim": {
+        "category": "Trash", 
+        "name": "Throw (3).anim", 
+        "modified": 1594498940.1206796, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Throw (3).anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
+    }, 
+    "../../Trash/Throw.anim": {
+        "category": "Trash", 
+        "name": "Throw.anim", 
+        "modified": 1594498819.294083, 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "path": "../../Trash/Throw.anim", 
         "folder": "../../Trash", 
         "type": ".anim"
     }, 

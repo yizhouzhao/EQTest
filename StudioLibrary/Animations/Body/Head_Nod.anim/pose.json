@@ -1,17 +1,17 @@
 {
   "metadata": {
-    "mayaSceneFile": "C:/Users/Yizhou Zhao/Desktop/temp/max.mb", 
+    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/max/max.mb", 
     "angularUnit": "deg", 
     "description": "", 
     "endFrame": 48, 
     "linearUnit": "cm", 
     "version": "1.0.0", 
     "references": [], 
-    "user": "Yizhou Zhao", 
+    "user": "zhaoy", 
     "startFrame": 0, 
-    "timeUnit": "pal", 
-    "mayaVersion": "2020", 
-    "ctime": "1594076816"
+    "timeUnit": "film", 
+    "mayaVersion": "2019", 
+    "ctime": "1594500748"
   }
 ,
   "objects": {
@@ -60,7 +60,7 @@
         "rotateZ": {
           "curve": "CURVE9", 
           "type": "doubleAngle", 
-          "value": 0.0
+          "value": 5.1740272047065305
         }, 
         "scaleZ": {
           "curve": "CURVE10", 
