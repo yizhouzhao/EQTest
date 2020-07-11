@@ -83,11 +83,11 @@
     "../../Animations/Body/Stand-Hand_Lift-Hand_Spread.anim": {
         "category": "Body", 
         "name": "Stand-Hand_Lift-Hand_Spread.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
-        "modified": 1594177059.1306486, 
         "path": "../../Animations/Body/Stand-Hand_Lift-Hand_Spread.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim"
+        "type": ".anim", 
+        "modified": 1594452044.9101088, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem"
     }, 
     "../../Animations/Body/Stand-Hand_Over.anim": {
         "category": "Body", 
@@ -137,11 +137,11 @@
     "../../Animations/Body/Thumb_Up.anim": {
         "category": "Body", 
         "name": "Thumb_Up.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594448723.3366728, 
         "path": "../../Animations/Body/Thumb_Up.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim", 
-        "modified": 1594448723.3366728, 
-        "__class__": "studiolibrarymaya.animitem.AnimItem"
+        "type": ".anim"
     }, 
     "../../Animations/Body/Tilt_Head.anim": {
         "category": "Body", 
@@ -206,6 +206,15 @@
         "folder": "../../Animations/Face", 
         "type": ".anim"
     }, 
+    "../../Animations/Face/Neutral_Angry.anim": {
+        "category": "Face", 
+        "name": "Neutral_Angry.anim", 
+        "modified": 1594099398.1209793, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "path": "../../Animations/Face/Neutral_Angry.anim", 
+        "folder": "../../Animations/Face", 
+        "type": ".anim"
+    }, 
     "../../Animations/Face/Neutral_Confused.anim": {
         "category": "Face", 
         "name": "Neutral_Confused.anim", 
@@ -227,8 +236,8 @@
     "../../Animations/Face/Neutral_Sad.anim": {
         "category": "Face", 
         "name": "Neutral_Sad.anim", 
-        "modified": 1594099398.1209793, 
         "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594450181.4814978, 
         "path": "../../Animations/Face/Neutral_Sad.anim", 
         "folder": "../../Animations/Face", 
         "type": ".anim"
@@ -926,6 +935,15 @@
         "path": "../../Trash/Stand (3).pose", 
         "folder": "../../Trash", 
         "type": ".pose"
+    }, 
+    "../../Trash/Stand-Hand_Lift-Hand_Spread.anim": {
+        "category": "Trash", 
+        "name": "Stand-Hand_Lift-Hand_Spread.anim", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1594177059.1306486, 
+        "path": "../../Trash/Stand-Hand_Lift-Hand_Spread.anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
     }, 
     "../../Trash/Stand.pose": {
         "category": "Trash", 
