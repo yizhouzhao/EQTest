@@ -83,11 +83,11 @@
     "../../Animations/Body/Stand-Hand_Lift-Hand_Spread.anim": {
         "category": "Body", 
         "name": "Stand-Hand_Lift-Hand_Spread.anim", 
+        "__class__": "studiolibrarymaya.animitem.AnimItem", 
+        "modified": 1594452044.9101088, 
         "path": "../../Animations/Body/Stand-Hand_Lift-Hand_Spread.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim", 
-        "modified": 1594452044.9101088, 
-        "__class__": "studiolibrarymaya.animitem.AnimItem"
+        "type": ".anim"
     }, 
     "../../Animations/Body/Stand-Hand_Over.anim": {
         "category": "Body", 
@@ -128,11 +128,11 @@
     "../../Animations/Body/Stand_Pat.anim": {
         "category": "Body", 
         "name": "Stand_Pat.anim", 
-        "__class__": "studiolibrarymaya.animitem.AnimItem", 
-        "modified": 1594178997.9679167, 
         "path": "../../Animations/Body/Stand_Pat.anim", 
         "folder": "../../Animations/Body", 
-        "type": ".anim"
+        "type": ".anim", 
+        "modified": 1594454428.8923123, 
+        "__class__": "studiolibrarymaya.animitem.AnimItem"
     }, 
     "../../Animations/Body/Thumb_Up.anim": {
         "category": "Body", 
@@ -953,6 +953,24 @@
         "path": "../../Trash/Stand.pose", 
         "folder": "../../Trash", 
         "type": ".pose"
+    }, 
+    "../../Trash/Stand_Pat (2).anim": {
+        "category": "Trash", 
+        "name": "Stand_Pat (2).anim", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1594454221.6607687, 
+        "path": "../../Trash/Stand_Pat (2).anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
+    }, 
+    "../../Trash/Stand_Pat.anim": {
+        "category": "Trash", 
+        "name": "Stand_Pat.anim", 
+        "__class__": "studiolibrary.libraryitem.LibraryItem", 
+        "modified": 1594178997.9679167, 
+        "path": "../../Trash/Stand_Pat.anim", 
+        "folder": "../../Trash", 
+        "type": ".anim"
     }, 
     "../../Trash/Thumb_Up.anim": {
         "category": "Trash", 
