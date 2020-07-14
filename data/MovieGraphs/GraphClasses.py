@@ -6,11 +6,12 @@ import re
 import json
 import warnings
 import itertools
+import networkx
 import numpy as np
 import networkx as nx
 from collections import OrderedDict, defaultdict
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 # from matplotlib.backends.backend_pdf import PdfPages
 
 # Local imports
@@ -28,7 +29,7 @@ def load_movie_graph(movie, users, overwrite=False):
 
     # load individual JSON files and add clip-graphs to movie-graph
     movie_graph = MovieGraph(movie, castlist)
-    for sid, fname in annot_list.iteritems():
+    for sid, fname in annot_list.items():
         try:
             with open(fname, 'r') as fid:
                 graph_json = json.load(fid)
@@ -71,6 +72,16 @@ class ClipGraph(object):
         self.convert_to_nx_graph()
         # self.resolve_edges(get_relationship_directions())
         # self.lemmatize()
+
+    def prepare_migration_save(self):
+        self.temp_G = [self.G.nodes(data=True), self.G.edges(data=True)]
+        del self.G
+
+    def migration_load(self):
+        self.G: networkx.DiGraph = nx.DiGraph()
+        self.G.add_nodes_from(self.temp_G[0])
+        self.G.add_edges_from(self.temp_G[1])
+        del self.temp_G
 
     def update_video_information(self, video_fnames):
         """Associate clip graph with video information.
@@ -150,7 +161,7 @@ class ClipGraph(object):
                             %(edge['source'], edge['target']), RuntimeWarning)
 
         # save
-        self.G = G
+        self.G: networkx.DiGraph = G
 
     def add_chid_to_entities(self, castlist):
         """Map node_ids to castlist chid.
@@ -166,11 +177,11 @@ class ClipGraph(object):
     def check_chid_mappings(self, castlist):
         """Print the chid mapping information to see whether it's ok!
         """
-        for n in self.G.nodes():
+        for n in self.G.nodes:
             if self.node_type(n, 'entity'):
-                chid = self.G.node[n]['chid']
+                chid = self.G.nodes[n]['chid']
                 castlist_name = [c['name'] for c in castlist if c['chid'] == chid]
-                print('{:4d} | {:40s} | {:15s} | {:40s}'.format(n, self.G.node[n]['name'], chid, castlist_name))
+                print('{:4d} | {:40s} | {:15s} | {:40s}'.format(n, self.G.nodes[n]['name'], chid, castlist_name))
 
     def node_name(self, n, verify_name=None):
         """Returns or verifies the name of a node n.
@@ -181,13 +192,13 @@ class ClipGraph(object):
         if verify_name:
             verify_name = verify_name.strip()
             # check both sub-type and name if attribute
-            if self.G.node[n]['type'] == 'attribute':
-                return self.G.node[n]['subtype'] + ':' + self.node_name(n) == verify_name
+            if self.G.nodes[n]['type'] == 'attribute':
+                return self.G.nodes[n]['subtype'] + ':' + self.node_name(n) == verify_name
             else:
                 return self.node_name(n) == verify_name
 
         # get the node name
-        return self.G.node[n]['name'].strip()
+        return self.G.nodes[n]['name'].strip()
 
     def node_type(self, n, ntype=None):
         """Returns or verifies the node type of node n.
@@ -196,13 +207,13 @@ class ClipGraph(object):
         """
 
         if ntype:
-            if n in self.G.nodes() and ntype == self.G.node[n]['type']:
+            if n in self.G.nodes() and ntype == self.G.nodes[n]['type']:
                 return True
             else:
                 return False
         else:
             if n in self.G.nodes():
-                return self.G.node[n]['type']
+                return self.G.nodes[n]['type']
             else:
                 return None
 
@@ -312,7 +323,7 @@ class ClipGraph(object):
         """
 
         characters, entities = [], []
-        for n in self.G.nodes():
+        for n in self.G.nodes:
             if self.node_type(n, 'entity'):
                 entities.append(n)
                 name = self.G.node[n]['name']
@@ -368,7 +379,7 @@ class ClipGraph(object):
         """
 
         # check if node (or same subtype) exists and is connected to character
-        for n in self.G.nodes():
+        for n in self.G.nodes:
             if self.node_type(n, 'attribute') and \
                 (self.node_name(n, st + ':' + val) or self.G.node[n]['subtype'] == st) and \
                 (ch_node, n) in self.G.edges():
@@ -524,50 +535,50 @@ class ClipGraph(object):
         lemmatizer.lemmatize_all_attributes(self.G)
         lemmatizer.lemmatize_all_relationships(self.G)
 
-    # def visualize_graph(self, identifier=None, prop_labels=False):
-    #    """Generate networkx visualization for the graph.
-    #        identifier: sid (printed on top right corner)
-    #        prop_labels: visualization with highlight of nodes that were propagated
-    #    """
+    def visualize_graph(self, identifier=None, prop_labels=False):
+       """Generate networkx visualization for the graph.
+           identifier: sid (printed on top right corner)
+           prop_labels: visualization with highlight of nodes that were propagated
+       """
 
-    #    node_colors = {'entity': '#008800', 'attribute': '#880000', 'relationship': '#000088',
-    #                   'interaction': '#D26A06', 'reason': '#5A143C', 'summary': '#FF00FB',
-    #                   'action': '#000000', 'topic': '#FFDF0D', 'time': '#9F9F9F',
-    #                   'new_attribute': '#EEFF00', 'new_relationship': '#00FFAA',
-    #                   'scene': '#808080', 'situation': '#808080'}
+       node_colors = {'entity': '#008800', 'attribute': '#880000', 'relationship': '#000088',
+                      'interaction': '#D26A06', 'reason': '#5A143C', 'summary': '#FF00FB',
+                      'action': '#000000', 'topic': '#FFDF0D', 'time': '#9F9F9F',
+                      'new_attribute': '#EEFF00', 'new_relationship': '#00FFAA',
+                      'scene': '#808080', 'situation': '#808080'}
 
-    #    # get information to plot slowly, colors, labels, etc.
-    #    colors, node_positions, labels, label_positions = [], {}, {}, {}
-    #    for n, v in self.G.node.iteritems():
-    #        if 'propagated' in v.keys() and v['propagated']:
-    #            colors.append(node_colors['new_' + v['type']])
-    #        else:
-    #            colors.append(node_colors[v['type']])
-    #        node_positions[n] = v['pos']
-    #        labels[n] = v['origtext']
-    #        label_positions[n] = (v['pos'][0], v['pos'][1]+20)
+       # get information to plot slowly, colors, labels, etc.
+       colors, node_positions, labels, label_positions = [], {}, {}, {}
+       for n, v in self.G.nodes.items():
+           if 'propagated' in v.keys() and v['propagated']:
+               colors.append(node_colors['new_' + v['type']])
+           else:
+               colors.append(node_colors[v['type']])
+           node_positions[n] = v['pos']
+           labels[n] = v['origtext']
+           label_positions[n] = (v['pos'][0], v['pos'][1]+20)
 
-    #    # do the plotting
-    #    fig = plt.gcf()
-    #    nx.draw_networkx_nodes(self.G, node_positions, node_size=100, node_color=colors)
-    #    nx.draw_networkx_edges(self.G, node_positions)
-    #    if not prop_labels:
-    #        nx.draw_networkx_labels(self.G, label_positions, labels, font_size=9, font_family='serif')
-    #    else:  # draw node_labels only for "propagated" and "entity" nodes
-    #        new_nodes = []
-    #        for n in self.G.nodes():
-    #            if self.node_type(n, 'entity') or ('propagated' in self.G.node[n].keys() and self.G.node[n]['propagated']):
-    #                new_nodes.append(n)
-    #        new_labels = {n:v for n, v in labels.iteritems() if n in new_nodes}
-    #        new_label_positions = {n:v for n, v in label_positions.iteritems() if n in new_nodes}
-    #        nx.draw_networkx_labels(self.G, new_label_positions, new_labels, font_size=9, font_family='serif')
+       # do the plotting
+       fig = plt.gcf()
+       nx.draw_networkx_nodes(self.G, node_positions, node_size=100, node_color=colors)
+       nx.draw_networkx_edges(self.G, node_positions)
+       if not prop_labels:
+           nx.draw_networkx_labels(self.G, label_positions, labels, font_size=9, font_family='serif')
+       else:  # draw node_labels only for "propagated" and "entity" nodes
+           new_nodes = []
+           for n in self.G:
+               if self.node_type(n, 'entity') or ('propagated' in self.G.nodes[n].keys() and self.G.nodes[n]['propagated']):
+                   new_nodes.append(n)
+           new_labels = {n:v for n, v in labels.items() if n in new_nodes}
+           new_label_positions = {n:v for n, v in label_positions.items() if n in new_nodes}
+           nx.draw_networkx_labels(self.G, new_label_positions, new_labels, font_size=9, font_family='serif')
 
-    #    # add text labels
-    #    if identifier:
-    #        plt.text(fig.gca().get_xlim()[1], fig.gca().get_ylim()[1], identifier, color='#880000')
-    #    plt.text(fig.gca().get_xlim()[0], fig.gca().get_ylim()[0], self.scene_label, color='#008800')
-    #    plt.text(fig.gca().get_xlim()[0], fig.gca().get_ylim()[0]-25, self.situation, color='#000088')
-    #    plt.axis('off')
+       # add text labels
+       if identifier:
+           plt.text(fig.gca().get_xlim()[1], fig.gca().get_ylim()[1], identifier, color='#880000')
+       plt.text(fig.gca().get_xlim()[0], fig.gca().get_ylim()[0], self.scene_label, color='#008800')
+       plt.text(fig.gca().get_xlim()[0], fig.gca().get_ylim()[0]-25, self.situation, color='#000088')
+       plt.axis('off')
 
     def pprint(self):
         """Pretty-print clip-graph.
@@ -578,11 +589,11 @@ class ClipGraph(object):
         print("Scene label:", self.scene_label)
         print("Description:", self.description[:80])
         print("Graph information:")
-        print("  Characters:", sum([1 for n in self.G.nodes() if self.node_type(n, 'entity')]))
-        print("  Relationships:", sum([1 for n in self.G.nodes() if self.node_type(n, 'relationship')]))
-        print("  Interactions:", sum([1 for n in self.G.nodes() if self.node_type(n, 'interaction')]))
-        print("  Attributes:", sum([1 for n in self.G.nodes() if self.node_type(n, 'attribute')]))
-        print("  Actions:", sum([1 for n in self.G.nodes() if self.node_type(n, 'action')]))
+        print("  Characters:", sum([1 for n in self.G.nodes if self.node_type(n, 'entity')]))
+        print("  Relationships:", sum([1 for n in self.G.nodes if self.node_type(n, 'relationship')]))
+        print("  Interactions:", sum([1 for n in self.G.nodes if self.node_type(n, 'interaction')]))
+        print("  Attributes:", sum([1 for n in self.G.nodes if self.node_type(n, 'attribute')]))
+        print("  Actions:", sum([1 for n in self.G.nodes if self.node_type(n, 'action')]))
 
 
 class MovieGraph(object):
@@ -596,7 +607,7 @@ class MovieGraph(object):
         self.imdb_key = imdb_key
         if castlist:
             self.castlist = castlist
-        self.clip_graphs = OrderedDict()
+        self.clip_graphs: OrderedDict[int, ClipGraph] = OrderedDict()
 
     def attach_information(self, castlist=None, mergers=None, scenes_gt=None, sid_clip=None):
         """Attach the specified information.
@@ -620,7 +631,7 @@ class MovieGraph(object):
         ### Get rid of empty clip-graphs.
         # An empty clip graph has no situation label, and has 0 nodes.
         count = len(self.clip_graphs)
-        for sid, cg in self.clip_graphs.iteritems():
+        for sid, cg in self.clip_graphs.items():
             if not cg.situation and len(cg.G.nodes()) == 0:
                 self.clip_graphs.pop(sid)
         if verbose:
@@ -628,7 +639,7 @@ class MovieGraph(object):
 
         ### Get rid of things marked N/A
         count = len(self.clip_graphs)
-        for sid, info in self.scenes_gt.iteritems():
+        for sid, info in self.scenes_gt.items():
             if not info['use'] and sid in self.clip_graphs.keys():
                 # if there are less than 3 nodes, or no situation label, ignore the N/A clip
                 if len(self.clip_graphs[sid].G.nodes()) < 3 \
@@ -696,7 +707,7 @@ class MovieGraph(object):
     def lemmatize_all_clips(self):
         """Lemmatize all the clip graphs in the movie graph.
         """
-        for sid, cg in self.clip_graphs.iteritems():
+        for sid, cg in self.clip_graphs.items():
             try:
                 cg.lemmatize()
             except ValueError as e:
@@ -716,7 +727,7 @@ class MovieGraph(object):
         self.static_info = {'rel': [], 'att': []}
         att_subtypes = ['age', 'gen', 'eth', 'pro']
 
-        for sid, cg in self.clip_graphs.iteritems():
+        for sid, cg in self.clip_graphs.items():
             ### collect attribute associations
             att_pairs = cg.find_all_entity_attribute_pairs(subtypes=att_subtypes)
             save_att = []
@@ -772,7 +783,7 @@ class MovieGraph(object):
 
         new_nodes = {'att': 0, 'rel': 0}
 
-        for sid, cg in self.clip_graphs.iteritems():
+        for sid, cg in self.clip_graphs.items():
             if verbose:
                 print("================== {} ==================".format(sid))
 
@@ -858,7 +869,7 @@ class MovieGraph(object):
     #    """
 
     #    with PdfPages(fname, 'w') as write_pdf:
-    #        for sid, clip_graph in self.clip_graphs.iteritems():
+    #        for sid, clip_graph in self.clip_graphs.items():
     #            try:
     #                plt.figure(figsize=(8,5))
     #                clip_graph.visualize_graph(str(sid), prop_labels=prop_labels)
@@ -873,32 +884,32 @@ class MovieGraph(object):
 
         # get all character-labels
         char_labels = []
-        for k, cg in self.clip_graphs.iteritems():
+        for k, cg in self.clip_graphs.items():
             char_labels.extend([cg.G.node[n]['name'] for n in cg.G.nodes() if cg.node_type(n, 'entity')])
 
         # get all situation-labels
         situ_labels = []
-        for k, cg in self.clip_graphs.iteritems():
+        for k, cg in self.clip_graphs.items():
             situ_labels.append(cg.situation)
 
         # get all relationship-labels
         reln_labels = []
-        for k, cg in self.clip_graphs.iteritems():
+        for k, cg in self.clip_graphs.items():
             reln_labels.extend([cg.G.node[n]['name'] for n in cg.G.nodes() if cg.node_type(n, 'relationship')])
 
         # get all interaction-labels
         intr_labels = []
-        for k, cg in self.clip_graphs.iteritems():
+        for k, cg in self.clip_graphs.items():
             intr_labels.extend([cg.G.node[n]['name'] for n in cg.G.nodes() if cg.node_type(n, 'interaction')])
 
         # get all summary-labels
         summary_labels = []
-        for k, cg in self.clip_graphs.iteritems():
+        for k, cg in self.clip_graphs.items():
             summary_labels.extend([cg.G.node[n]['name'] for n in cg.G.nodes() if cg.node_type(n, 'summary')])
 
         # get all attribute-labels
         attr_labels = {'emo': [], 'app': [], 'age': [], 'gen': [], 'eth': [], 'pro': []}
-        for k, cg in self.clip_graphs.iteritems():
+        for k, cg in self.clip_graphs.items():
             for at in attr_labels.keys():
                 attr_labels[at].extend([cg.G.node[n]['name'] for n in cg.G.nodes() if cg.node_type(n, 'attribute') and cg.G.node[n]['subtype'] in [at]])
 
@@ -908,7 +919,7 @@ class MovieGraph(object):
                    'interactions': intr_labels,
                    'relationships': reln_labels,
                    'summaries': summary_labels}
-        for att_type, values in attr_labels.iteritems():
+        for att_type, values in attr_labels.items():
             collect.update({'attributes:' + att_type: values})
 
         return collect
