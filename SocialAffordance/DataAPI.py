@@ -1,6 +1,7 @@
 import socket
 import os
 import collections
+import json
 import numpy as np
 
 #Joint Type
@@ -245,3 +246,18 @@ class MayaController:
         '''
         return G_Joint_Maya_Advanced_Skeleton[joint_index]
 
+    def GenerateSceneFromPose(self, loading_path: str, saving_path: str):
+        '''
+        Load a pose from loading_path into the scene and save it to saving_path
+        '''
+        with open(loading_path) as f:
+            data = json.load(f)
+        #print(json.dumps(data, indent = 4, sort_keys=True))
+        for joints, attrs in data["objects"].items():
+            for attr_name, value in attrs["attrs"].items():
+                if isinstance(value["value"], float):
+                    self.SetObjectAttribute(joints, attr_name, value["value"])
+        
+        send_message = "file -rename \"%s\"; file -save -type \"mayaBinary\"" % saving_path
+        rec_message = self.SendCommand(send_message)
+        print(rec_message)
