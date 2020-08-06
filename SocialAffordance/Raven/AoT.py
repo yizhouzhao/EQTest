@@ -17,6 +17,8 @@ class AoTNode(ABC):
         self.node_type = node_type
         self.children = []
         self.is_pg = is_pg
+        self.root = None
+        self.node_dict = {}
 
     def insert(self, node):
         """Used for public.
@@ -28,15 +30,15 @@ class AoTNode(ABC):
         #assert node.level == self.levels_next[self.level]
         self.children.append(node)
 
-    def _insert(self, node):
-        """Used for private.
-        Arguments:
-            node(AoTNode): a node to insert
-        """
-        assert isinstance(node, AoTNode)
-        assert self.node_type != "leaf"
-        #assert node.level == self.levels_next[self.level]
-        self.children.append(node)
+    # def _insert(self, node):
+    #     """Used for private.
+    #     Arguments:
+    #         node(AoTNode): a node to insert
+    #     """
+    #     assert isinstance(node, AoTNode)
+    #     assert self.node_type != "leaf"
+    #     #assert node.level == self.levels_next[self.level]
+    #     self.children.append(node)
 
     def _resample(self, change_number):
         """Resample the layout. If the number of entities change, resample also the
@@ -61,6 +63,7 @@ class AoTNode(ABC):
 class Scene(AoTNode):
     def __init__(self, name, is_pg=False):
         super(Scene, self).__init__(name, level="Scene", node_type="and", is_pg=is_pg)
+        self.root = self
 
     def sample(self):
         """The function returns a separate AoT that is correctly parsed.
@@ -73,7 +76,7 @@ class Scene(AoTNode):
             raise ValueError("Could not sample on a PG")
         new_node = Scene(self.name, True)
         for child in self.children:
-            new_node.insert(child._sample())
+            new_node.insert(child._sample(new_node))
         return new_node
 
     def resample(self, change_number=False):
@@ -139,12 +142,16 @@ class Animation(AoTNode):
         super(Animation, self).__init__(name, level="Animation", node_type="mix", is_pg=is_pg)
 
     #To do
-    def _sample(self):
+    def _sample(self, root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
         new_node = Animation(self.name, True)
+
+        if root:
+            root.node_dict[new_node.name] = new_node
+
         for child in self.children:
-            new_node.insert(child._sample())
+            new_node.insert(child._sample(root))
         return new_node
 
     def _prune(self, rule_groups):
@@ -173,7 +180,7 @@ class Frame(AoTNode):
         super(Frame, self).__init__(name, level="Frame", node_type="mix", is_pg=is_pg)
 
     @abstractmethod
-    def _sample(self):
+    def _sample(self, root=None):
         pass
 
     # @abstractmethod
@@ -185,21 +192,29 @@ class Frame(AoTNode):
     #     pass
 
 
-class InitFrame(Frame):
+class RegularFrame(Frame):
     '''
     Initial frame
     '''
     def __init__(self, name, is_pg=False, is_the_first_person = False):
-        super(InitFrame, self).__init__(name, is_pg=is_pg)
+        super(RegularFrame, self).__init__(name, is_pg=is_pg)
         self.node_type = "and"
         self.is_the_first_person = is_the_first_person
+        self.next_frame_range = [24, 49]
+        self.next_frame: int = 24
 
-    def _sample(self):
+    def _sample(self, root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
-        new_node = InitFrame(self.name, True)
+        new_node = RegularFrame(self.name, True)
+
+        new_node.next_frame = np.random.randint(self.next_frame_range[0], self.next_frame_range[1])
+
+        if root:
+            root.node_dict[new_node.name] = new_node
+
         for child in self.children:
-            new_node.insert(child._sample())
+            new_node.insert(child._sample(root))
         return new_node
 
 class TransitionFrame(Frame):
@@ -210,10 +225,10 @@ class TransitionFrame(Frame):
         super(TransitionFrame, self).__init__(name, is_pg=is_pg)
         self.node_type = "or"
 
-    def _sample(self):
+    def _sample(self, root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
-        new_node = InitFrame(self.name, True)
+        new_node = RegularFrame(self.name, True)
         selected = np.random.choice(self.children)
         new_node.insert(selected._sample())
         return new_node
@@ -226,10 +241,14 @@ class FinalFrame(Frame):
         super(FinalFrame, self).__init__(name, is_pg=is_pg)
         self.node_type = "and"
 
-    def _sample(self):
+    def _sample(self, root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
         new_node = FinalFrame(self.name, True)
+
+        if root:
+            root.node_dict[new_node.name] = new_node
+
         for child in self.children:
             new_node.insert(child._sample())
         return new_node
@@ -242,14 +261,17 @@ class RelativeTransform(AoTNode):
 
     def __init__(self, name, is_pg=False):
         super(RelativeTransform, self).__init__(name, level="Layout", node_type="and", is_pg=is_pg)
-        self.position_leaf = PositionLeaf(self.name, False)
-        self.rotation_leaf = RotationLeaf(self.name, False)
-        self.scale_leaf = ScaleLeaf(self.name, False)
+        self.position_leaf = PositionLeaf(self.name + "position", False)
+        self.rotation_leaf = RotationLeaf(self.name + "rotation", False)
+        self.scale_leaf = ScaleLeaf(self.name + "scale", False)
 
-    def _sample(self):
+    def _sample(self, root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
         new_node = RelativeTransform(self.name, True)
+
+        if root:
+            root.node_dict[new_node.name] = new_node
 
         #position
         position_leaf = self.position_leaf._sample()
@@ -305,14 +327,14 @@ class ScaleLeaf(AoTNode):
     def __init__(self, name, is_pg=False):
         super(ScaleLeaf, self).__init__(name, level="Terminal", node_type="leaf", is_pg=is_pg)
         self.relativeScaleRange = [0.5, 1]
-        self.relativeRotation = 1
+        self.relativeScale = 1
 
     def _sample(self):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
 
         new_node = RotationLeaf(self.name, True)
-        new_node.relativeRotation = np.random.uniform(self.relativeScaleRange[0], self.relativeScaleRange[1])
+        new_node.relativeScale = np.random.uniform(self.relativeScaleRange[0], self.relativeScaleRange[1])
 
         return new_node
 
@@ -324,12 +346,16 @@ class Pose(AoTNode):
     def __init__(self, name, is_pg=False):
         super(Pose, self).__init__(name, level="Layout", node_type="and", is_pg=is_pg)
 
-    def _sample(self):
+    def _sample(self, root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
         new_node = Pose(self.name, True)
+
+        if root:
+            root.node_dict[new_node.name] = new_node
+
         for child in self.children:
-            new_node.insert(child._sample())
+            new_node.insert(child._sample(root))
         return new_node
 
 
@@ -344,10 +370,13 @@ class Emotion(AoTNode):
         self.mouth_leaf = MouthLeaf(name, False)
         self.cheek_leaf = CheekLeaf(name, False)
 
-    def _sample(self):
+    def _sample(self,root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
         new_node = Emotion(self.name, True)
+
+        if root:
+            root.node_dict[new_node.name] = new_node
 
         # eye
         eye_leaf = self.eye_leaf._sample()
@@ -371,20 +400,56 @@ class Emotion(AoTNode):
 
         return new_node
 
+    def neutralize(self):
+        if not self.is_pg:
+            raise ValueError("Could not sample on AoG")
+
+        self.eye_leaf.valueX = 0
+        self.eye_leaf.valueY = 0
+        self.eye_leaf.blink_value = 0
+
+        self.eyebrow_leaf.valueX = 0
+        self.eyebrow_leaf.valueY = 0
+
+        self.mouth_leaf.valueX = 0
+        self.mouth_leaf.valueY = 0
+
+        self.cheek_leaf.valueX = 0
+        self.cheek_leaf.valueY = 0
+
 
 class EntityLeaf(AoTNode, metaclass=ABCMeta):
     def __init__(self, name, is_pg=False):
         super(EntityLeaf, self).__init__(name, level="Terminal", node_type="leaf", is_pg=is_pg)
+        #first kind of sample from existing file
         self.identifiers = []
         self.file_pool = []
         self.selected_file = None
+
+        #second kind of sample from value
+        self.valueX_range = [-1, 1]
+        self.valueY_range = [-1, 1]
+        self.valueX = 0
+        self.valueY = 0
 
     def _sample(self):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
 
+        if len(self.file_pool) > 0:
+            new_node = EntityLeaf(self.name, True)
+            new_node.selected_file = np.random.choice(self.file_pool)
+            return new_node
+        else:
+            return self._sample_value()
+
+    def _sample_value(self):
+        if self.is_pg:
+            raise ValueError("Could not sample on a PG")
         new_node = EntityLeaf(self.name, True)
-        self.selected_file = np.random.choice(self.file_pool)
+
+        new_node.valueX = np.random.uniform(self.valueX_range[0], self.valueX_range[1])
+        new_node.valueY = np.random.uniform(self.valueY_range[0], self.valueY_range[1])
 
         return new_node
 
@@ -392,6 +457,30 @@ class EntityLeaf(AoTNode, metaclass=ABCMeta):
 class EyeLeaf(EntityLeaf):
     def __init__(self, name, is_pg=False):
         super(EyeLeaf, self).__init__(name, is_pg)
+        self.blink_range = [0, 10]
+        self.blink_value = 0
+
+    def _sample(self):
+        if self.is_pg:
+            raise ValueError("Could not sample on a PG")
+
+        if len(self.file_pool) > 0:
+            new_node = EyeLeaf(self.name, True)
+            new_node.selected_file = np.random.choice(self.file_pool)
+            return new_node
+        else:
+            return self._sample_value()
+
+    def _sample_value(self):
+        if self.is_pg:
+            raise ValueError("Could not sample on a PG")
+        new_node = EyeLeaf(self.name, True)
+
+        new_node.valueX = np.random.uniform(self.valueX_range[0], self.valueX_range[1])
+        new_node.valueY = np.random.uniform(self.valueY_range[0], self.valueY_range[1])
+        new_node.blink_value = np.random.uniform(self.blink_range[0], self.blink_range[1])
+
+        return new_node
 
 
 class EyebrowLeaf(EntityLeaf):
@@ -402,6 +491,7 @@ class EyebrowLeaf(EntityLeaf):
 class MouthLeaf(EntityLeaf):
     def __init__(self, name, is_pg=False):
         super(MouthLeaf, self).__init__(name, is_pg)
+        self.valueY_range[1] = 0 #mouth sample range from [-1, 0]
 
 
 class CheekLeaf(EntityLeaf):
@@ -421,10 +511,13 @@ class Body(AoTNode):
         self.arm_leaf = ArmLeaf(name, False)
         self.hand_leaf = HandLeaf(name, False)
 
-    def _sample(self):
+    def _sample(self,root=None):
         if self.is_pg:
             raise ValueError("Could not sample on a PG")
         new_node = Body(self.name, True)
+
+        if root:
+            root.node_dict[new_node.name] = new_node
 
         # head
         head_leaf = self.head_leaf._sample()
@@ -484,12 +577,25 @@ class Relation(AoTNode):
         super(Relation, self).__init__(name, level="Layout", node_type="mix", is_pg=is_pg)
         self.relation_pool = []
         self.generation_pool = []
+        self.sex_pool = []
 
         self.relation = None
         self.generation = None
+        self.sex = None
         self.attribute = None
 
-    def _sample(self):
-        self.relation = np.random.choice(self.relation_pool)
-        self.generation = np.random.choice(self.generation_pool)
+    def _sample(self, root=None):
+        if self.is_pg:
+            raise ValueError("Could not sample on a PG")
+
+        new_node = Relation(self.name, True)
+
+        if root:
+            root.node_dict[new_node.name] = new_node
+
+        new_node.relation = np.random.choice(self.relation_pool)
+        new_node.generation = np.random.choice(self.generation_pool)
+        new_node.sex = np.random.choice(self.sex_pool)
+
+        return new_node
 

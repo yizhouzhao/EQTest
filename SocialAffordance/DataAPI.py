@@ -119,10 +119,10 @@ class SkeletionVideo:
 
 ##
 class MayaController:
-    def __init__(self):
+    def __init__(self, PORT = 12345):
         # connect to Maya server
         HOST = '127.0.0.1'  # Symbolic name meaning the local host
-        PORT = 12345  # Arbitrary non-privileged port
+        #PORT = PORT  # Arbitrary non-privileged port
 
         ADDR = (HOST, PORT)
 
@@ -186,7 +186,7 @@ class MayaController:
         send_message += "setKeyframe -at " + attr_name + ";"
         recv_message = self.SendCommand(send_message)
 
-    def SetCurrentKeyFrameForTransformAndRotation(self, object_name: str):
+    def SetCurrentKeyFrameForPositionAndRotation(self, object_name: str):
         send_message = "select -r " + object_name + ";"
         send_message += "setKeyframe -at translate;"
         send_message += "setKeyframe -at rotate;"
@@ -246,7 +246,7 @@ class MayaController:
         '''
         return G_Joint_Maya_Advanced_Skeleton[joint_index]
 
-    def GenerateSceneFromPose(self, loading_path: str, saving_path: str):
+    def GenerateSceneFromPose(self, loading_path: str, saving_path: str, if_save = False):
         '''
         Load a pose from loading_path into the scene and save it to saving_path
         '''
@@ -257,7 +257,45 @@ class MayaController:
             for attr_name, value in attrs["attrs"].items():
                 if isinstance(value["value"], float):
                     self.SetObjectAttribute(joints, attr_name, value["value"])
-        
-        send_message = "file -rename \"%s\"; file -save -type \"mayaBinary\"" % saving_path
+
+        if if_save:
+            send_message = "file -rename \"%s\"; file -save -type \"mayaBinary\"" % saving_path
+            rec_message = self.SendCommand(send_message)
+            print(rec_message)
+
+    def GenerateSceneFromPoseWithIdentifiers(self, loading_path: str, identifiers: list):
+        '''
+        Load a pose from loading_path into the scene and save it to saving_path
+        params: loading_path: json path
+        identifiers list(str): joints names
+        '''
+        with open(loading_path) as f:
+            data = json.load(f)
+        # print(json.dumps(data, indent = 4, sort_keys=True))
+        for joints, attrs in data["objects"].items():
+            if joints in identifiers:
+                for attr_name, value in attrs["attrs"].items():
+                    if isinstance(value["value"], float):
+                        self.SetObjectAttribute(joints, attr_name, value["value"])
+
+    def Undo(self):
+        '''
+        Maya undo
+        :return:
+        '''
+        send_message = "undo;"
         rec_message = self.SendCommand(send_message)
-        print(rec_message)
+        #print(rec_message)
+        return rec_message
+
+    def UndoToBeginning(self, max_step=200):
+        '''
+        Undo Maya file to beginning
+        :param max_step:
+        :return:
+        '''
+        for _ in range(max_step):
+            rec_message = self.Undo()
+            if "There are no more commands to undo." in rec_message:
+                print("(UndoToBeginning)Undo steps:", _)
+                return
