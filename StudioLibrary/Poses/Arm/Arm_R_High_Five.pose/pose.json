@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "ctime": "1596600675", 
+    "ctime": "1593494444", 
     "version": "1.0.0", 
     "references": [], 
-    "user": "Yizhou Zhao", 
-    "mayaSceneFile": "E:/researches/EQTest/Maya/clairee.mb", 
-    "mayaVersion": "2020", 
+    "user": "zhaoy", 
+    "mayaSceneFile": "C:/Users/zhaoy/Desktop/Vince/EQTest/Animation/High Five.mb", 
+    "mayaVersion": "2019", 
     "description": ""
   }
 ,
@@ -735,50 +735,6 @@
       }
     }, 
     "FKToes_R": {
-      "attrs": {
-        "translateX": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "translateY": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "translateZ": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "scaleX": {
-          "type": "double", 
-          "value": 1.0
-        }, 
-        "scaleY": {
-          "type": "double", 
-          "value": 1.0
-        }, 
-        "visibility": {
-          "type": "bool", 
-          "value": true
-        }, 
-        "rotateX": {
-          "type": "doubleAngle", 
-          "value": 0.0
-        }, 
-        "rotateY": {
-          "type": "doubleAngle", 
-          "value": 0.0
-        }, 
-        "rotateZ": {
-          "type": "doubleAngle", 
-          "value": 0.0
-        }, 
-        "scaleZ": {
-          "type": "double", 
-          "value": 1.0
-        }
-      }
-    }, 
-    "Main": {
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 

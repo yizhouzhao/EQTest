@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "ctime": "1596600659", 
+    "ctime": "1593497042", 
     "version": "1.0.0", 
     "references": [], 
-    "user": "Yizhou Zhao", 
-    "mayaSceneFile": "E:/researches/EQTest/Maya/clairee.mb", 
-    "mayaVersion": "2020", 
+    "user": "zhaoy", 
+    "mayaSceneFile": "", 
+    "mayaVersion": "2019", 
     "description": ""
   }
 ,
@@ -246,7 +246,7 @@
         }, 
         "rotateX": {
           "type": "doubleAngle", 
-          "value": 6.361083506124935e-15
+          "value": 6.361083506124936e-15
         }, 
         "rotateY": {
           "type": "doubleAngle", 
@@ -386,7 +386,7 @@
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
-          "value": 4.393540494527671e-05
+          "value": 4.3935404945276704e-05
         }, 
         "scaleZ": {
           "type": "double", 
@@ -470,7 +470,7 @@
         }, 
         "rotateY": {
           "type": "doubleAngle", 
-          "value": 1.272218855958401e-14
+          "value": 1.2722188559584007e-14
         }, 
         "rotateZ": {
           "type": "doubleAngle", 
@@ -771,50 +771,6 @@
         "rotateZ": {
           "type": "doubleAngle", 
           "value": 4.394609909686819e-05
-        }, 
-        "scaleZ": {
-          "type": "double", 
-          "value": 1.0
-        }
-      }
-    }, 
-    "Main": {
-      "attrs": {
-        "translateX": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "translateY": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "translateZ": {
-          "type": "doubleLinear", 
-          "value": 0.0
-        }, 
-        "scaleX": {
-          "type": "double", 
-          "value": 1.0
-        }, 
-        "scaleY": {
-          "type": "double", 
-          "value": 1.0
-        }, 
-        "visibility": {
-          "type": "bool", 
-          "value": true
-        }, 
-        "rotateX": {
-          "type": "doubleAngle", 
-          "value": 0.0
-        }, 
-        "rotateY": {
-          "type": "doubleAngle", 
-          "value": 0.0
-        }, 
-        "rotateZ": {
-          "type": "doubleAngle", 
-          "value": 0.0
         }, 
         "scaleZ": {
           "type": "double", 
