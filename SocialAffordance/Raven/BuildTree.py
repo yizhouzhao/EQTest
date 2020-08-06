@@ -30,9 +30,9 @@ def build_single_person_scene_one_pose():
     load_relation(relation)
 
     load_entity_pose(body.head_leaf, "Head")
-    load_entity_pose(body.arm_leaf, "Hand")
-    load_entity_pose(body.hand_leaf, "Finger")
-    load_entity_pose(body.chest_leaf, "Chest")
+    load_entity_pose(body.arm_leaf, "Arm")
+    load_entity_pose(body.hand_leaf, "Hand")
+    load_entity_pose(body.chest_leaf, "Body")
     load_entity_pose(body.foot_leaf, "Foot")
 
     return scene
@@ -76,9 +76,9 @@ def build_single_person_scene_two_poses():
     load_relation(relation)
 
     load_entity_pose(endBody.head_leaf, "Head")
-    load_entity_pose(endBody.arm_leaf, "Hand")
-    load_entity_pose(endBody.hand_leaf, "Finger")
-    load_entity_pose(endBody.chest_leaf, "Chest")
+    load_entity_pose(endBody.arm_leaf, "Arm")
+    load_entity_pose(endBody.hand_leaf, "Hand")
+    load_entity_pose(endBody.chest_leaf, "Body")
     load_entity_pose(endBody.foot_leaf, "Foot")
 
     return scene

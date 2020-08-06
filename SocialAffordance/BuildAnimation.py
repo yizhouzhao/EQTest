@@ -187,7 +187,12 @@ class AnimationBuilder(object):
     def SetKey(self):
         for part in g_body_part_to_joint_identifiers:
             for joint in g_body_part_to_joint_identifiers[part]:
-                self.maya_controller.SetCurrentKeyFrameForPositionAndRotation(joint)
+                if part == "hand":
+                    fingers = ["index", "middle", "ring", "pinky", "thumb"]
+                    for finger in fingers:
+                        self.maya_controller.SetCurrentKeyFrameForAttribute(joint, finger+"Curl")
+                else:
+                    self.maya_controller.SetCurrentKeyFrameForPositionAndRotation(joint)
 
         for part in g_face_part_to_ctrl_identifiers:
             for controller in g_face_part_to_ctrl_identifiers[part]:

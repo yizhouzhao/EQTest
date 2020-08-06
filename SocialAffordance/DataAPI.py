@@ -199,6 +199,43 @@ class MayaController:
         send_message = "setAttr " + object_name + "." + attr_name + " " + str(value) + ";"
         recv_message = self.SendCommand(send_message)
 
+    def Undo(self):
+        '''
+        Maya undo
+        :return:
+        '''
+        send_message = "undo;"
+        rec_message = self.SendCommand(send_message)
+        # print(rec_message)
+        return rec_message
+
+    def UndoToBeginning(self, max_step=200):
+        '''
+        Undo Maya file to beginning
+        :param max_step:
+        :return:
+        '''
+        for _ in range(max_step):
+            rec_message = self.Undo()
+            if "There are no more commands to undo." in rec_message:
+                print("(UndoToBeginning)Undo steps:", _)
+                return
+
+    def ScreenShot(self, save_file:str):
+        '''
+        Take maya screen shot and save to picture
+        :param save_file: save file name
+        :return:
+        '''
+        send_message = "string $editor = `renderWindowEditor -q -editorName`;\n"
+        send_message += "string $myCamera = \"persp\";\n"
+        send_message += "string $myFilename =\"" + save_file + "\";\n"
+        send_message += "render;\n"
+        send_message += "renderWindowEditor -e -crc $myCamera -wi $myFilename $editor;"
+
+        recv_message = self.SendCommand(send_message)
+        print("(ScreenShot)", recv_message)
+
     #---------------------------GET-----------------------------------
     def GetObjectWorldTransform(self, object_name: str):
         '''
@@ -293,24 +330,3 @@ class MayaController:
                     if isinstance(value["value"], float):
                         self.SetObjectAttribute(joints, attr_name, value["value"])
 
-    def Undo(self):
-        '''
-        Maya undo
-        :return:
-        '''
-        send_message = "undo;"
-        rec_message = self.SendCommand(send_message)
-        #print(rec_message)
-        return rec_message
-
-    def UndoToBeginning(self, max_step=200):
-        '''
-        Undo Maya file to beginning
-        :param max_step:
-        :return:
-        '''
-        for _ in range(max_step):
-            rec_message = self.Undo()
-            if "There are no more commands to undo." in rec_message:
-                print("(UndoToBeginning)Undo steps:", _)
-                return
