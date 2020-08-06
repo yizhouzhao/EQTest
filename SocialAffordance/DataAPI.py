@@ -2,6 +2,9 @@ import socket
 import os
 import collections
 import json
+import threading
+import time
+from pyautogui import press
 import numpy as np
 
 #Joint Type
@@ -256,13 +259,25 @@ class MayaController:
         for joints, attrs in data["objects"].items():
             for attr_name, value in attrs["attrs"].items():
                 if isinstance(value["value"], float):
-                    self.SetObjectAttribute(joints, attr_name, value["value"])
-
+                    self.SetObjectAttribute(joints, attr_name, value["value"])     
         if if_save:
+          self.saveFile(saving_path)
+        
+    def saveFile(self, saving_path: str):
+        '''
+        Save file to the specified directory
+        '''
+        def save(saving_path):
             send_message = "file -rename \"%s\"; file -save -type \"mayaBinary\"" % saving_path
             rec_message = self.SendCommand(send_message)
-            print(rec_message)
-
+            return rec_message
+        
+        save_thread = threading.Thread(target=save, args=(saving_path,))
+        save_thread.start()
+        time.sleep(1)
+        press("enter")
+        time.sleep(1)
+       
     def GenerateSceneFromPoseWithIdentifiers(self, loading_path: str, identifiers: list):
         '''
         Load a pose from loading_path into the scene and save it to saving_path
