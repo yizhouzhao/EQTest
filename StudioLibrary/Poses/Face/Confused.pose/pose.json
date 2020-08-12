@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "ctime": "1594096327", 
+    "ctime": "1597209756", 
     "version": "1.0.0", 
     "references": [], 
-    "user": "zhaoy", 
-    "mayaSceneFile": "C:/Users/zhaoy/Documents/maya/2019/scripts/AdvancedSkeleton5Files/exampleFiles/downloads/clairee/clairee.mb", 
+    "user": "vince", 
+    "mayaSceneFile": "/home/vince/maya/2019/scripts/AdvancedSkeleton5/AdvancedSkeleton5Files/exampleFiles/downloads/clairee/clairee.mb", 
     "mayaVersion": "2019", 
     "description": ""
   }
@@ -102,7 +102,7 @@
         }, 
         "lowerPress": {
           "type": "double", 
-          "value": 10.0
+          "value": 0.0
         }, 
         "translateX": {
           "type": "doubleLinear", 
