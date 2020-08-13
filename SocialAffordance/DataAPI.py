@@ -3,6 +3,7 @@ import os
 import collections
 import json
 import threading
+import itertools
 import time
 from pyautogui import press
 import numpy as np
@@ -66,6 +67,17 @@ G_Joint_Maya_Advanced_Skeleton = {
 
 #acción
 G_Soicial_Actions = ["Hand_Over","High_Five","Pull_Up","Shake_Hands","Throw_Catch"]
+
+#Facial Joint List
+Facial_Joints = [
+    "ctrlEye_L"
+    ,"ctrlEye_R"
+    ,"ctrlBrow_L"
+    ,"ctrlBrow_R"
+    ,"ctrlMouth_M"
+    ,"ctrlMouthCorner_L"
+    ,"ctrlMouthCorner_R"
+]
 
 ##
 class SkeletionVideo:
@@ -236,6 +248,15 @@ class MayaController:
         recv_message = self.SendCommand(send_message)
         print("(ScreenShot)", recv_message)
 
+
+    def SetFacialAttributes(self, attributes: dict):
+        '''
+        :param attributes: dictionary of facial attributes to be set
+        '''
+        for joint, attr_dict in attributes.items():
+            for name, value in attr_dict.items():
+                self.SetObjectAttribute(joint, name, value)
+
     #---------------------------GET-----------------------------------
     def GetObjectWorldTransform(self, object_name: str):
         '''
@@ -278,6 +299,26 @@ class MayaController:
 
         return BODY_INFO_DIC
 
+    def GetFacialAttributesFromPose(self, loading_path:str):
+        '''
+        Get the key attributes for facial objects from pose json file
+        :param loading_path[str]: path to load the pose
+        :return: dictionary containing facial information
+        '''
+        info = {}
+        with open(loading_path) as f:
+            data = json.load(f)
+        for joint in Facial_Joints[2:]:
+            info[joint] = {
+                "translateX": data["objects"][joint]["attrs"]["translateX"]["value"],
+                "translateY": data["objects"][joint]["attrs"]["translateY"]["value"]
+            }
+        for eyes in Facial_Joints[:2]:
+            info[eyes] = {"squint": data["objects"][eyes]["attrs"]["squint"]["value"]}
+        for attr in ["lowerSqueeze", "upperSqueeze"]:
+            info["ctrlMouth_M"][attr] = data["objects"]["ctrlMouth_M"]["attrs"][attr]["value"]
+
+        return info
     #--------------------------UTIL-------------------------------------
     def GetAdvancedSkeletonJointNameFromIndex(self, joint_index: int):
         '''
@@ -330,3 +371,34 @@ class MayaController:
                     if isinstance(value["value"], float):
                         self.SetObjectAttribute(joints, attr_name, value["value"])
 
+    def EmotionInterpolation(self, load_dir: str, save_dir: str, n:int =1):
+        '''
+        Interpolate the emotions and save both the screenshots and the facial attributes as dictionaries
+        :param
+            load_dir: loading directory of the facial poses
+            save_dir: saving directory of the generated screenshots
+            n: number of interpolations between poses 
+        :return: list of interpolated emotion attributes
+        '''
+        emo_lst = {}
+        # Get every poses
+        poses_dir = os.listdir(load_dir)
+        # poses_dir = [os.path.join(os.path.join(load_dir, pose_name), "pose.json") for pose_name in os.listdir(load_dir)]
+        for strt_pose, end_pose in itertools.combinations(poses_dir, r=2):
+            # Get the facial attributes of the starting and ending poses
+            strt_dict = self.GetFacialAttributesFromPose(os.path.join(os.path.join(load_dir, strt_pose), "pose.json"))
+            end_dict = self.GetFacialAttributesFromPose(os.path.join(os.path.join(load_dir, end_pose), "pose.json"))
+
+            for joint, attr_dict in strt_dict.items():
+                for name, value in attr_dict.items():
+                    diff = end_dict[joint][name] - value
+                    # Interpolate new emotions
+                    for i in range(n + 1):
+                        new_dict = strt_dict
+                        new_dict[joint][name] += i * diff / (n + 1)
+                        index_str = strt_pose.split('.')[0] + "-" + end_pose.split('.')[0] + "." + joint + "." + name + "." + str(i)
+                        emo_lst[index_str] = new_dict
+                        # Apply Emotion and save a screenshot
+                        # self.SetFacialAttributes(new_dict)
+                        # self.ScreenShot(save_dir)
+        return emo_lst
