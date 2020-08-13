@@ -1,5 +1,13 @@
 # EQTest: Learning to Act: A Social Relational Perspective
 
+## Maya Command
+新建场景： file -f -new;
+
+导入FBX模型 FBXImport -file "<file_name>";
+
+获取时间轴时间区间 float $minTime = `playbackOptions -q -minTime`; 
+float $maxTime = `playbackOptions -q -maxTime`;
+
 ## Maya
 
 Advanced Skeleton

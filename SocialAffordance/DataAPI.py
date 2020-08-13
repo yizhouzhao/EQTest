@@ -150,6 +150,14 @@ class MayaController:
         self.client.close()
 
     #--------------------------------SET-----------------------------------------
+    def SetNewScene(self):
+        '''
+        Set new Maya empty scene
+        :return:
+        '''
+        send_message = "file -f -new;"
+        recv_message = self.SendCommand(send_message)
+
     def SetCurrentTimeFrame(self, time_frame: int):
         send_message = "currentTime -edit" + " " + str(time_frame) + ";"
         recv_message = self.SendCommand(send_message)
@@ -237,6 +245,15 @@ class MayaController:
         print("(ScreenShot)", recv_message)
 
     #---------------------------GET-----------------------------------
+    def GetAllObjects(self):
+        '''
+        Get all the objects from Maya scene
+        :return: a list containing all the objects in the scene
+        '''
+        send_message = "ls;"
+        recv_message = self.SendCommand(send_message)
+        return recv_message.split(" ")
+
     def GetObjectWorldTransform(self, object_name: str):
         '''
         Get Object world location
@@ -300,7 +317,7 @@ class MayaController:
         if if_save:
           self.saveFile(saving_path)
         
-    def saveFile(self, saving_path: str):
+    def SaveFile(self, saving_path: str):
         '''
         Save file to the specified directory
         '''
