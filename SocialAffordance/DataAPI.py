@@ -139,7 +139,7 @@ class MayaController:
 
         my_message = command
         self.client.send(my_message)
-        data = self.client.recv(1024)  # receive the result info
+        data = self.client.recv(16384)  # receive the result info
         # client.close()
         # print(data)
         # ret = str(data.decode(encoding="ASCII"))
@@ -252,7 +252,22 @@ class MayaController:
         '''
         send_message = "ls;"
         recv_message = self.SendCommand(send_message)
-        return recv_message.split(" ")
+        return recv_message.rstrip('\x00').rstrip('\n').split('\t')
+
+    def GetTimeSliderRange(self):
+        '''
+        Get the range of time slider
+        :return: [min, max]
+        '''
+        send_message = "playbackOptions -q -minTime"
+        recv_message_1 = self.SendCommand(send_message)
+        recv_message_1 = recv_message_1.rstrip('\x00').rstrip('\n').split('\t')
+
+        send_message = "playbackOptions -q -maxTime"
+        recv_message_2 = self.SendCommand(send_message)
+        recv_message_2 = recv_message_2.rstrip('\x00').rstrip('\n').split('\t')
+
+        return [int(float(recv_message_1[0])), int(float(recv_message_2[0]))]
 
     def GetObjectWorldTransform(self, object_name: str):
         '''
@@ -260,6 +275,17 @@ class MayaController:
         return: cordindate [x,y,z]
         '''
         send_message = "xform -q -t -ws " + object_name + ";"
+        recv_message = self.SendCommand(send_message)
+        recv_message = recv_message.rstrip('\x00').rstrip('\n').split('\t')
+        return [np.around(float(_), decimals=2) for _ in recv_message]
+
+    def GetObjectLocalRoation(self, object_name: str):
+        '''
+        Get object local rotation
+        :param object_name:
+        :return: cordinate [x, y, z]
+        '''
+        send_message = "xform -q -ro -os " + object_name + ";"
         recv_message = self.SendCommand(send_message)
         recv_message = recv_message.rstrip('\x00').rstrip('\n').split('\t')
         return [np.around(float(_), decimals=2) for _ in recv_message]
@@ -346,4 +372,5 @@ class MayaController:
                 for attr_name, value in attrs["attrs"].items():
                     if isinstance(value["value"], float):
                         self.SetObjectAttribute(joints, attr_name, value["value"])
+
 
