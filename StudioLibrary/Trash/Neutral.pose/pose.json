@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "ctime": "1597461153", 
+    "ctime": "1594007153", 
     "version": "1.0.0", 
     "references": [], 
-    "user": "vince", 
-    "mayaSceneFile": "/home/vince/Documents/research/other/test.mb", 
-    "mayaVersion": "2019", 
+    "user": "Yizhou Zhao", 
+    "mayaSceneFile": "C:/Users/Yizhou Zhao/Desktop/temp/max.mb", 
+    "mayaVersion": "2020", 
     "description": ""
   }
 ,
@@ -14,15 +14,15 @@
       "attrs": {
         "iris": {
           "type": "double", 
-          "value": 1.0
+          "value": 0.0
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": -0.2
+          "value": 0.0
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": -0.4
+          "value": 0.0
         }, 
         "blink": {
           "type": "double", 
@@ -42,11 +42,11 @@
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 
-          "value": 2.7755575615628914e-17
+          "value": 0.0
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.6
+          "value": 0.0
         }
       }
     }, 
@@ -66,7 +66,7 @@
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": -0.09999999999999998
+          "value": 0.0
         }
       }
     }, 
@@ -106,7 +106,7 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.2
+          "value": 0.0
         }, 
         "lowerPucker": {
           "type": "double", 
@@ -138,7 +138,7 @@
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": 0.30000000000000004
+          "value": 0.0
         }, 
         "translateY": {
           "type": "doubleLinear", 
@@ -150,11 +150,11 @@
       "attrs": {
         "translateX": {
           "type": "doubleLinear", 
-          "value": -0.09999999999999998
+          "value": 0.0
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": 0.19999999999999996
+          "value": 0.0
         }
       }
     }, 
@@ -162,15 +162,15 @@
       "attrs": {
         "iris": {
           "type": "double", 
-          "value": 1.0
+          "value": 0.0
         }, 
         "translateX": {
           "type": "doubleLinear", 
-          "value": -0.1
+          "value": 0.0
         }, 
         "translateY": {
           "type": "doubleLinear", 
-          "value": -0.4
+          "value": 0.0
         }, 
         "blink": {
           "type": "double", 

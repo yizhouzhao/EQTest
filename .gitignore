@@ -14,3 +14,6 @@ dataset/
 
 #
 __pycache__/
+
+#
+data/Facial_img
