@@ -370,35 +370,4 @@ class MayaController:
                 for attr_name, value in attrs["attrs"].items():
                     if isinstance(value["value"], float):
                         self.SetObjectAttribute(joints, attr_name, value["value"])
-
-    def EmotionInterpolation(self, load_dir: str, save_dir: str, n:int =1):
-        '''
-        Interpolate the emotions and save both the screenshots and the facial attributes as dictionaries
-        :param
-            load_dir: loading directory of the facial poses
-            save_dir: saving directory of the generated screenshots
-            n: number of interpolations between poses 
-        :return: list of interpolated emotion attributes
-        '''
-        emo_lst = {}
-        # Get every poses
-        poses_dir = os.listdir(load_dir)
-        # poses_dir = [os.path.join(os.path.join(load_dir, pose_name), "pose.json") for pose_name in os.listdir(load_dir)]
-        for strt_pose, end_pose in itertools.combinations(poses_dir, r=2):
-            # Get the facial attributes of the starting and ending poses
-            strt_dict = self.GetFacialAttributesFromPose(os.path.join(os.path.join(load_dir, strt_pose), "pose.json"))
-            end_dict = self.GetFacialAttributesFromPose(os.path.join(os.path.join(load_dir, end_pose), "pose.json"))
-
-            for joint, attr_dict in strt_dict.items():
-                for name, value in attr_dict.items():
-                    diff = end_dict[joint][name] - value
-                    # Interpolate new emotions
-                    for i in range(n + 1):
-                        new_dict = strt_dict
-                        new_dict[joint][name] += i * diff / (n + 1)
-                        index_str = strt_pose.split('.')[0] + "-" + end_pose.split('.')[0] + "." + joint + "." + name + "." + str(i)
-                        emo_lst[index_str] = new_dict
-                        # Apply Emotion and save a screenshot
-                        # self.SetFacialAttributes(new_dict)
-                        # self.ScreenShot(save_dir)
-        return emo_lst
+    
