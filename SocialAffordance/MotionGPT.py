@@ -2,6 +2,9 @@ from DataAPI import *
 
 import os
 from tqdm.auto import tqdm
+import numpy as np
+
+from torch.utils.data.dataset import Dataset
 
 G_MIXAMO_JOINTS = ['Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', #0
      'Head', 'HeadTop_End', 'LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand', #5
@@ -104,6 +107,78 @@ class FBXDataMaker():
             print(folder_name)
             os.mkdir(folder_name)
             self.WriteOneFBX(folder_name)
+
+
+class FBXDataLoader(Dataset):
+    def __init__(self, root_folder: str):
+        self.root_folder = root_folder
+        self.raw_data = []
+        self.train_data = []
+
+    def LoadData(self):
+        '''
+        Load raw data from root folder
+        :return:
+        '''
+        print("FBXDataLoader loading data...")
+        for fbx_file_name in tqdm(os.listdir(self.root_folder)):
+            fbx_file_folder = self.root_folder + "/" + fbx_file_name
+            fbx_data = []
+            for fbx_frame_file_idx in range(len(os.listdir(fbx_file_folder))):
+                fbx_frame_file = str(fbx_frame_file_idx) + ".txt"
+                frame_data = []
+                with open(fbx_file_folder + "/" + fbx_frame_file, "r") as f:
+                    for line in f.readlines():
+                        line = line.strip()
+                        joint_id, translateX, translateY, translateZ, rotateX, rotateY, rotateZ = line.split(" ")
+                        joint_data = [translateX, translateY, translateZ, rotateX, rotateY, rotateZ]
+                        joint_data = [float(_) for _ in joint_data]
+                        frame_data.append(joint_data)
+                    f.close()
+                fbx_data.append(frame_data)
+            self.raw_data.append(fbx_data)
+
+
+
+    def PrepareTrainingData(self, frame_gap = 12):
+        '''
+        Prepare training data
+        :param frame_gap: 帧差
+        :return:
+        '''
+        for i in tqdm(range(len(self.raw_data))):
+            fbx_data = self.raw_data[i]
+            for j in range(frame_gap):
+                frame_sequence = []
+                for k in range(j, len(fbx_data), frame_gap):
+                    one_frame = fbx_data[k]
+                    one_frame_data = []
+                    for idx in G_TRAINING_JOINTS_INDEX:
+                        if idx == 0:
+                            for joint_data in one_frame[idx]:
+                                one_frame_data.append(joint_data)
+                        else:
+                            one_frame_data.append(one_frame[idx][3])
+                            one_frame_data.append(one_frame[idx][4])
+                            one_frame_data.append(one_frame[idx][5])
+                    frame_sequence.append(one_frame_data)
+                if len(frame_sequence) >= 2:
+                    frame_sequence = np.asarray(frame_sequence)
+                    self.train_data.append(frame_sequence)
+
+        self.train_data = np.asarray(self.train_data)
+
+    def __len__(self):
+        return len(self.train_data)
+
+    def __getitem__(self, idx):
+        return self.train_data[idx]
+
+
+
+
+
+
 
 
 
