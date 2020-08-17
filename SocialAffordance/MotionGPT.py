@@ -3,7 +3,10 @@ from DataAPI import *
 import os
 from tqdm.auto import tqdm
 import numpy as np
+import random
+import copy
 
+import torch
 from torch.utils.data.dataset import Dataset
 
 G_MIXAMO_JOINTS = ['Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', #0
@@ -109,11 +112,20 @@ class FBXDataMaker():
             self.WriteOneFBX(folder_name)
 
 
-class FBXDataLoader(Dataset):
-    def __init__(self, root_folder: str):
+class FBXDataLoader():
+    def __init__(self, root_folder: str, relative=False):
+        '''
+        FBX data loader
+        :param root_folder: root folder for fbx file
+        :param relative: absolute value of difference(joint rotation and transform)
+        '''
         self.root_folder = root_folder
+        self.relative = relative
         self.raw_data = []
+
+        self.all_data = []
         self.train_data = []
+        self.test_data = []
 
     def LoadData(self):
         '''
@@ -150,29 +162,81 @@ class FBXDataLoader(Dataset):
             fbx_data = self.raw_data[i]
             for j in range(frame_gap):
                 frame_sequence = []
+                original_position = [0.0, 0.0, 0.0] #set the original position
+                original_rotation = [0.0, 0.0, 0.0]  # set the original position
                 for k in range(j, len(fbx_data), frame_gap):
                     one_frame = fbx_data[k]
                     one_frame_data = []
                     for idx in G_TRAINING_JOINTS_INDEX:
                         if idx == 0:
-                            for joint_data in one_frame[idx]:
-                                one_frame_data.append(joint_data)
+                            if k == j: #first frame put origin to zero
+                                original_position[0] = one_frame[idx][0]
+                                original_position[1] = one_frame[idx][1]
+                                original_position[2] = one_frame[idx][2]
+
+                                one_frame_data.append(0.0)
+                                one_frame_data.append(0.0)
+                                one_frame_data.append(0.0)
+
+                                one_frame_data.append(one_frame[idx][3])
+                                one_frame_data.append(one_frame[idx][4])
+                                one_frame_data.append(one_frame[idx][5])
+                            else:
+                                one_frame_data.append(one_frame[idx][0] - original_position[0])
+                                one_frame_data.append(one_frame[idx][1] - original_position[1])
+                                one_frame_data.append(one_frame[idx][2] - original_position[2])
+
+                                one_frame_data.append(one_frame[idx][3])
+                                one_frame_data.append(one_frame[idx][4])
+                                one_frame_data.append(one_frame[idx][5])
+
+                                if self.relative:
+                                    original_position[0] = one_frame[idx][0]
+                                    original_position[1] = one_frame[idx][1]
+                                    original_position[2] = one_frame[idx][2]
                         else:
                             one_frame_data.append(one_frame[idx][3])
                             one_frame_data.append(one_frame[idx][4])
                             one_frame_data.append(one_frame[idx][5])
                     frame_sequence.append(one_frame_data)
-                if len(frame_sequence) >= 2:
-                    frame_sequence = np.asarray(frame_sequence)
-                    self.train_data.append(frame_sequence)
 
-        self.train_data = np.asarray(self.train_data)
+                if len(frame_sequence) >= 2:
+                    #frame_sequence = np.asarray(frame_sequence)
+                    self.all_data.append(frame_sequence)
+
+        #cannot get numpy array because it is of different length
+        #self.train_data = np.asarray(self.train_data)
+        random.shuffle(self.all_data)
+        train_sample_num = int(0.8 * len(self))
+
+        self.train_data = self.all_data[:train_sample_num]
+        self.test_data = self.all_data[train_sample_num:]
+
+    def next_batch(self, batch_size=16, return_tensor=True):
+        input_dim = len(self.train_data[0][0])
+        for i in range(0, len(self.train_data), batch_size):
+            #print("i", i)
+            end_index = min(len(self.train_data), i + batch_size)
+            batch_data = copy.deepcopy(self.train_data[i: end_index])
+            pad_data = []
+
+            max_length = max([len(_) for _ in batch_data])
+            #print("max", max_length)
+            for j in range(len(batch_data)):
+                pad_data.append([1] * len(batch_data[j]) + [0] * (max_length - len(batch_data[j])))
+                #print(pad_data[-1])
+                padding = (max_length - len(batch_data[j]))*[[0.0]*input_dim]
+                #print(len(batch_data[j]))
+                batch_data[j] += padding
+
+
+            yield torch.FloatTensor(batch_data), torch.LongTensor(pad_data)
 
     def __len__(self):
-        return len(self.train_data)
+        return len(self.all_data)
 
     def __getitem__(self, idx):
-        return self.train_data[idx]
+        return self.all_data[idx]
 
 
 
