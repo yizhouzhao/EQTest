@@ -1,4 +1,5 @@
 from DataAPI import *
+from Params import frame_gap
 
 import os
 from tqdm.auto import tqdm
@@ -34,6 +35,8 @@ class FBXDataMaker():
         self.fbx_folder = None
         self.fbx_name_list = []
 
+        self.model = None
+
     def LoadFBXModelNames(self, folder: str):
         '''
         Load fbx model names
@@ -52,7 +55,6 @@ class FBXDataMaker():
         send_message  = "FBXImport -file \"" + fbx_file_name + "\";"
         recv_message = self.mc.SendCommand(send_message)
         print("MotionGPT:", recv_message)
-
 
     def GetModelNameSpace(self):
         '''
@@ -110,6 +112,48 @@ class FBXDataMaker():
             print(folder_name)
             os.mkdir(folder_name)
             self.WriteOneFBX(folder_name)
+
+    #---------------------------Set-------------------------------
+
+    def LoadModel(self, model_path: str):
+        self.model = torch.load(model_path)
+        self.model.eval()
+
+    def GenerateMayaPose(self, joint_info, frame: int, set_root=False):
+        self.mc.SetCurrentTimeFrame(frame)
+
+        if set_root:
+            translateX = joint_info[0].item()
+            translateY = joint_info[1].item()
+            translateZ = joint_info[2].item()
+
+            root = self.namespace + ":" + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[0]]
+            self.mc.SetObjectAttribute(root, "translateX", translateX)
+            self.mc.SetObjectAttribute(root, "translateY", translateY)
+            self.mc.SetObjectAttribute(root, "translateZ", translateZ)
+
+            self.mc.SetCurrentKeyFrameForPositionAndRotation(root)
+
+        for i in range(len(G_TRAINING_JOINTS_INDEX)):
+            rotateX = joint_info[3 * (i+1) + 0].item()
+            rotateY = joint_info[3 * (i+1) + 1].item()
+            rotateZ = joint_info[3 * (i+1) + 2].item()
+
+            joint_name = self.namespace + ":" + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[i]]
+            self.mc.SetObjectAttribute(joint_name, "rotateX", rotateX)
+            self.mc.SetObjectAttribute(joint_name, "rotateY", rotateY)
+            self.mc.SetObjectAttribute(joint_name, "rotateZ", rotateZ)
+
+            self.mc.SetCurrentKeyFrameForPositionAndRotation(joint_name)
+
+    def SampleAnim(self, frame_count, frame_interval = frame_gap):
+        anim_seq = self.model.sample(frame_count) 
+        
+        #sample = torch.zeros(seq_len, self.x_dim)
+        anim_seq = anim_seq.data
+        for i in range(frame_count):
+            self.GenerateMayaPose(anim_seq[i], i * frame_interval)
+
 
 
 class FBXDataLoader():
@@ -214,6 +258,7 @@ class FBXDataLoader():
 
     def next_batch(self, batch_size=16, return_tensor=True):
         input_dim = len(self.train_data[0][0])
+        random.shuffle(self.train_data)
         for i in range(0, len(self.train_data), batch_size):
             #print("i", i)
             end_index = min(len(self.train_data), i + batch_size)

@@ -89,7 +89,8 @@ class VRNN(nn.Module):
             dec_std_t = self.dec_std(dec_t)
 
             # output sample
-            out_t = self._reparameterized_sample(dec_mean_t, dec_std_t)
+            #out_t = self._reparameterized_sample(dec_mean_t, dec_std_t)
+            out_t = dec_mean_t
 
             # recurrence
             _, h = self.rnn(torch.cat([phi_x_t, phi_z_t], 1).unsqueeze(0), h)
@@ -172,7 +173,8 @@ class VRNN(nn.Module):
         dec_std_t = self.dec_std(dec_t)
 
         # output sample
-        next_sample = self._reparameterized_sample(dec_mean_t, dec_std_t)
+        # next_sample = self._reparameterized_sample(dec_mean_t, dec_std_t)
+        next_sample = dec_mean_t
 
         return next_sample
 
