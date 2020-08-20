@@ -3,14 +3,17 @@ import torch.nn as nn
 import torch.utils
 import torch.utils.data
 
+import random
+
 class VRNN(nn.Module):
-    def __init__(self, x_dim, h_dim, z_dim, n_layers, device, bias=False):
+    def __init__(self, x_dim, h_dim, z_dim, n_layers, device, bias=False, resample_output = False):
         super(VRNN, self).__init__()
         self.x_dim = x_dim
         self.h_dim = h_dim
         self.z_dim = z_dim
         self.n_layers = n_layers
         self.device = device
+        self.resample_output = resample_output
 
         # feature-extracting transformations
         self.phi_x = nn.Sequential(
@@ -89,7 +92,9 @@ class VRNN(nn.Module):
             dec_std_t = self.dec_std(dec_t)
 
             # output sample
-            #out_t = self._reparameterized_sample(dec_mean_t, dec_std_t)
+            #if self.resample_output:
+            #    out_t = self._reparameterized_sample(dec_mean_t, dec_std_t)
+            #else:
             out_t = dec_mean_t
 
             # recurrence
@@ -104,9 +109,49 @@ class VRNN(nn.Module):
             all_dec_mean.append(dec_mean_t)
             all_dec_std.append(dec_std_t)
 
-            return kld_loss, mse_loss, \
-                   (all_enc_mean, all_enc_std), \
-                   (all_dec_mean, all_dec_std)
+            # if random.random() < 0.002:
+            #     print("time:", t)
+            #     print("random output enc: ", enc_mean_t.data, enc_std_t.data, padding.data)
+            #     print("random output prior: ", prior_mean_t.data, prior_std_t.data)
+            #     print("random output data: ", out_t.data, x[t].data, padding.data)
+
+        return kld_loss, mse_loss, \
+               (all_enc_mean, all_enc_std), \
+               (all_dec_mean, all_dec_std)
+
+    def reconstruct(self, x):
+        '''
+        reconstruct one sample
+        :param x: [seq_len, 1, dim]
+        :return:x': [seq, 1, dim]
+        '''
+        h = nn.Parameter(torch.zeros(self.n_layers, x.size(1), self.h_dim), requires_grad=True)
+        h = h.to(self.device)
+
+        x_rec = torch.zeros_like(x)
+        for t in range(x.size(0)):
+            phi_x_t = self.phi_x(x[t])
+
+            # encoder
+            enc_t = self.enc(torch.cat([phi_x_t, h[-1]], 1))
+            enc_mean_t = self.enc_mean(enc_t)
+            enc_std_t = self.enc_std(enc_t)
+
+            # sampling and reparameterization
+            z_t = self._reparameterized_sample(enc_mean_t, enc_std_t)
+            phi_z_t = self.phi_z(z_t)
+
+            # decoder
+            dec_t = self.dec(torch.cat([phi_z_t, h[-1]], 1))
+            dec_mean_t = self.dec_mean(dec_t)
+            #dec_std_t = self.dec_std(dec_t)
+
+            x_rec[t] = dec_mean_t
+
+            # recurrence
+            _, h = self.rnn(torch.cat([phi_x_t, phi_z_t], 1).unsqueeze(0), h)
+
+        return x_rec
 
     def sample(self, seq_len):
         sample = torch.zeros(seq_len, self.x_dim)

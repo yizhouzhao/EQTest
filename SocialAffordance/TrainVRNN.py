@@ -13,11 +13,13 @@ if __name__ == "__main__":
 
     writer = SummaryWriter("runs/" + date_time)
 
-    loader = FBXDataLoader("FBXData")
+    loader = FBXDataLoader(data_file, radian=radian)
     loader.LoadData()
     loader.PrepareTrainingData(frame_gap=frame_gap)
 
     params_dict = {
+        "data file": data_file,
+        "radian or degree": "radian" if radian else "degree",
         "frame interval": frame_gap,
         "all data num": len(loader),
         "hidden dim": h_dim,
@@ -57,15 +59,21 @@ if __name__ == "__main__":
             optimizer.zero_grad()
 
             kld_loss, mse_loss, _, _ = model(batch_data, pad_data)
+            kld_loss = kld_loss / torch.sum(pad_data)
+            mse_loss = mse_loss / torch.sum(pad_data)
+
+            #print(torch.sum(pad_data))
+            #print(torch.sum(pad_data))
+
             loss = kld_loss + mse_loss
             loss.backward()
 
             # grad norm clipping, only in pytorch version >= 1.10
-            torch.nn.utils.clip_grad_norm(model.parameters(), clip)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), clip)
             optimizer.step()
 
-            kld_loss_list.append(kld_loss.data / torch.sum(pad_data).data)
-            mse_loss_list.append(mse_loss.data / torch.sum(pad_data).data)
+            kld_loss_list.append(kld_loss.data)
+            mse_loss_list.append(mse_loss.data)
 
             if len(kld_loss_list) > 10:
                 kld_loss_list.pop(0)
@@ -79,8 +87,8 @@ if __name__ == "__main__":
                 print('Train Epoch: {} [{}/{} ({:.0f}%)]\t KLD Loss: {:.6f} \t NLL Loss: {:.6f}'.format(
                     epoch, batch_idx * len(batch_data), len(loader.train_data),
                        100. * batch_idx / (len(loader.train_data) // batch_size),
-                       kld_loss.data / batch_size,
-                       mse_loss.data / batch_size))
+                       kld_loss.data,
+                       mse_loss.data))
 
                 print(torch.sum(pad_data).data)
 
@@ -98,14 +106,15 @@ if __name__ == "__main__":
         test_kld_loss_list = []
         test_mse_loss_list = []
         for i in range(len(loader.test_data)):
-            test_sample = torch.FloatTensor([loader.test_data[i]])
-            pad_sample = torch.LongTensor([[1]*len(test_sample)])
+            test_sample = torch.FloatTensor(loader.test_data[i])
+            test_sample = test_sample.unsqueeze(1)
+            test_sample_mask = torch.LongTensor([[1]]*test_sample.size(0))
 
             batch_data = test_sample.to(device)
-            pad_data = pad_sample.to(device)
+            batch_mask = test_sample_mask.to(device)
 
 
-            kld_loss, mse_loss, _, _ = model(batch_data, pad_data)
+            kld_loss, mse_loss, _, _ = model(batch_data, batch_mask)
 
             test_kld_loss_list.append(kld_loss.data / len(test_sample))
             test_mse_loss_list.append(mse_loss.data / len(test_sample))

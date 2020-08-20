@@ -19,5 +19,9 @@ test.ipynb
 __pycache__/
 SocialAffordance/__pycache__/
 SocialAffordance/FBXData/
+SocialAffordance/FBXDataStand/
 .idea/workspace.xml
 SocialAffordance/__pycache__/DataAPI.cpython-37.pyc
+SocialAffordance/runs/
+
+#

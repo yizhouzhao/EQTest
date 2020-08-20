@@ -28,12 +28,19 @@ G_MIXAMO_JOINTS = ['Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', #0
 
 G_TRAINING_JOINTS_INDEX = [0, 1, 2, 3, 4, 7, 8, 9, 10, 31, 32, 33, 34, 55, 56, 57, 58, 61, 62, 63, 64]
 
+G_MIXAMO_OFFSETS = {"Hips": [180, -90, 0],
+                    "LeftUpLeg": [0, 180, 0], "LeftFoot": [0, 0, 90], "RightUpLeg": [0, 180, 0], "RightFoot": [0, 0, 80],
+                    "Spine": [0, 0, 17], }
+
 class FBXDataMaker():
-    def __init__(self):
-        self.mc = MayaController()
+    def __init__(self, PORT=12345, radian=True, has_translate=False):
+        self.mc = MayaController(PORT=PORT)
         self.namespace = None
         self.fbx_folder = None
         self.fbx_name_list = []
+
+        self.has_translate = has_translate
+        self.radian = radian
 
         self.model = None
 
@@ -122,22 +129,30 @@ class FBXDataMaker():
     def GenerateMayaPose(self, joint_info, frame: int, set_root=False):
         self.mc.SetCurrentTimeFrame(frame)
 
+        offset = 0
         if set_root:
-            translateX = joint_info[0].item()
-            translateY = joint_info[1].item()
-            translateZ = joint_info[2].item()
+            if self.has_translate:
+                translateX = joint_info[0].item()
+                translateY = joint_info[1].item()
+                translateZ = joint_info[2].item()
+                offset = 1
 
-            root = self.namespace + ":" + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[0]]
-            self.mc.SetObjectAttribute(root, "translateX", translateX)
-            self.mc.SetObjectAttribute(root, "translateY", translateY)
-            self.mc.SetObjectAttribute(root, "translateZ", translateZ)
+                root = self.namespace + ":" + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[0]]
+                self.mc.SetObjectAttribute(root, "translateX", translateX)
+                self.mc.SetObjectAttribute(root, "translateY", translateY)
+                self.mc.SetObjectAttribute(root, "translateZ", translateZ)
 
-            self.mc.SetCurrentKeyFrameForPositionAndRotation(root)
+                self.mc.SetCurrentKeyFrameForPositionAndRotation(root)
 
         for i in range(len(G_TRAINING_JOINTS_INDEX)):
-            rotateX = joint_info[3 * (i+1) + 0].item()
-            rotateY = joint_info[3 * (i+1) + 1].item()
-            rotateZ = joint_info[3 * (i+1) + 2].item()
+            rotateX = joint_info[3 * (i + offset) + 0].item()
+            rotateY = joint_info[3 * (i + offset) + 1].item()
+            rotateZ = joint_info[3 * (i + offset) + 2].item()
+
+            if self.radian:
+                rotateX *= 180.0 / np.pi
+                rotateY *= 180.0 / np.pi
+                rotateZ *= 180.0 / np.pi
 
             joint_name = self.namespace + ":" + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[i]]
             self.mc.SetObjectAttribute(joint_name, "rotateX", rotateX)
@@ -157,7 +172,7 @@ class FBXDataMaker():
 
 
 class FBXDataLoader():
-    def __init__(self, root_folder: str, relative=False):
+    def __init__(self, root_folder: str, relative=False, radian=True, has_translate=False):
         '''
         FBX data loader
         :param root_folder: root folder for fbx file
@@ -165,6 +180,9 @@ class FBXDataLoader():
         '''
         self.root_folder = root_folder
         self.relative = relative
+        self.radian = radian
+        self.has_translate = has_translate
+
         self.raw_data = []
 
         self.all_data = []
@@ -187,8 +205,14 @@ class FBXDataLoader():
                     for line in f.readlines():
                         line = line.strip()
                         joint_id, translateX, translateY, translateZ, rotateX, rotateY, rotateZ = line.split(" ")
+                        translateX, translateY, translateZ = float(translateX), float(translateY), float(translateZ)
+                        rotateX, rotateY, rotateZ = float(rotateX), float(rotateY), float(rotateZ)
+                        if self.radian:
+                            rotateX = float(rotateX) / 180.0 * np.pi
+                            rotateY = float(rotateY) / 180.0 * np.pi
+                            rotateZ = float(rotateZ) / 180.0 * np.pi
+
                         joint_data = [translateX, translateY, translateZ, rotateX, rotateY, rotateZ]
-                        joint_data = [float(_) for _ in joint_data]
                         frame_data.append(joint_data)
                     f.close()
                 fbx_data.append(frame_data)
@@ -218,17 +242,19 @@ class FBXDataLoader():
                                 original_position[1] = one_frame[idx][1]
                                 original_position[2] = one_frame[idx][2]
 
-                                one_frame_data.append(0.0)
-                                one_frame_data.append(0.0)
-                                one_frame_data.append(0.0)
+                                if self.has_translate:
+                                    one_frame_data.append(0.0)
+                                    one_frame_data.append(0.0)
+                                    one_frame_data.append(0.0)
 
                                 one_frame_data.append(one_frame[idx][3])
                                 one_frame_data.append(one_frame[idx][4])
                                 one_frame_data.append(one_frame[idx][5])
                             else:
-                                one_frame_data.append(one_frame[idx][0] - original_position[0])
-                                one_frame_data.append(one_frame[idx][1] - original_position[1])
-                                one_frame_data.append(one_frame[idx][2] - original_position[2])
+                                if self.has_translate:
+                                    one_frame_data.append(one_frame[idx][0] - original_position[0])
+                                    one_frame_data.append(one_frame[idx][1] - original_position[1])
+                                    one_frame_data.append(one_frame[idx][2] - original_position[2])
 
                                 one_frame_data.append(one_frame[idx][3])
                                 one_frame_data.append(one_frame[idx][4])
@@ -250,11 +276,12 @@ class FBXDataLoader():
 
         #cannot get numpy array because it is of different length
         #self.train_data = np.asarray(self.train_data)
-        random.shuffle(self.all_data)
+        data_indexes = [i for i in range(len(self.all_data))]
+        random.shuffle(data_indexes)
         train_sample_num = int(0.8 * len(self))
 
-        self.train_data = self.all_data[:train_sample_num]
-        self.test_data = self.all_data[train_sample_num:]
+        self.train_data = [self.all_data[data_indexes[i]] for i in range(train_sample_num)]
+        self.test_data = [self.all_data[data_indexes[i]] for i in range(train_sample_num, len(self.all_data))]
 
     def next_batch(self, batch_size=16, return_tensor=True):
         input_dim = len(self.train_data[0][0])
@@ -275,7 +302,7 @@ class FBXDataLoader():
                 batch_data[j] += padding
 
 
-            yield torch.FloatTensor(batch_data), torch.LongTensor(pad_data)
+            yield torch.FloatTensor(batch_data).transpose(0,1), torch.LongTensor(pad_data).transpose(0,1)
 
     def __len__(self):
         return len(self.all_data)
