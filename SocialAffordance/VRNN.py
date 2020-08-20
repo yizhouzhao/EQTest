@@ -157,7 +157,7 @@ class VRNN(nn.Module):
         sample = torch.zeros(seq_len, self.x_dim)
         sample = sample.to(self.device)
 
-        h = nn.Parameter(torch.zeros(self.n_layers, 1, self.h_dim), requires_grad=True)
+        h = nn.Parameter(torch.randn(self.n_layers, 1, self.h_dim), requires_grad=True)
         h = h.to(self.device)
         for t in range(seq_len):
             # prior

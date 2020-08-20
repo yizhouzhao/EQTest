@@ -1,5 +1,5 @@
 from DataAPI import *
-from Params import frame_gap
+from Params import frame_gap, fix_translate_scale
 
 import os
 from tqdm.auto import tqdm
@@ -27,10 +27,8 @@ G_MIXAMO_JOINTS = ['Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', #0
      'RightLeg', 'RightFoot', 'RightToeBase', 'RightToe_End'] #62
 
 G_TRAINING_JOINTS_INDEX = [0, 1, 2, 3, 4, 7, 8, 9, 10, 31, 32, 33, 34, 55, 56, 57, 58, 61, 62, 63, 64]
+G_TRAINING_FINGERS_INDEX = [11, 15, 19, 35, 39, 43]
 
-G_MIXAMO_OFFSETS = {"Hips": [180, -90, 0],
-                    "LeftUpLeg": [0, 180, 0], "LeftFoot": [0, 0, 90], "RightUpLeg": [0, 180, 0], "RightFoot": [0, 0, 80],
-                    "Spine": [0, 0, 17], }
 
 class FBXDataMaker():
     def __init__(self, PORT=12345, radian=True, has_translate=False):
@@ -172,7 +170,12 @@ class FBXDataMaker():
 
 
 class FBXDataLoader():
-    def __init__(self, root_folder: str, relative=False, radian=True, has_translate=False):
+    def __init__(self, root_folder: str,
+                 relative=False,
+                 radian=True,
+                 has_translate=False,
+                 mirror_data=True,
+                 has_finger=True):
         '''
         FBX data loader
         :param root_folder: root folder for fbx file
@@ -182,12 +185,16 @@ class FBXDataLoader():
         self.relative = relative
         self.radian = radian
         self.has_translate = has_translate
+        self.mirror_data = mirror_data
+        self.has_finger = has_finger
 
         self.raw_data = []
 
         self.all_data = []
         self.train_data = []
         self.test_data = []
+
+        self.translate_scale = 1.0
 
     def LoadData(self):
         '''
@@ -218,7 +225,74 @@ class FBXDataLoader():
                 fbx_data.append(frame_data)
             self.raw_data.append(fbx_data)
 
+        def _euclidean_distance(x1: list, x2: list) -> float:
+            return np.sqrt((x1[0] - x2[0]) ** 2 + (x1[1] - x2[1]) ** 2 + (x1[2] - x2[2]) ** 2)
 
+        dis = 0.0
+        for m in range(len(self.raw_data)):
+            dis += _euclidean_distance(self.raw_data[m][0][0][0:3], self.raw_data[m][0][1][0:3])
+
+        self.translate_scale = dis / len(self.raw_data)
+        print("Hip Spine distance as scale: ", self.translate_scale) #about 3.97
+
+        # calculate fixed translate scale
+        self.translate_scale *= fix_translate_scale
+
+        if self.mirror_data:
+            raw_data_len = len(self.raw_data)
+            for i in range(raw_data_len):
+                one_fbx = self.raw_data[i]
+                mirror_one_fbx = []
+                for j in range(len(one_fbx)):
+                    mirror_one_frame = self.MirrorOneFrame(one_fbx[j])
+                    mirror_one_fbx.append(mirror_one_frame)
+
+                self.raw_data.append(mirror_one_fbx)
+
+    def MirrorOneFrame(self, frame_data):
+        '''
+        Mirror the joint at frame
+        :param frame_data:
+        :return:
+        '''
+        mirror_frame_data = []
+        for i in range(len(G_MIXAMO_JOINTS)):
+            joint = G_MIXAMO_JOINTS[i]
+            if "Left" in joint:
+                mirror_joint = joint.replace("Left", "Right")
+                mirror_index = G_MIXAMO_JOINTS.index(mirror_joint)
+                joint_data = [_ for _ in frame_data[mirror_index]]
+
+                # mirror
+                joint_data[0] = -joint_data[0] #translateX
+                joint_data[-1] = -joint_data[-1] #rotateY
+                joint_data[-2] = -joint_data[-2] #rotateZ
+
+                mirror_frame_data.append(joint_data)
+
+            elif "Right" in joint:
+                mirror_joint = joint.replace("Right", "Left")
+                mirror_index = G_MIXAMO_JOINTS.index(mirror_joint)
+                joint_data = [_ for _ in frame_data[mirror_index]]
+
+                # mirror
+                joint_data[0] = -joint_data[0]
+                joint_data[-1] = -joint_data[-1]
+                joint_data[-2] = -joint_data[-2]
+
+                mirror_frame_data.append(joint_data)
+
+            else:
+                joint_data = [_ for _ in frame_data[i]]
+
+                # mirror
+                joint_data[0] = -joint_data[0]
+                joint_data[-1] = -joint_data[-1]
+                joint_data[-2] = -joint_data[-2]
+
+                mirror_frame_data.append(joint_data)
+
+        return mirror_frame_data
 
     def PrepareTrainingData(self, frame_gap = 12):
         '''
@@ -252,9 +326,13 @@ class FBXDataLoader():
                                 one_frame_data.append(one_frame[idx][5])
                             else:
                                 if self.has_translate:
-                                    one_frame_data.append(one_frame[idx][0] - original_position[0])
-                                    one_frame_data.append(one_frame[idx][1] - original_position[1])
-                                    one_frame_data.append(one_frame[idx][2] - original_position[2])
+                                    delta_x = (one_frame[idx][0] - original_position[0]) / self.translate_scale
+                                    delta_y = (one_frame[idx][1] - original_position[1]) / self.translate_scale
+                                    delta_z = (one_frame[idx][2] - original_position[2]) / self.translate_scale
+
+                                    one_frame_data.append(delta_x)
+                                    one_frame_data.append(delta_y)
+                                    one_frame_data.append(delta_z)
 
                                 one_frame_data.append(one_frame[idx][3])
                                 one_frame_data.append(one_frame[idx][4])
@@ -268,11 +346,17 @@ class FBXDataLoader():
                             one_frame_data.append(one_frame[idx][3])
                             one_frame_data.append(one_frame[idx][4])
                             one_frame_data.append(one_frame[idx][5])
+
+                    if self.has_finger:
+                        for idx in G_TRAINING_FINGERS_INDEX:
+                            one_frame_data.append(one_frame[idx][3]) #rotateX of Thumb, Index, and Middle fingers
+
                     frame_sequence.append(one_frame_data)
 
                 if len(frame_sequence) >= 2:
                     #frame_sequence = np.asarray(frame_sequence)
                     self.all_data.append(frame_sequence)
+
 
         #cannot get numpy array because it is of different length
         #self.train_data = np.asarray(self.train_data)

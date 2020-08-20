@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     writer = SummaryWriter("runs/" + date_time)
 
-    loader = FBXDataLoader(data_file, radian=radian)
+    loader = FBXDataLoader(data_file, radian=radian, has_translate=consider_root_translate)
     loader.LoadData()
     loader.PrepareTrainingData(frame_gap=frame_gap)
 
@@ -30,6 +30,7 @@ if __name__ == "__main__":
         "gradient clip": clip,
         "learning_rate": learning_rate,
         "print_every": print_every,
+        "consider_root_translate": consider_root_translate
     }
 
     writer.add_hparams(params_dict, {})
@@ -37,6 +38,7 @@ if __name__ == "__main__":
     input_dim = len(loader.train_data[0][1])
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")  # device
 
+    print("Training data dim:", input_dim)
     print("Training on device: ", device)
     #Build model
     model = VRNN(input_dim, h_dim, z_dim, n_layers, device)
@@ -131,3 +133,6 @@ if __name__ == "__main__":
     #save model
     writer.close()
     torch.save(model, "runs/" + date_time + ".pth")
+
+    date_time = now.strftime("%Y_%m_%d_%H_%M_%S" + "_nr")
+    print("date and time:", date_time)

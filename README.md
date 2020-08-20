@@ -63,6 +63,85 @@ def rename_morph_targets( node_name, attr_dict, quiet = False ):
 		for name in fail_list:
 			print name
 
+
+# 90整度关节
+from maya.cmds import *
+
+objs = ls(selection=True)
+
+#rotate to the closed 90 degree
+
+attrs = ["rotateX", "rotateY", "rotateZ"]
+degrees = [0, 90, 180, -90， -180]
+
+obj = objs[0]
+
+for attr in attrs:
+    value = getAttr(obj+"."+attr)
+    if value > 180.0:
+        value -= 360.0
+    if value < -180.0:
+        value += 360.0
+    
+    min_dist = 1000
+    closest_degree = 0
+    
+    for degree in degrees:
+        dist = (degree - value)**2
+        if dist < min_dist:
+            min_dist = dist
+            closest_degree = degree
+        
+    setAttr(obj+"."+attr, closest_degree)
+
+#翻转mixamo左右动作
+from maya.cmds import *
+
+objs = ls(selection=True)
+
+for obj in objs:
+    if "Right" in obj:
+        continue
+ 
+    if "Left" in obj:
+        l_rotateX = getAttr(obj + "." + "rotateX")
+        
+        l_rotateY = getAttr(obj + "." + "rotateY")
+        l_rotateY = -l_rotateY
+        
+        l_rotateZ = getAttr(obj + "." + "rotateZ")
+        l_rotateZ = -l_rotateZ
+        
+        r_obj = obj.replace("Left", "Right")
+        
+        r_rotateX = getAttr(r_obj + "." + "rotateX")
+        
+        r_rotateY = getAttr(r_obj + "." + "rotateY")
+        r_rotateY = -r_rotateY
+        
+        r_rotateZ = getAttr(r_obj + "." + "rotateZ")
+        r_rotateZ = -r_rotateZ
+    
+        setAttr(obj + "." + "rotateX", r_rotateX)
+        setAttr(obj + "." + "rotateZ", r_rotateZ)
+        setAttr(obj + "." + "rotateY", r_rotateY)
+        
+        setAttr(r_obj + "." + "rotateX", l_rotateX)
+        setAttr(r_obj + "." + "rotateZ", l_rotateZ)
+        setAttr(r_obj + "." + "rotateY", l_rotateY)
+        
+    else:
+        m_rotateY = getAttr(obj + "." + "rotateY")
+        m_rotateY = -m_rotateY
+        
+        m_rotateZ = getAttr(obj + "." + "rotateZ")
+        m_rotateZ = -m_rotateZ
+        
+        setAttr(obj + "." + "rotateZ", m_rotateZ)
+        setAttr(obj + "." + "rotateY", m_rotateY)
+        
+        
+
 ###################
 ## Example Usage ##
 ###################
