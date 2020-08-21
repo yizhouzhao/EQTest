@@ -1,5 +1,5 @@
 from DataAPI import *
-from Params import frame_gap, fix_translate_scale
+from Params import frame_gap, fix_translate_scale, G_MIXAMO_JOINTS, G_TRAINING_JOINTS_INDEX, G_TRAINING_FINGERS_INDEX
 
 import os
 from tqdm.auto import tqdm
@@ -10,28 +10,11 @@ import copy
 import torch
 from torch.utils.data.dataset import Dataset
 
-G_MIXAMO_JOINTS = ['Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', #0
-     'Head', 'HeadTop_End', 'LeftShoulder', 'LeftArm', 'LeftForeArm', 'LeftHand', #5
-     'LeftHandThumb1', 'LeftHandThumb2', 'LeftHandThumb3', 'LeftHandThumb4', #11
-     'LeftHandIndex1', 'LeftHandIndex2', 'LeftHandIndex3', 'LeftHandIndex4', #15
-     'LeftHandMiddle1', 'LeftHandMiddle2', 'LeftHandMiddle3', 'LeftHandMiddle4', #19
-     'LeftHandRing1', 'LeftHandRing2', 'LeftHandRing3', 'LeftHandRing4', #23
-     'LeftHandPinky1', 'LeftHandPinky2', 'LeftHandPinky3', 'LeftHandPinky4', #27
-     'RightShoulder', 'RightArm', 'RightForeArm', 'RightHand', #31
-     'RightHandThumb1', 'RightHandThumb2', 'RightHandThumb3', 'RightHandThumb4', #35
-     'RightHandIndex1', 'RightHandIndex2', 'RightHandIndex3', 'RightHandIndex4', #39
-     'RightHandMiddle1', 'RightHandMiddle2', 'RightHandMiddle3', 'RightHandMiddle4', #43
-     'RightHandRing1', 'RightHandRing2', 'RightHandRing3', 'RightHandRing4', #47
-     'RightHandPinky1', 'RightHandPinky2', 'RightHandPinky3', 'RightHandPinky4', #51
-     'LeftUpLeg', 'LeftLeg', 'LeftFoot', 'LeftToeBase', 'LeftToe_End', 'RightUpLeg', #55
-     'RightLeg', 'RightFoot', 'RightToeBase', 'RightToe_End'] #62
 
-G_TRAINING_JOINTS_INDEX = [0, 1, 2, 3, 4, 7, 8, 9, 10, 31, 32, 33, 34, 55, 56, 57, 58, 61, 62, 63, 64]
-G_TRAINING_FINGERS_INDEX = [11, 15, 19, 35, 39, 43]
 
 
 class FBXDataMaker():
-    def __init__(self, PORT=12345, radian=True, has_translate=False):
+    def __init__(self, PORT=12345, radian=True, has_translate=True, has_finger=True):
         self.mc = MayaController(PORT=PORT)
         self.namespace = None
         self.namespace_symbol = ":"
@@ -39,6 +22,7 @@ class FBXDataMaker():
         self.fbx_name_list = []
 
         self.has_translate = has_translate
+        self.has_finger = has_finger
         self.radian = radian
 
         self.model = None #model
@@ -151,17 +135,69 @@ class FBXDataMaker():
 
             self.mc.SetCurrentKeyFrameForPositionAndRotation(joint_name)
 
+        #Set up finger curl
+        if self.has_finger:
+            for j in range(len(G_TRAINING_FINGERS_INDEX)):
+                finger_name = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j]]
+                rotateX = joint_info[-6 + j].item()
+                if self.radian:
+                    rotateX *= 180.0 / np.pi
+
+                #First finger joint
+                print(finger_name, rotateX)
+                self.mc.SetObjectAttribute(finger_name, "rotateX", rotateX)
+                self.mc.SetCurrentKeyFrameForPositionAndRotation(finger_name)
+
+
+                finger_name2 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j] + 1]
+                self.mc.SetObjectAttribute(finger_name2, "rotateX", rotateX)
+                self.mc.SetCurrentKeyFrameForPositionAndRotation(finger_name2)
+
+
+
+                #Not Thumb has another finger joint
+                if G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j]] != "LeftHandThumb2" \
+                    and G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j]] != "LeftHandThumb2":
+                    finger_name3 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[
+                        G_TRAINING_FINGERS_INDEX[j] + 2]
+                    self.mc.SetObjectAttribute(finger_name3, "rotateX", 0.618 * rotateX)
+                    self.mc.SetCurrentKeyFrameForPositionAndRotation(finger_name3)
+
+                if G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j]] == "LeftHandMiddle1" \
+                    or G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j]] == "RightHandMiddle1":
+                    ring_finger1 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j] + 4]
+                    ring_finger2 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j] + 5]
+                    ring_finger3 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j] + 6]
+
+                    self.mc.SetObjectAttribute(ring_finger1, "rotateX", rotateX)
+                    self.mc.SetCurrentKeyFrameForPositionAndRotation(ring_finger1)
+                    self.mc.SetObjectAttribute(ring_finger2, "rotateX", rotateX)
+                    self.mc.SetCurrentKeyFrameForPositionAndRotation(ring_finger2)
+                    self.mc.SetObjectAttribute(ring_finger3, "rotateX", 0.618 * rotateX)
+                    self.mc.SetCurrentKeyFrameForPositionAndRotation(ring_finger3)
+
+                    pinky_finger1 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j] + 8]
+                    pinky_finger2 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j] + 9]
+                    pinky_finger3 = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_FINGERS_INDEX[j] + 10]
+
+                    self.mc.SetObjectAttribute(pinky_finger1, "rotateX", rotateX)
+                    self.mc.SetCurrentKeyFrameForPositionAndRotation(pinky_finger1)
+                    self.mc.SetObjectAttribute(pinky_finger2, "rotateX", rotateX)
+                    self.mc.SetCurrentKeyFrameForPositionAndRotation(pinky_finger2)
+                    self.mc.SetObjectAttribute(pinky_finger3, "rotateX", 0.618 * rotateX)
+                    self.mc.SetCurrentKeyFrameForPositionAndRotation(pinky_finger3)
+
         if self.has_translate:
             root = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[0]]
 
             if frame == 0:
-                self.root_translate0[0] = self.mc.GetObjectAttribute(root, "translateX")
-                self.root_translate0[1] = self.mc.GetObjectAttribute(root, "translateY")
-                self.root_translate0[2] = self.mc.GetObjectAttribute(root, "translateZ")
+                self.root_translate0[0] = self.mc.GetObjectAttribute(root, "translateX")[0]
+                self.root_translate0[1] = self.mc.GetObjectAttribute(root, "translateY")[0]
+                self.root_translate0[2] = self.mc.GetObjectAttribute(root, "translateZ")[0]
 
-            translateX = joint_info[0].item() * translate_scale + self.root_translate0[0]
-            translateY = joint_info[1].item() * translate_scale + self.root_translate0[1]
-            translateZ = joint_info[2].item() * translate_scale + self.root_translate0[2]
+            translateX = joint_info[0].item() * translate_scale * 4 + self.root_translate0[0]
+            translateY = joint_info[1].item() * translate_scale * 4 + self.root_translate0[1]
+            translateZ = joint_info[2].item() * translate_scale * 4 + self.root_translate0[2]
 
             self.mc.SetObjectAttribute(root, "translateX", translateX)
             self.mc.SetObjectAttribute(root, "translateY", translateY)
@@ -176,9 +212,10 @@ class FBXDataMaker():
                 right_toe = self.namespace + self.namespace_symbol + "RightToe_End"
                 right_toe_translate = self.mc.GetObjectWorldTransform(right_toe)
 
-                toe_offset = min(left_toe_translate[1], right_toe_translate[1])
+                toe_offset_y = min(left_toe_translate[1], right_toe_translate[1])
 
-                self.mc.MoveObjectWorldRelative(root, [0, -toe_offset, 0])
+
+                self.mc.MoveObjectWorldRelative(root, [0, -toe_offset_y, 0])
 
             #print(self.mc.GetObjectAttribute(root, "translateX"))
             #print(self.mc.GetObjectAttribute(root, "translateY"))
@@ -284,6 +321,7 @@ class FBXDataLoader():
         :param frame_data:
         :return:
         '''
+        #print("MirrorOneFrame frame_data", len(frame_data), len(frame_data[0]))
         mirror_frame_data = []
         for i in range(len(G_MIXAMO_JOINTS)):
             joint = G_MIXAMO_JOINTS[i]
@@ -294,8 +332,10 @@ class FBXDataLoader():
 
                 # mirror
                 joint_data[0] = -joint_data[0] #translateX
-                joint_data[-1] = -joint_data[-1] #rotateY
-                joint_data[-2] = -joint_data[-2] #rotateZ
+                joint_data[-1] = -joint_data[-1] #rotateZ
+                joint_data[-2] = -joint_data[-2] #rotateY
+
+                #print(i, joint, mirror_joint, mirror_index)
 
                 mirror_frame_data.append(joint_data)
 
