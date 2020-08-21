@@ -41,3 +41,19 @@ n_epochs = 300
 clip = 10
 learning_rate = 2e-4
 print_every = 10
+
+#Animation
+G_INTEACT_KEY_WORDS = ["Acknowledging", "Agreeing", "Angry", "Head Shake", "Bash", #0
+                       "Kiss", "Bored", "Idle", "Charge", "Clapping", #5
+                       "Cocky", "Crazy", "Crying", "Defeat", "Disappointed", #10
+                       "Dismissing", "Dizzy", "Drunk", "Dwarf", "Excited", #15w
+                       "Fist", "Focus", "Forward", "Happy", "Head Nod", #20
+                       "Joyful", "Kneeling", "Laughing", "Look", "Loser", #25
+                       "Neck", "Nervously", "Offensive", "Pain", "Pointing", #30
+                       "Pouting", "Praying", "Bow", "Reaching", "Rejected", #35
+                       "Relieved", "Roar", "Sad", "Salute", "Sarcastic", #40
+                       "Shaking", "Rubbing", "Shrugging", "Singing", "Arguing", #45
+                       "Greeting", "Taunt", "Thumbs", "Stomping", "Strong", #50
+                       "Suprised", "Talking", "Telling", "Terrified", "Thankful", #55
+                       "Thinking", "Thoughtful", "Threatening", "Victory", "Waving", #60
+                       "Whatever", "Wiping", "Yawn", "Yelling"] #65

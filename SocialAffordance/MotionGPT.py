@@ -144,7 +144,7 @@ class FBXDataMaker():
                     rotateX *= 180.0 / np.pi
 
                 #First finger joint
-                print(finger_name, rotateX)
+                #print(finger_name, rotateX)
                 self.mc.SetObjectAttribute(finger_name, "rotateX", rotateX)
                 self.mc.SetCurrentKeyFrameForPositionAndRotation(finger_name)
 

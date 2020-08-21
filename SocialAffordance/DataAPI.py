@@ -240,14 +240,15 @@ class MayaController:
                 print("(UndoToBeginning)Undo steps:", _)
                 return
 
-    def ScreenShot(self, save_file:str):
+    def ScreenShot(self, save_file: str, camera="persp"):
         '''
         Take maya screen shot and save to picture
         :param save_file: save file name
+        :param camera: camera name
         :return:
         '''
         send_message = "string $editor = `renderWindowEditor -q -editorName`;\n"
-        send_message += "string $myCamera = \"persp\";\n"
+        send_message += "string $myCamera = \"" + camera + "\";\n"
         send_message += "string $myFilename =\"" + save_file + "\";\n"
         send_message += "render;\n"
         send_message += "renderWindowEditor -e -crc $myCamera -wi $myFilename $editor;"
