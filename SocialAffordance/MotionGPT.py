@@ -34,13 +34,16 @@ class FBXDataMaker():
     def __init__(self, PORT=12345, radian=True, has_translate=False):
         self.mc = MayaController(PORT=PORT)
         self.namespace = None
+        self.namespace_symbol = ":"
         self.fbx_folder = None
         self.fbx_name_list = []
 
         self.has_translate = has_translate
         self.radian = radian
 
-        self.model = None
+        self.model = None #model
+
+        self.root_translate0 = [0.0,0.0,0.0] # original position of
 
     def LoadFBXModelNames(self, folder: str):
         '''
@@ -72,7 +75,6 @@ class FBXDataMaker():
                 self.namespace = obj.split(":")[0]
                 return
 
-
     def WriteOneFrame(self, file_name):
         '''
         write the joint information at one frame to file
@@ -81,7 +83,7 @@ class FBXDataMaker():
         '''
         with open(file_name, "w") as f:
             for i in range(len(G_MIXAMO_JOINTS)):
-                joint = self.namespace + ":" + G_MIXAMO_JOINTS[i]
+                joint = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[i]
                 translate = self.mc.GetObjectWorldTransform(joint)
                 rotation = self.mc.GetObjectLocalRoation(joint)
 
@@ -124,25 +126,14 @@ class FBXDataMaker():
         self.model = torch.load(model_path)
         self.model.eval()
 
-    def GenerateMayaPose(self, joint_info, frame: int, set_root=False):
+    def GenerateMayaPose(self, joint_info, frame: int, translate_scale=1.0, modify_y=True):
         self.mc.SetCurrentTimeFrame(frame)
 
-        offset = 0
-        if set_root:
-            if self.has_translate:
-                translateX = joint_info[0].item()
-                translateY = joint_info[1].item()
-                translateZ = joint_info[2].item()
-                offset = 1
-
-                root = self.namespace + ":" + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[0]]
-                self.mc.SetObjectAttribute(root, "translateX", translateX)
-                self.mc.SetObjectAttribute(root, "translateY", translateY)
-                self.mc.SetObjectAttribute(root, "translateZ", translateZ)
-
-                self.mc.SetCurrentKeyFrameForPositionAndRotation(root)
+        offset = 1 if self.has_translate else 0
 
         for i in range(len(G_TRAINING_JOINTS_INDEX)):
+            if i == 0:
+                continue
             rotateX = joint_info[3 * (i + offset) + 0].item()
             rotateY = joint_info[3 * (i + offset) + 1].item()
             rotateZ = joint_info[3 * (i + offset) + 2].item()
@@ -152,21 +143,55 @@ class FBXDataMaker():
                 rotateY *= 180.0 / np.pi
                 rotateZ *= 180.0 / np.pi
 
-            joint_name = self.namespace + ":" + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[i]]
+            joint_name = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[i]]
+            #print(joint_name, [rotateX, rotateY, rotateZ])
             self.mc.SetObjectAttribute(joint_name, "rotateX", rotateX)
             self.mc.SetObjectAttribute(joint_name, "rotateY", rotateY)
             self.mc.SetObjectAttribute(joint_name, "rotateZ", rotateZ)
 
             self.mc.SetCurrentKeyFrameForPositionAndRotation(joint_name)
 
-    def SampleAnim(self, frame_count, frame_interval = frame_gap):
+        if self.has_translate:
+            root = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[G_TRAINING_JOINTS_INDEX[0]]
+
+            if frame == 0:
+                self.root_translate0[0] = self.mc.GetObjectAttribute(root, "translateX")
+                self.root_translate0[1] = self.mc.GetObjectAttribute(root, "translateY")
+                self.root_translate0[2] = self.mc.GetObjectAttribute(root, "translateZ")
+
+            translateX = joint_info[0].item() * translate_scale + self.root_translate0[0]
+            translateY = joint_info[1].item() * translate_scale + self.root_translate0[1]
+            translateZ = joint_info[2].item() * translate_scale + self.root_translate0[2]
+
+            self.mc.SetObjectAttribute(root, "translateX", translateX)
+            self.mc.SetObjectAttribute(root, "translateY", translateY)
+            self.mc.SetObjectAttribute(root, "translateZ", translateZ)
+
+            #print(self.root_translate0, [translateX, translateY, translateZ])
+
+            if modify_y:
+                left_toe = self.namespace + self.namespace_symbol + "LeftToe_End"
+                left_toe_translate = self.mc.GetObjectWorldTransform(left_toe)
+
+                right_toe = self.namespace + self.namespace_symbol + "RightToe_End"
+                right_toe_translate = self.mc.GetObjectWorldTransform(right_toe)
+
+                toe_offset = min(left_toe_translate[1], right_toe_translate[1])
+
+                self.mc.MoveObjectWorldRelative(root, [0, -toe_offset, 0])
+
+            #print(self.mc.GetObjectAttribute(root, "translateX"))
+            #print(self.mc.GetObjectAttribute(root, "translateY"))
+            #print(self.mc.GetObjectAttribute(root, "translateZ"))
+            self.mc.SetCurrentKeyFrameForPositionAndRotation(root)
+
+    def SampleAnim(self, frame_count, frame_interval=frame_gap, translate_scale=1.0):
         anim_seq = self.model.sample(frame_count) 
         
         #sample = torch.zeros(seq_len, self.x_dim)
         anim_seq = anim_seq.data
         for i in range(frame_count):
-            self.GenerateMayaPose(anim_seq[i], i * frame_interval)
-
+            self.GenerateMayaPose(anim_seq[i], i * frame_interval, translate_scale=translate_scale)
 
 
 class FBXDataLoader():
@@ -188,8 +213,10 @@ class FBXDataLoader():
         self.mirror_data = mirror_data
         self.has_finger = has_finger
 
+        self.raw_files = []
         self.raw_data = []
 
+        self.all_files = []
         self.all_data = []
         self.train_data = []
         self.test_data = []
@@ -224,6 +251,7 @@ class FBXDataLoader():
                     f.close()
                 fbx_data.append(frame_data)
             self.raw_data.append(fbx_data)
+            self.raw_files.append(fbx_file_name)
 
         def _euclidean_distance(x1: list, x2: list) -> float:
             return np.sqrt((x1[0] - x2[0]) ** 2 + (x1[1] - x2[1]) ** 2 + (x1[2] - x2[2]) ** 2)
@@ -248,6 +276,7 @@ class FBXDataLoader():
                     mirror_one_fbx.append(mirror_one_frame)
 
                 self.raw_data.append(mirror_one_fbx)
+                self.raw_files.append(self.raw_files[i])
 
     def MirrorOneFrame(self, frame_data):
         '''
@@ -302,6 +331,7 @@ class FBXDataLoader():
         '''
         for i in tqdm(range(len(self.raw_data))):
             fbx_data = self.raw_data[i]
+            fbx_file_name = self.raw_files[i]
             for j in range(frame_gap):
                 frame_sequence = []
                 original_position = [0.0, 0.0, 0.0] #set the original position
@@ -356,6 +386,7 @@ class FBXDataLoader():
                 if len(frame_sequence) >= 2:
                     #frame_sequence = np.asarray(frame_sequence)
                     self.all_data.append(frame_sequence)
+                    self.all_files.append(fbx_file_name)
 
 
         #cannot get numpy array because it is of different length
@@ -367,13 +398,18 @@ class FBXDataLoader():
         self.train_data = [self.all_data[data_indexes[i]] for i in range(train_sample_num)]
         self.test_data = [self.all_data[data_indexes[i]] for i in range(train_sample_num, len(self.all_data))]
 
-    def next_batch(self, batch_size=16, return_tensor=True):
-        input_dim = len(self.train_data[0][0])
-        random.shuffle(self.train_data)
-        for i in range(0, len(self.train_data), batch_size):
+    def next_batch(self, batch_size=16, train_mode=True):
+        if train_mode:
+            sample_from_data = self.train_data
+        else:
+            sample_from_data = self.test_data
+
+        input_dim = len(sample_from_data[0][0])
+        random.shuffle(sample_from_data)
+        for i in range(0, len(sample_from_data), batch_size):
             #print("i", i)
-            end_index = min(len(self.train_data), i + batch_size)
-            batch_data = copy.deepcopy(self.train_data[i: end_index])
+            end_index = min(len(sample_from_data), i + batch_size)
+            batch_data = copy.deepcopy(sample_from_data[i: end_index])
             pad_data = []
 
             max_length = max([len(_) for _ in batch_data])

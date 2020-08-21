@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     writer = SummaryWriter("runs/" + date_time)
 
-    loader = FBXDataLoader(data_file, radian=radian, has_translate=consider_root_translate)
+    loader = FBXDataLoader(data_file, radian=radian, has_translate=consider_root_translate, has_finger=consider_finger)
     loader.LoadData()
     loader.PrepareTrainingData(frame_gap=frame_gap)
 
@@ -30,7 +30,8 @@ if __name__ == "__main__":
         "gradient clip": clip,
         "learning_rate": learning_rate,
         "print_every": print_every,
-        "consider_root_translate": consider_root_translate
+        "consider_root_translate": consider_root_translate,
+        "consider_finger": consider_finger
     }
 
     writer.add_hparams(params_dict, {})
@@ -107,19 +108,31 @@ if __name__ == "__main__":
         model.eval()
         test_kld_loss_list = []
         test_mse_loss_list = []
-        for i in range(len(loader.test_data)):
-            test_sample = torch.FloatTensor(loader.test_data[i])
-            test_sample = test_sample.unsqueeze(1)
-            test_sample_mask = torch.LongTensor([[1]]*test_sample.size(0))
 
-            batch_data = test_sample.to(device)
-            batch_mask = test_sample_mask.to(device)
+        for batch_data, pad_data in loader.next_batch(batch_size, train_mode=False):
+            batch_data = batch_data.to(device)
+            pad_data = pad_data.to(device)
 
+            kld_loss, mse_loss, _, _ = model(batch_data, pad_data)
+            kld_loss = kld_loss / torch.sum(pad_data)
+            mse_loss = mse_loss / torch.sum(pad_data)
 
-            kld_loss, mse_loss, _, _ = model(batch_data, batch_mask)
+            test_kld_loss_list.append(kld_loss.data)
+            test_mse_loss_list.append(mse_loss.data)
 
-            test_kld_loss_list.append(kld_loss.data / len(test_sample))
-            test_mse_loss_list.append(mse_loss.data / len(test_sample))
+        # for i in range(len(loader.test_data)):
+        #     test_sample = torch.FloatTensor(loader.test_data[i])
+        #     test_sample = test_sample.unsqueeze(1)
+        #     test_sample_mask = torch.LongTensor([[1]]*test_sample.size(0))
+        #
+        #     batch_data = test_sample.to(device)
+        #     batch_mask = test_sample_mask.to(device)
+        #
+        #
+        #     kld_loss, mse_loss, _, _ = model(batch_data, batch_mask)
+        #
+        #     test_kld_loss_list.append(kld_loss.data / len(test_sample))
+        #     test_mse_loss_list.append(mse_loss.data / len(test_sample))
 
 
         writer.add_scalar('test kld_loss loss',

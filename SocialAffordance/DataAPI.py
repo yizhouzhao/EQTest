@@ -149,6 +149,9 @@ class MayaController:
     def Close(self):
         self.client.close()
 
+    def __del__(self):
+        self.Close()
+
     #--------------------------------SET-----------------------------------------
     def SetNewScene(self):
         '''
@@ -168,6 +171,14 @@ class MayaController:
         '''
         send_message = "select -replace " + object_name + ";"
         send_message += "move -absolute " + str(location[0]) + " " + str(location[1]) + " " + str(location[2]) + ";"
+        recv_message = self.SendCommand(send_message)
+
+    def MoveObjectWorldRelative(self, object_name: str, location: list):
+        '''
+        Set world relative location for object with location [x, y, z]
+        '''
+        send_message = "select -replace " + object_name + ";"
+        send_message += "move -relative " + str(location[0]) + " " + str(location[1]) + " " + str(location[2]) + ";"
         recv_message = self.SendCommand(send_message)
 
     def SetObjectLocalTransform(self, object_name: str, location: list):
