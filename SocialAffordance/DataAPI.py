@@ -249,7 +249,7 @@ class MayaController:
         print("(ScreenShot)", recv_message)
 
 
-    def SetFacialAttributes(self, attributes: dict):
+    def SetMultipleAttributes(self, attributes: dict):
         '''
         :param attributes: dictionary of facial attributes to be set
         '''
