@@ -21,6 +21,11 @@ class SceneMaker(FBXDataMaker):
         self.loader: FBXDataLoader = None
         self.keyword2index = {}
 
+        #sceen shots
+        self.sceenshots_folder = "E:/researches/EQTest/SocialAffordance/sceenshots"
+        self.time_diff = 0
+        self.distance = 2
+
     def GetTranslateScales(self):
         hip1 = self.character1 + self.namespace_symbol + "Hips"
         hip1_translate = self.mc.GetObjectWorldTransform(hip1)
@@ -66,6 +71,8 @@ class SceneMaker(FBXDataMaker):
         c1_main = self.character1 + self.namespace_symbol + "FitSkeleton"
         c2_main = self.character2 + self.namespace_symbol + "FitSkeleton"
 
+        self.distance = z
+
         self.mc.SetObjectWorldTransform(c1_main, [0, 0, z])
         self.mc.SetObjectWorldTransform(c2_main, [0, 0, -z])
 
@@ -77,6 +84,10 @@ class SceneMaker(FBXDataMaker):
         :param td: time difference
         :return: total number of sceen shots to take
         '''
+
+        #--------set up time diff----------------------------
+        self.time_diff = td
+
         if td == 0:
             start_time1 = frame_gap * 2 * td
             start_time2 = 0
@@ -96,12 +107,12 @@ class SceneMaker(FBXDataMaker):
         #sample1_mask = torch.LongTensor([[1]] * sample1.size(0))
         #print(sample_mask.shape)
 
-        sample1 = sample1.to(self.model.device)
+        #sample1 = sample1.to(self.model.device)
         #sample1_mask = sample1_mask.to(self.model.device)
 
 
         self.SetCurrentCharacter(1)
-        for i in range(len(sample1)):
+        for i in range(min(8, len(sample1))):
             self.GenerateMayaPose(sample1[i][0], i * frame_gap + start_time1, translate_scale=self.translate_scales[0])
 
         #------second character-----------------
@@ -114,19 +125,42 @@ class SceneMaker(FBXDataMaker):
         #sample2_mask = torch.LongTensor([[1]] * sample2.size(0))
         # print(sample_mask.shape)
 
-        sample2 = sample2.to(self.model.device)
+        #sample2 = sample2.to(self.model.device)
         #sample2_mask = sample2_mask.to(self.model.device)
 
         self.SetCurrentCharacter(2)
-        for i in range(len(sample2)):
+        for i in range(min(8, len(sample2))):
             self.GenerateMayaPose(sample2[i][0], i * frame_gap + start_time2, translate_scale=self.translate_scales[1])
 
-        return min(len(sample1) - td, len(sample2) + td)
+        return min(min(8, len(sample1)) - 2 * td, min(8, len(sample2)) + 2 * td)
 
 
-    def TakeSceenShots(self, sceen_shots: int):
+    def TakeSceenShots(self, sceen_shots: int, camera_list: list, keyword1, keyword2):
+        folder = self.sceenshots_folder + "/" + keyword1 + "_" + keyword2 + "_" + \
+                    str(self.time_diff) + "_" + str(self.distance)
+        if not os.path.exists(folder):
+            os.mkdir(folder)
+            print("make new folder: ", folder)
         for i in range(sceen_shots):
-            self.mc.SetCurrentTimeFrame(i * frame_gap)
+            frame = i * frame_gap
+            self.mc.SetCurrentTimeFrame(frame)
+
+            for camera in camera_list:
+                file_name = folder + "/" + camera + "_" + str(frame) + ".png"
+                self.mc.ScreenShot(file_name, camera=camera)
+
+    def MakeLabelingDataSet(self, keyword1, keyword2):
+        distance_list = [2, 4, 8]
+        time_diff_list = [-1, 0, 1]
+        cameras = ["persp", "camera1", "camera2"]
+        for dist in distance_list:
+            for td in time_diff_list:
+                self.SetReletiveDistance(dist)
+                self.TakeSceenShots(self.SetSceneByKeyWords(keyword1, keyword2, td), cameras, keyword1, keyword2)
+
+                self.mc.UndoToBeginning(20000)
+
+
 
 
 

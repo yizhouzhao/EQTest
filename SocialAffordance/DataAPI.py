@@ -248,10 +248,10 @@ class MayaController:
         :return:
         '''
         send_message = "string $editor = `renderWindowEditor -q -editorName`;\n"
-        send_message += "string $myCamera = \"" + camera + "\";\n"
+        #send_message += "string $myCamera = " + camera + ";\n"
         send_message += "string $myFilename =\"" + save_file + "\";\n"
-        send_message += "render;\n"
-        send_message += "renderWindowEditor -e -crc $myCamera -wi $myFilename $editor;"
+        send_message += "render " + camera + ";\n"
+        send_message += "renderWindowEditor -e -wi $myFilename $editor;"
 
         recv_message = self.SendCommand(send_message)
         print("(ScreenShot)", recv_message)

@@ -140,7 +140,32 @@ for obj in objs:
         setAttr(obj + "." + "rotateZ", m_rotateZ)
         setAttr(obj + "." + "rotateY", m_rotateY)
         
-        
+#重载文件
+
+string $file = `file -q -sceneName`;
+file -f -o $file;
+
+#打开服务器
+import maya.cmds as cmds
+
+cmds.commandPort(n="localhost:12345")
+
+#cmds.commandPort(cl=True, n="localhost:12345")
+
+#剪切关键帧
+from maya.cmds import *
+
+objs = ls(selection=True)
+
+for obj in objs:
+    print(obj)
+    cutKey(obj, clear=True)
+
+#拍照
+RenderViewWindow;
+string $editor = `renderWindowEditor -q -editorName`;
+render camera1;
+renderWindowEditor -e -wi "E:/Temp/test2.png" $editor;
 
 ###################
 ## Example Usage ##
