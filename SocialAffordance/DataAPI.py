@@ -6,7 +6,15 @@ import threading
 import itertools
 import time
 from pyautogui import press
+from csv import writer
+
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from mpl_toolkits import mplot3d
+
 
 #Joint Type
 # https://docs.microsoft.com/en-us/previous-versions/windows/kinect/dn758663(v=ieb.10)?redirectedfrom=MSDN
@@ -370,4 +378,31 @@ class MayaController:
                 for attr_name, value in attrs["attrs"].items():
                     if isinstance(value["value"], float):
                         self.SetObjectAttribute(joints, attr_name, value["value"])
-    
+
+    def EmotionPCA(self, displayResult=False):
+        # PCA 
+        df = pd.read_csv("../data/BlendFaces.csv")
+        data = df.iloc[:, :].to_numpy()
+        y = data[:, 1:4]
+        x = data[:, 4:]
+        pca = PCA(n_components=3)
+        pca_result = pca.fit_transform(x)
+        y_tilda = np.c_[y, np.ones(len(y))]
+        result = np.linalg.lstsq(y_tilda, pca_result, rcond=None)[0]
+        if displayResult:
+            print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
+            fig = plt.figure()
+            ax = fig.gca(projection='3d')
+            ax.scatter(pca_result[:,0], pca_result[:,1], pca_result[:,2], c="darkred")
+        return result, pca.components_
+
+    def GenerateEmotionFromVAD(self, vad: list):
+        '''
+        Return a prediction of facial attributes from VAD list
+        '''
+        result, pca_components = self.EmotionPCA()
+        z = np.dot(vad, result[:3]) + result[3]
+        joints = np.dot(z, pca_components)
+        joints[joints < -1] = -1
+        joints[joints > 1] = 1
+        return joints
