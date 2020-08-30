@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     for keyword1 in tqdm(G_INTEACT_KEY_WORDS):
         for keyword2 in tqdm(G_INTEACT_KEY_WORDS):
-            sm.MakeLabelingDataSet(keyword1, keyword1)
+            sm.MakeLabelingDataSet(keyword1, keyword2)
 
 
 
