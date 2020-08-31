@@ -1,5 +1,6 @@
 from DataAPI import *
-from Params import frame_gap, fix_translate_scale, G_MIXAMO_JOINTS, G_TRAINING_JOINTS_INDEX, G_TRAINING_FINGERS_INDEX
+from Params import frame_gap, fix_translate_scale, G_MIXAMO_JOINTS, \
+    G_TRAINING_JOINTS_INDEX, G_TRAINING_FINGERS_INDEX, G_INTEACT_KEY_WORDS
 
 import os
 from tqdm.auto import tqdm
@@ -7,10 +8,33 @@ import numpy as np
 import random
 import copy
 
+import pandas as pd
+from sklearn.decomposition import PCA
 import torch
 from torch.utils.data.dataset import Dataset
 
-
+# Blend Faces
+def BF_ListToJson(data):
+    return {"Morpher":
+        {"Blink": data[0]
+        ,"EyelidUp": data[1]
+        ,"A": data[2]
+        ,"E": data[3]
+        ,"O": data[4]
+        ,"MouthOpen": data[5]
+        ,"FV": data[6]
+        ,"M": data[7]
+        ,"MouthUp": data[8]
+        ,"MouthWide": data[9]
+        ,"MouthWide2": data[10]
+        ,"MouthDown": data[11]
+        ,"MouthOneSideUp": data[12]
+        ,"EyebrowInDown": data[13]
+        ,"EyebrowOutDown": data[14]
+        ,"EyebrowUp": data[15]
+        ,"EyebrowSwag": data[16]
+        }
+    }
 
 
 class FBXDataMaker():
@@ -28,6 +52,22 @@ class FBXDataMaker():
         self.model = None #model
 
         self.root_translate0 = [0.0,0.0,0.0] # original position of
+        self.translate_scale = 1.0 #model scale
+
+        # data loader
+        self.loader: FBXDataLoader = None
+        self.keyword2index = {}
+
+        # sceen shots
+        self.sceenshots_folder = "E:/researches/EQTest/SocialAffordance/sceenshots"
+        self.camera_list = ["camera1", "camera2"]
+        self.image_sizes = [[512, 1024], [1024, 1024]]
+
+        # emtion pca
+        self.lstsq_result = None
+        self.pca_components = None
+        self.emotion2vad = {}
+
 
     def LoadFBXModelNames(self, folder: str):
         '''
@@ -104,11 +144,66 @@ class FBXDataMaker():
             os.mkdir(folder_name)
             self.WriteOneFBX(folder_name)
 
-    #---------------------------Set-------------------------------
+    def GetTranslateScale(self):
+        hip1 = self.namespace + self.namespace_symbol + "Hips"
+        print(hip1)
+        hip1_translate = self.mc.GetObjectWorldTransform(hip1)
+
+        spine1 = self.namespace + self.namespace_symbol + "Spine"
+        spine1_translate = self.mc.GetObjectWorldTransform(spine1)
+
+        scale1 = np.sqrt((hip1_translate[0] - spine1_translate[0]) ** 2 +
+                         (hip1_translate[1] - spine1_translate[1]) ** 2 +
+                         (hip1_translate[2] - spine1_translate[2]) ** 2)
+
+        local_scale1 = self.mc.GetObjectAttribute(self.namespace + self.namespace_symbol + "FitSkeleton", "scaleX")
+
+        self.translate_scale = scale1 / local_scale1[0]
+        print("scale: ", self.translate_scale)
 
     def LoadModel(self, model_path: str):
         self.model = torch.load(model_path)
         self.model.eval()
+
+    # ---------------------------Set-------------------------------
+    def SetLoader(self, loader):
+        self.loader = loader
+        for keyword in G_INTEACT_KEY_WORDS:
+            self.keyword2index[keyword] = []
+            for i in range(len(loader.all_files) // 2): #only generate left side
+                if keyword in loader.all_files[i]:
+                    self.keyword2index[keyword].append(i)
+
+    def SetSceneByKeyWord(self, word):
+        #sample_idx1 = np.random.choice(self.keyword2index[word])
+        sample_idx1 = self.keyword2index[word][0]
+
+        sample1 = torch.FloatTensor(self.loader.all_data[sample_idx1])
+        sample1 = sample1.unsqueeze(1)
+
+        for i in range(min(8, len(sample1))):
+            self.GenerateMayaPose(sample1[i][0], i * frame_gap, translate_scale=self.translate_scale)
+
+        return min(8, len(sample1))
+
+    def TakeSceenShots(self, sceen_shots: int, camera_list: list, size_list: list, keyword, make_folder=True):
+        folder = self.sceenshots_folder + "/" + keyword
+        if (not os.path.exists(folder)) and make_folder:
+            os.mkdir(folder)
+            print("make new folder: ", folder)
+        for i in range(sceen_shots):
+            frame = i * frame_gap
+            self.mc.SetCurrentTimeFrame(frame)
+
+            for j in range(len(camera_list)):
+                camera = camera_list[j]
+                if make_folder:
+                    #file_name = folder + "/" + camera + "_" + str(j) + ".png"
+                    file_name = folder + "/" + str(i) + ".png"
+                else:
+                    file_name = folder + ".png"
+                self.mc.ScreenShot(file_name, camera=camera, width=self.image_sizes[j][0], height=self.image_sizes[j][1])
+
 
     def GenerateMayaPose(self, joint_info, frame: int, translate_scale=1.0, modify_y=True):
         self.mc.SetCurrentTimeFrame(frame)
@@ -229,6 +324,50 @@ class FBXDataMaker():
         anim_seq = anim_seq.data
         for i in range(frame_count):
             self.GenerateMayaPose(anim_seq[i], i * frame_interval, translate_scale=translate_scale)
+
+    def EmotionPCA(self, displayResult=False):
+        # PCA
+        df = pd.read_csv("../data/BlendFaces.csv")
+        data = df.iloc[:, :].to_numpy()
+        y = data[:, 1:4].astype(float)
+        x = data[:, 4:].astype(float)
+        pca = PCA(n_components=3)
+        pca_result = pca.fit_transform(x)
+        y_tilda = np.c_[y, np.ones(len(y))]
+        result = np.linalg.lstsq(y_tilda, pca_result, rcond=None)[0]
+
+        self.lstsq_result = result
+        self.pca_components = pca.components_
+
+        for i in range(len(y)):
+            self.emotion2vad[df.iloc[i, 0]] = y[i]
+
+
+        # if displayResult:
+        #     print('Explained variation per principal component: {}'.format(pca.explained_variance_ratio_))
+        #     fig = plt.figure()
+        #     ax = fig.gca(projection='3d')
+        #     ax.scatter(pca_result[:,0], pca_result[:,1], pca_result[:,2], c="darkred")
+
+        #return result, pca.components_
+
+    def GenerateEmotionFromVAD(self, vad: list):
+        '''
+        Return a prediction of facial attributes from VAD list
+        '''
+        #result, pca_components = self.EmotionPCA()
+        z = np.dot(vad, self.lstsq_result[:3]) + self.lstsq_result[3]
+        joints = np.dot(z, self.pca_components)
+        joints[joints < -1] = -1
+        joints[joints > 1] = 1
+        return joints
+
+    def GenerateMayaFace(self, vad_score: list, frame: int):
+        self.mc.SetCurrentTimeFrame(frame)
+        scores = self.GenerateEmotionFromVAD(vad_score)
+        c = BF_ListToJson(scores)
+        self.mc.SetMultipleAttributes(c)
+        self.mc.SetCurrentKeyFrameForObjects(["Morpher", "face"])
 
 
 class FBXDataLoader():

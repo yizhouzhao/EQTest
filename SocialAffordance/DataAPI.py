@@ -214,9 +214,24 @@ class MayaController:
         send_message += "setKeyframe -at rotate;"
         recv_message = self.SendCommand(send_message)
 
+    def SetCurrentKeyFrameForObjects(self, object_list):
+        send_message = "setKeyframe {"
+        for obj in object_list:
+            send_message += "\"" + str(obj) + "\", "
+        send_message = send_message[:-2] + "};"
+        recv_message = self.SendCommand(send_message)
+
     def SetObjectAttribute(self, object_name: str, attr_name: str, value: float):
         send_message = "setAttr " + object_name + "." + attr_name + " " + str(value) + ";"
         recv_message = self.SendCommand(send_message)
+
+    def SetMultipleAttributes(self, attributes: dict):
+        '''
+        :param attributes: dictionary of facial attributes to be set
+        '''
+        for joint, attr_dict in attributes.items():
+            for name, value in attr_dict.items():
+                self.SetObjectAttribute(joint, name, value)
 
     def Undo(self):
         '''
@@ -240,7 +255,7 @@ class MayaController:
                 print("(UndoToBeginning)Undo steps:", _)
                 return
 
-    def ScreenShot(self, save_file: str, camera="persp"):
+    def ScreenShot(self, save_file: str, camera="persp", width=1024, height=1024):
         '''
         Take maya screen shot and save to picture
         :param save_file: save file name
@@ -250,7 +265,7 @@ class MayaController:
         send_message = "string $editor = `renderWindowEditor -q -editorName`;\n"
         #send_message += "string $myCamera = " + camera + ";\n"
         send_message += "string $myFilename =\"" + save_file + "\";\n"
-        send_message += "render " + camera + ";\n"
+        send_message += "render -x " + str(width) + " -y " + str(height) + " " + camera + ";\n"
         send_message += "renderWindowEditor -e -wi $myFilename $editor;"
 
         recv_message = self.SendCommand(send_message)

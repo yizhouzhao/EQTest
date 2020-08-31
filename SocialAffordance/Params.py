@@ -54,6 +54,12 @@ G_INTEACT_KEY_WORDS = ["Acknowledging", "Agreeing", "Angry", "Head Shake", "Bash
                        "Relieved", "Roar", "Sad", "Salute", "Sarcastic", #40
                        "Shaking", "Rubbing", "Shrugging", "Singing", "Arguing", #45
                        "Greeting", "Taunt", "Thumbs", "Stomping", "Strong", #50
-                       "Suprised", "Talking", "Telling", "Terrified", "Thankful", #55
+                       "Surprised", "Talking", "Telling", "Terrified", "Thankful", #55
                        "Thinking", "Thoughtful", "Threatening", "Victory", "Waving", #60
                        "Whatever", "Wiping", "Yawn", "Yelling"] #65
+
+G_BASIC_EMOTIONS = ['Happy', 'Excited', 'Surprise', 'Curious', 'Sad', 'Tired', 'Scared', 'Angry', 'Neutral',
+                    'Confused', 'Embarrased', 'Disgust', 'Frustrated', 'Delight', 'Concerned', 'Madness', 'Mock',
+                    'Dissatisfied', 'Hate', 'Annoyed']
+
+
