@@ -317,7 +317,7 @@ class Motion(AoTNode):
         self.model = None
 
         # time control
-        self.time_offset_range = [-24, 24]
+        self.time_offset_range = [-2, 2]
         self.start_time = 0
         self.end_time = 0
 
@@ -349,7 +349,7 @@ class Emotion(AoTNode):
 
         # selected from file pool
         self.file_pool = []
-        self.start_emotion = None
+        self.   start_emotion = None
         self.end_emotion = None
         self.select_from_file = True
 

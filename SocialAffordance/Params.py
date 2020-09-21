@@ -59,7 +59,7 @@ G_INTEACT_KEY_WORDS = ["Acknowledging", "Agreeing", "Angry", "Head Shake", "Bash
                        "Whatever", "Wiping", "Yawn", "Yelling"] #65
 
 G_MOTION2VAD = {"Acknowledging": [0.786, 0.37, 0.661], "Agreeing": [0.854, 0.48, 0.557], "Angry": [0.122, 0.83, 0.604],
-                "Head Shake": [0.885, 0.539, 0.618] #greet
+                "Head Shake": [0.885, 0.539, 0.618], #greet
                 "Bash": [0.385, 0.546, 0.463], "Kiss": [0.967, 0.813, 0.63], "Bored": [0.153, 0.167, 0.196],
                 "Idle": [0.179, 0.167, 0.112], "Charge": [0.51, 0.633, 0.785], "Clapping": [0.823, 0.894, 0.686],
                 "Cocky": [0.26, 0.784, 0.519], "Crazy": [0.156, 0.843, 0.321], "Crying": [0.153, 0.704, 0.208],
@@ -67,7 +67,7 @@ G_MOTION2VAD = {"Acknowledging": [0.786, 0.37, 0.661], "Agreeing": [0.854, 0.48,
                 "Dizzy": [0.199, 0.582, 0.193], "Drunk": [0.194, 0.8, 0.25], "Dwarf": [0.37, 0.34, 0.288],
                 "Excited": [0.908, 0.931, 0.709], "Fist": [0.333, 0.686, 0.481], "Focus" : [0.69, 0.382, 0.648],
                 "Forward": [0.873, 0.412, 0.75], "Happy": [1.0, 0.735, 0.772],
-                "Head Nod": [0.59, 0.367, 0.427] #nod,
+                "Head Nod": [0.59, 0.367, 0.427], #nod,
                 "Joyful": [0.99, 0.74, 0.667], "Kneeling": [0.245, 0.435, 0.144], "Laughing": [0.906, 0.596, 0.534],
                 "Look": [0.719, 0.429, 0.615], "Loser": [0.083, 0.51, 0.155], "Neck": [0.541, 0.245, 0.345],
                 "Nervously": [0.235, 0.82, 0.213], "Offensive": [0.135, 0.882, 0.6], "Pain": [0.012, 0.765, 0.395],
@@ -82,7 +82,7 @@ G_MOTION2VAD = {"Acknowledging": [0.786, 0.37, 0.661], "Agreeing": [0.854, 0.48,
                 "Terrified": [0.09, 0.902, 0.387], "Thankful": [0.969, 0.344, 0.714], "Thinking": [0.72, 0.308, 0.595],
                 "Thoughtful": [0.667, 0.29, 0.527], "Threatening": [0.071, 0.875, 0.652], "Victory": [0.938, 0.735, 0.931],
                 "Waving": [0.622, 0.491, 0.49],
-                "Whatever": [0.255, 0.431, 0.125] #careless
+                "Whatever": [0.255, 0.431, 0.125], #careless
                 "Wiping": [0.663, 0.427, 0.551], "Yawn": [0.385, 0.12, 0.139], "Yelling": [0.323, 0.939, 0.565]
                 }
 
@@ -93,7 +93,11 @@ G_BASIC_EMOTIONS = ['Happy', 'Excited', 'Surprise', 'Curious', 'Sad', 'Tired', '
 
 
 G_GENERATION2DOMINANCE = {"younger": -1.0, "same": 0.0, "elder": 1.0}
+G_GENERATION2DOMINANCE_SURVEY = {"Character two": -1.0, "Equal": 0.0, "Character one": 1.0}
+
 G_RELATION2INTIMACY = {"society": -1.0, "friend": 0.0, "family": 1.0}
+G_RELATION2INTIMACY_SURVEY = {"Alienated": -1.0, "Medium": 0.0, "Close": 1.0}
+
 
 G_EMOTION2VAD = {"Happy": [1, 0.735, 0.772],  "Excited": [0.908, 0.931, 0.709],  "Surprise": [0.784, 0.855, 0.539],
             "Curious": [0.635, 0.6, 0.483],  "Sad": [0.225, 0.335, 0.149],  "Tired": [0.125, 0.317, 0.191],
