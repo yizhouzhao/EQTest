@@ -14,8 +14,8 @@ G_MIXAMO_JOINTS = ['Hips', 'Spine', 'Spine1', 'Spine2', 'Neck', #0
      'LeftUpLeg', 'LeftLeg', 'LeftFoot', 'LeftToeBase', 'LeftToe_End', 'RightUpLeg', #55
      'RightLeg', 'RightFoot', 'RightToeBase', 'RightToe_End'] #61
 
-G_TRAINING_JOINTS_INDEX = [0, 1, 2, 3, 4, 7, 8, 9, 10, 31, 32, 33, 34, 55, 56, 57, 58, 60, 61, 62, 63]
-G_TRAINING_FINGERS_INDEX = [11 + 1, 15, 19, 35 + 1, 39, 43]
+G_TRAINING_JOINTS_INDEX = [0, 1, 2, 3, 4, 7, 8, 9, 10, 31, 32, 33, 34, 55, 56, 57, 58, 60, 61, 62, 63] # Total 21
+G_TRAINING_FINGERS_INDEX = [11 + 1, 15, 19, 35 + 1, 39, 43] # Total 6
 
 
 g_position_x_range = [5, 10]

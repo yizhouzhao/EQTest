@@ -369,14 +369,54 @@ class FBXDataMaker():
         self.mc.SetMultipleAttributes(c)
         self.mc.SetCurrentKeyFrameForObjects(["Morpher", "face"])
 
+    #---------------------------------------------validation--------------------------------
+
+    def SetOneFrame(self, frame, joints_info_list: list):
+        '''
+        Validation:
+        Set one maya frame from load data
+        :param frame:
+        :param joints_info_list:
+        :return:
+        '''
+        self.mc.SetCurrentTimeFrame(frame)
+
+        for i in range(len(G_MIXAMO_JOINTS)):
+            translateX, translateY, translateZ, rotateX, rotateY, rotateZ = joints_info_list[i]
+
+            joint_name = self.namespace + self.namespace_symbol + G_MIXAMO_JOINTS[i]
+            # print(joint_name, [rotateX, rotateY, rotateZ])
+            if G_MIXAMO_JOINTS[i] == "Hips":
+                self.mc.SetObjectAttribute(joint_name, "translateX", translateX)
+                self.mc.SetObjectAttribute(joint_name, "translateY", translateY)
+                self.mc.SetObjectAttribute(joint_name, "translateZ", translateZ)
+
+            self.mc.SetObjectAttribute(joint_name, "rotateX", rotateX)
+            self.mc.SetObjectAttribute(joint_name, "rotateY", rotateY)
+            self.mc.SetObjectAttribute(joint_name, "rotateZ", rotateZ)
+
+            self.mc.SetCurrentKeyFrameForPositionAndRotation(joint_name)
+
+    def SetOneFbx(self, frames_info_list: list, frame_gap=1):
+        '''
+        Validation
+        Set one fbx
+        :param frames_info_list:
+        :return:
+        '''
+        for i in tqdm(range(0, len(frames_info_list), frame_gap)):
+            self.SetOneFrame(i, frames_info_list[i])
+
+
+
 
 class FBXDataLoader():
     def __init__(self, root_folder: str,
                  relative=False,
-                 radian=True,
+                 radian=False,
                  has_translate=False,
                  mirror_data=True,
-                 has_finger=True):
+                 has_finger=False):
         '''
         FBX data loader
         :param root_folder: root folder for fbx file
@@ -389,10 +429,10 @@ class FBXDataLoader():
         self.mirror_data = mirror_data
         self.has_finger = has_finger
 
-        self.raw_files = []
-        self.raw_data = []
+        self.raw_files = [] # Files x Frames x Joints x 6
+        self.raw_data = [] # Files x Frames x Joints x 6
 
-        self.all_files = []
+        self.all_files = [] # No.samples x Length x
         self.all_data = []
         self.train_data = []
         self.test_data = []
@@ -502,7 +542,9 @@ class FBXDataLoader():
 
         return mirror_frame_data
 
-    def PrepareTrainingData(self, frame_gap = 12):
+    def PrepareTrainingData(self, frame_gap = 12,
+                            training_joint_index = G_TRAINING_JOINTS_INDEX,
+                            training_finger_index = G_TRAINING_FINGERS_INDEX):
         '''
         Prepare training data
         :param frame_gap: 帧差
@@ -518,7 +560,7 @@ class FBXDataLoader():
                 for k in range(j, len(fbx_data), frame_gap):
                     one_frame = fbx_data[k]
                     one_frame_data = []
-                    for idx in G_TRAINING_JOINTS_INDEX:
+                    for idx in training_joint_index:
                         if idx == 0:
                             if k == j: #first frame put origin to zero
                                 original_position[0] = one_frame[idx][0]
@@ -557,7 +599,7 @@ class FBXDataLoader():
                             one_frame_data.append(one_frame[idx][5])
 
                     if self.has_finger:
-                        for idx in G_TRAINING_FINGERS_INDEX:
+                        for idx in training_finger_index:
                             one_frame_data.append(one_frame[idx][3]) #rotateX of Thumb, Index, and Middle fingers
 
                     frame_sequence.append(one_frame_data)
@@ -577,7 +619,7 @@ class FBXDataLoader():
         self.train_data = [self.all_data[data_indexes[i]] for i in range(train_sample_num)]
         self.test_data = [self.all_data[data_indexes[i]] for i in range(train_sample_num, len(self.all_data))]
 
-    def next_batch(self, batch_size=16, train_mode=True):
+    def next_batch(self, batch_size=16, train_mode=True, batch_first=True):
         if train_mode:
             sample_from_data = self.train_data
         else:
@@ -600,16 +642,16 @@ class FBXDataLoader():
                 #print(len(batch_data[j]))
                 batch_data[j] += padding
 
-
-            yield torch.FloatTensor(batch_data).transpose(0,1), torch.LongTensor(pad_data).transpose(0,1)
+            if not batch_first:
+                yield torch.FloatTensor(batch_data).transpose(0, 1), torch.LongTensor(pad_data).transpose(0, 1)
+            else:
+                yield torch.FloatTensor(batch_data), torch.LongTensor(pad_data)
 
     def __len__(self):
         return len(self.all_data)
 
     def __getitem__(self, idx):
         return self.all_data[idx]
-
-
 
 
 
