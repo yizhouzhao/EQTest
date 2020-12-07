@@ -539,11 +539,11 @@ if __name__ == "__main__":
     optim = torch.optim.Adam(model.parameters(), lr=1e-3)
 
     #Train start
-    model.train()
-    epochs = 100
+    epochs = 10
     for epoch in tqdm(range(epochs)):
-        loss_epoch_mse = []
-        loss_epoch_kld = []
+        model.train()
+        loss_epoch_mse_train = []
+        loss_epoch_kld_train = []
         for batch_x, batch_mask in loader.next_batch(batch_size=batch_size):
             if len(batch_x[0]) < 2:
                 continue
@@ -568,14 +568,45 @@ if __name__ == "__main__":
             total_loss.backward()
             optim.step()
 
-            loss_epoch_mse.append(mse_loss.item())
-            loss_epoch_kld.append(kld_loss.item())
+            loss_epoch_mse_train.append(mse_loss.item())
+            loss_epoch_kld_train.append(kld_loss.item())
 
-        mean_mse_loss = np.mean(loss_epoch_mse)
-        mean_kld_loss = np.mean(loss_epoch_kld)
+        mean_mse_loss = np.mean(loss_epoch_mse_train)
+        mean_kld_loss = np.mean(loss_epoch_kld_train)
         print("Epoch {} MSE {:.3f} KLD {:.3f}".format(epoch, mean_mse_loss, mean_kld_loss))
-        writer.add_scalar('MSE loss', mean_mse_loss, epoch)
-        writer.add_scalar('KL loss', mean_kld_loss, epoch)
+        writer.add_scalar('MSE Train loss', mean_mse_loss, epoch)
+        writer.add_scalar('KL Test loss', mean_kld_loss, epoch)
+
+        model.eval()
+        loss_epoch_mse_test = []
+        loss_epoch_kld_test = []
+        for batch_x, batch_mask in loader.next_batch(batch_size=batch_size, train_mode=False):
+            if len(batch_x[0]) < 2:
+                continue
+
+            batch_x = batch_x.to(device)
+            batch_mask = batch_mask.to(device)
+
+            batch_x_decoder_input = batch_x[:, 1:, :]  # Batch x (Length - 1) x Dim
+            batch_x_encoder_input = batch_x[:, :-1, :]  # Batch x (Length - 1) x Dim
+
+            batch_mask_encoder_input = batch_mask[:, 1:]  # Batch x (Length - 1)
+
+            batch_output, gaussian_params = model(batch_x_encoder_input, batch_x_decoder_input)
+
+            mse_loss = calculate_mse_loss(batch_output, batch_x_decoder_input, batch_mask_encoder_input)
+
+            kld_loss = calculate_kld_gauss(*gaussian_params, batch_mask_encoder_input)
+
+            loss_epoch_mse_test.append(mse_loss.item())
+            loss_epoch_kld_test.append(kld_loss.item())
+
+        mean_mse_loss = np.mean(loss_epoch_mse_test)
+        mean_kld_loss = np.mean(loss_epoch_kld_test)
+        print("Test {} MSE {:.3f} KLD {:.3f}".format(epoch, mean_mse_loss, mean_kld_loss))
+        writer.add_scalar('MSE Test loss', mean_mse_loss, epoch)
+        writer.add_scalar('KL Test loss', mean_kld_loss, epoch)
+
 
 
     #Close and save
