@@ -1,0 +1,6 @@
+pytorch
+pandas
+pyautogui
+tensorboard
+scikit-learn
+transformers

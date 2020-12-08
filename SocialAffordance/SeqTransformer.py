@@ -296,7 +296,9 @@ class SeqVAE(nn.Module):
         prior_std_t = self.prior_std(prior_t)
 
         # sampling and reparameterization
-        z_t = self._reparameterized_sample(enc_mean_t, enc_std_t)
+        #z_t = self._reparameterized_sample(enc_mean_t, enc_std_t)
+        z_t = self._reparameterized_sample(prior_mean_t, prior_std_t)
+
         phi_z_t = self.dec(z_t)
 
         #---------------------------------------------------------------------------
@@ -502,12 +504,15 @@ if __name__ == "__main__":
     input_dim = 198
     batch_size = 16
 
+    notice = "This is model that get sampled from prior with teaching force."
+
     params_dict = {
         "joint_input_dim": input_dim,
         "seq_hidden_encode_dim": seq_hidden_encode_dim,
         "seq_hidden_dim": seq_hidden_dim,
         "seq_num_attention_heads": seq_num_attention_heads,
-        "batch_size": batch_size
+        "batch_size": batch_size,
+        "notice": notice
     }
     writer.add_hparams(params_dict, {})
 
@@ -575,7 +580,7 @@ if __name__ == "__main__":
         mean_kld_loss = np.mean(loss_epoch_kld_train)
         print("Epoch {} MSE {:.3f} KLD {:.3f}".format(epoch, mean_mse_loss, mean_kld_loss))
         writer.add_scalar('MSE Train loss', mean_mse_loss, epoch)
-        writer.add_scalar('KL Test loss', mean_kld_loss, epoch)
+        writer.add_scalar('KL Train loss', mean_kld_loss, epoch)
 
         model.eval()
         loss_epoch_mse_test = []
