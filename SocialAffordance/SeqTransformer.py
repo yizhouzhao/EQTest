@@ -423,7 +423,7 @@ def calculate_kld_gauss(mean_1, std_1, mean_2, std_2, mask):
     kld_element = (2 * torch.log(std_2) - 2 * torch.log(std_1) +
                    (std_1.pow(2) + (mean_1 - mean_2).pow(2)) /
                    std_2.pow(2) - 1)
-    return torch.sum(0.5 * torch.sum(kld_element, dim=-1) * mask)
+    return torch.mean(0.5 * torch.sum(kld_element, dim=-1) * mask)
 
 def calculate_mse_loss(pred_x, ori_x, mask, weight=None):
     """calculate mean square error for reconstruction"""
@@ -436,6 +436,7 @@ def calculate_mse_loss(pred_x, ori_x, mask, weight=None):
     if weight is None:
         weight = torch.ones_like(pred_x)
 
+    #print("Transformer", pred_x.shape)
     batch_seq_mse = torch.sum((pred_x - ori_x)**2 * weight, dim=-1) * mask
 
     return torch.mean(batch_seq_mse)

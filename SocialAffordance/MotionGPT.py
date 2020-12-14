@@ -414,7 +414,7 @@ class FBXDataLoader():
     def __init__(self, root_folder: str,
                  relative=False,
                  radian=False,
-                 has_translate=False,
+                 has_translate=True,
                  mirror_data=True,
                  has_finger=False):
         '''

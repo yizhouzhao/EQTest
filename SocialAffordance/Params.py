@@ -27,7 +27,7 @@ g_default_pose_file_path = '../StudioLibrary/Poses/Body/Stand.pose/pose.json'
 # Data
 frame_gap = 12
 data_file = "FBXDataStand"
-radian = True
+radian = False
 fix_translate_scale = 5.0
 consider_root_translate = True
 consider_finger = True

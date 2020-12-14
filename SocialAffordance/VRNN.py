@@ -235,8 +235,9 @@ class VRNN(nn.Module):
         kld_element = (2 * torch.log(std_2) - 2 * torch.log(std_1) +
                        (std_1.pow(2) + (mean_1 - mean_2).pow(2)) /
                        std_2.pow(2) - 1)
-        return torch.sum(0.5 * torch.sum(kld_element, dim=1) * padding)
+        return torch.mean(0.5 * torch.sum(kld_element, dim=1) * padding)
 
     def _mse_loss(self, pred_x, ori_x, padding):
         """calculate mean square error for reconstruction"""
-        return torch.sum(torch.sum((pred_x - ori_x)**2, dim=1) * padding)
+        #print("VRNN", pred_x.shape)
+        return torch.mean(torch.sum((pred_x - ori_x)**2, dim=1) * padding)

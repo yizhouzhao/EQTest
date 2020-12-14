@@ -13,9 +13,9 @@ if __name__ == "__main__":
 
     writer = SummaryWriter("runs/" + date_time)
 
-    loader = FBXDataLoader(data_file, radian=radian, has_translate=consider_root_translate, has_finger=consider_finger)
+    loader = FBXDataLoader(data_file, radian=radian, has_translate=consider_root_translate) #has_finger=consider_finger
     loader.LoadData()
-    loader.PrepareTrainingData(frame_gap=frame_gap)
+    loader.PrepareTrainingData(training_joint_index=[i for i in range(len(G_MIXAMO_JOINTS))], frame_gap=frame_gap)
 
     params_dict = {
         "data file": data_file,
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     for epoch in range(n_epochs):
         batch_idx = 0
         model.train()
-        for batch_data, pad_data in loader.next_batch(batch_size):
+        for batch_data, pad_data in loader.next_batch(batch_size, batch_first=False):
             batch_idx += 1
 
             batch_data = batch_data.to(device)
@@ -62,8 +62,8 @@ if __name__ == "__main__":
             optimizer.zero_grad()
 
             kld_loss, mse_loss, _, _ = model(batch_data, pad_data)
-            kld_loss = kld_loss / torch.sum(pad_data)
-            mse_loss = mse_loss / torch.sum(pad_data)
+            kld_loss = kld_loss / len(pad_data)
+            mse_loss = mse_loss / len(pad_data)
 
             #print(torch.sum(pad_data))
             #print(torch.sum(pad_data))
@@ -93,15 +93,15 @@ if __name__ == "__main__":
                        kld_loss.data,
                        mse_loss.data))
 
-                print(torch.sum(pad_data).data)
+                #print(torch.sum(pad_data).data)
 
-            writer.add_scalar('kld_loss loss',
-                              sum(kld_loss_list) / len(kld_loss_list),
-                              epoch * len(loader.train_data) // batch_size + batch_idx)
+        writer.add_scalar('kld_loss loss',
+                          sum(kld_loss_list) / len(kld_loss_list),
+                          epoch) #* len(loader.train_data) // batch_size + batch_idx
 
-            writer.add_scalar('mse_loss loss',
-                              sum(mse_loss_list) / len(mse_loss_list),
-                              epoch * len(loader.train_data) // batch_size + batch_idx)
+        writer.add_scalar('mse_loss loss',
+                          sum(mse_loss_list) / len(mse_loss_list),
+                          epoch)
 
 
         #test
