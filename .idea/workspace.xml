@@ -1,17 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab0b3210-784f-432b-ace9-d7565e54d18f" name="Default Changelist" comment="" />
+    <list default="true" id="ab0b3210-784f-432b-ace9-d7565e54d18f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialAffordance/CheckModel.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/CheckModel.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialAffordance/Evaluate_Transformer_VRNN.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/Evaluate_Transformer_VRNN.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialAffordance/Transf_test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/Transf_test.ipynb" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="EQTest" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/Maya Python.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/Params.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1025">
+              <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/DataAPI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3925">
+              <caret line="164" column="35" selection-start-line="164" selection-start-column="24" selection-end-line="164" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/VRNN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2475">
+              <caret line="104" column="38" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/MotionGPT.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12025">
+              <caret line="621" column="73" selection-start-line="621" selection-start-column="69" selection-end-line="621" selection-end-column="73" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#7190#13344#0" />
+                <element signature="e#13440#13712#0" />
+                <element signature="e#13769#14643#0" />
+                <marker date="1607972516595" expanded="true" signature="23317:23505" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/SeqTransformer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#68#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/TrainVRNN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2975">
+              <caret line="124" column="46" selection-start-line="124" selection-start-column="46" selection-end-line="124" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>att</find>
+      <find>softplus</find>
+      <find>pi</find>
+      <find>namespace</find>
+      <find>Close()</find>
+      <find>del</find>
+      <find>has_translate</find>
+      <find>shake</find>
+      <find>sha</find>
+      <find>self.image_sizes = [[512, 1024],[1024,1024]]</find>
+      <find>FBX</find>
+      <find>VAD</find>
+      <find>wiping</find>
+      <find>setscene</find>
+      <find>LoadData</find>
+      <find>press</find>
+      <find>pad</find>
+      <find>cuda</find>
+      <find>shuffle</find>
+      <find>max</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/SocialAffordance/BuildAnimation.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Raven/BuildTree.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Raven/Params.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Seq2Seq.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/SocialAffordance/SceneGenerator.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/MakeLabelData.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/sceenshots/MakeLabelDataSingle.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/DataAPI.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/MakeLabelDataSingle.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/AOGLearning.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Raven/AoT2.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Raven/BuildTree2.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/requirements.txt" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Maya Python.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Params.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/MotionGPT.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/VRNN.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/TrainVRNN.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/SeqTransformer.py" />
+      </list>
+    </option>
+  </component>
   <component name="JupyterTrust" id="d3d9d8b3-0bbd-4d68-a272-94086afb6535" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1946" />
+    <option name="height" value="2106" />
+  </component>
   <component name="ProjectId" id="1eYg2YPywnG1TLBEKVSsTI9nnWC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EQTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EQTest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EQTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EQTest" type="462c0819:PsiDirectoryNode" />
+              <item name="SocialAffordance" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -20,7 +206,78 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Questionnaire" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\researches\EQTest\SocialAffordance" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\researches\EQTest\SocialAffordance\Raven" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.SeqTransformer">
+    <configuration name="MakeLabelDataSingle" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="EQTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SocialAffordance/sceenshots" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="E:\researches\EQTest\SocialAffordance\MakeLabelDataSingle.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SeqTransformer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="EQTest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SocialAffordance" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SocialAffordance/SeqTransformer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.SeqTransformer" />
+        <item itemvalue="Python.MakeLabelDataSingle" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -37,5 +294,313 @@
       <workItem from="1595627280928" duration="13000" />
     </task>
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.16236162" />
+      <window_info id="Structure" order="1" sideWeight="0.50214595" side_tool="true" weight="0.25250396" />
+      <window_info id="Favorites" order="2" sideWeight="0.5014663" side_tool="true" weight="0.25250396" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.345987" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3737705" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.19956616" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.31561822" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5002636" side_tool="true" weight="0.57204765" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.30260304" />
+      <window_info active="true" anchor="bottom" x="15" y="295" width="1891" height="451" id="Terminal" order="10" sideWeight="0.49973643" visible="true" weight="0.1670282" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2496" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.14232999" />
+      <window_info id="Structure" order="1" sideWeight="0.50214595" side_tool="true" weight="0.25250396" />
+      <window_info id="Favorites" order="2" sideWeight="0.5014663" side_tool="true" weight="0.25250396" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.2505423" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3737705" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.315847" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5002636" side_tool="true" weight="0.57204765" />
+      <window_info anchor="bottom" id="Python Console" order="9" weight="0.30273223" />
+      <window_info active="true" anchor="bottom" x="15" y="295" width="1891" height="451" id="Terminal" order="10" sideWeight="0.49973643" visible="true" weight="0.20065077" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.2496" />
+    </layout-to-restore>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/StudioLibrary/Poses/Hand/Akimbo.pose/pose.json" />
+    <entry file="file://D:/Anaconda3/Lib/site-packages/torch/nn/parameter.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="27" selection-start-column="27" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/MakeLabelData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/BuildAnimation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="29" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Raven/BuildTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="42" column="12" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/Lib/site-packages/pyautogui/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="1563" column="4" selection-start-line="1563" selection-start-column="4" selection-end-line="1563" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/AOGLearning.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/MakeLabelDataSingle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Raven/AoT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11200">
+          <caret line="450" column="26" selection-start-line="450" selection-start-column="26" selection-end-line="450" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#15709#15802#0" />
+            <element signature="e#15838#15995#0" />
+            <element signature="e#16031#16122#0" />
+            <element signature="e#16150#17524#0" />
+            <element signature="e#18181#18965#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/envs/EQLight/Lib/site-packages/transformers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#779#947#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/envs/EQLight/Lib/site-packages/transformers/configuration_bert.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Seq2Seq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="167" column="16" selection-start-line="167" selection-start-column="16" selection-end-line="167" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Anaconda3/envs/EQLight/Lib/site-packages/transformers/configuration_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Raven/AoT2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1925">
+          <caret line="312" column="27" selection-start-line="312" selection-start-column="27" selection-end-line="312" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#90#1818#0" />
+            <element signature="e#1847#4789#0" />
+            <element signature="e#4822#6036#0" />
+            <element signature="e#6065#6491#0" />
+            <element signature="e#6525#7295#0" />
+            <element signature="e#7336#8527#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Raven/BuildTree2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="248" selection-start-line="248" selection-end-line="248" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Learn.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/MakeUrls.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/SceneGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="200">
+            <caret line="8" column="33" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="33" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Maya Python.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1025">
+          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/DataAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3925">
+          <caret line="164" column="35" selection-start-line="164" selection-start-column="24" selection-end-line="164" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/VRNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2475">
+          <caret line="104" column="38" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/MotionGPT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12025">
+          <caret line="621" column="73" selection-start-line="621" selection-start-column="69" selection-end-line="621" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#7190#13344#0" />
+            <element signature="e#13440#13712#0" />
+            <element signature="e#13769#14643#0" />
+            <marker date="1607972516595" expanded="true" signature="23317:23505" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/TrainVRNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2975">
+          <caret line="124" column="46" selection-start-line="124" selection-start-column="46" selection-end-line="124" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/SeqTransformer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
