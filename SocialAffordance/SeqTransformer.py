@@ -1,5 +1,5 @@
 from transformers import BertConfig, EncoderDecoderConfig, BertModel
-from transformers.modeling_bert import BertEncoder, BertPooler
+from transformers.models.bert.modeling_bert import BertEncoder, BertPooler
 
 import torch
 import torch.nn as nn
@@ -618,7 +618,7 @@ if __name__ == "__main__":
     #Close and save
 
     writer.close()
-    torch.save(model, "record/" + date_time_start + ".pt")
+    torch.save(model.state_dict(), "record/" + date_time_start + ".pth")
 
     date_time_end = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
     print("date and time:", date_time_start)

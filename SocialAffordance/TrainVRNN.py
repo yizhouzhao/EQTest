@@ -145,7 +145,7 @@ if __name__ == "__main__":
 
     #save model
     writer.close()
-    torch.save(model, "runs/" + date_time + ".pth")
+    torch.save(model.state_dict(), "runs/" + date_time + ".pth")
 
     date_time = now.strftime("%Y_%m_%d_%H_%M_%S" + "_nr")
     print("date and time:", date_time)
