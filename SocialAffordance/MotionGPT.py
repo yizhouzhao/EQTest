@@ -647,6 +647,28 @@ class FBXDataLoader():
             else:
                 yield torch.FloatTensor(batch_data), torch.LongTensor(pad_data)
 
+    def get_sample_from_name(self, motion_name: str, batch_first=False):
+        '''
+        Get A tensor sample from name
+        :param motion_name:
+        :return: a tensor
+        '''
+        # find motion data
+        idx = -1
+        for i in range(len(self.all_files)):
+            if motion_name in self.all_files[i]:
+                idx = i
+                break
+
+        if idx < 0:
+            raise("Motion name not found: {}".format(motion_name))
+        else:
+            motion_tensor = torch.FloatTensor(self.all_data[idx]).unsqueeze(1)
+            pad_tensor = torch.ones((motion_tensor.shape[0], motion_tensor.shape[1]))
+            return motion_tensor, pad_tensor
+
+
+
     def __len__(self):
         return len(self.all_data)
 
