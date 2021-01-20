@@ -51,7 +51,7 @@ class AnimationSampler():
 
         # training
         self.lr = 0.1 # learning rate
-        self.thetas = None # energy parameters
+        self.thetas = torch.randn(7) # energy parameters
 
 
     def get_loader(self, path="FBXDataStand//"):
@@ -76,7 +76,6 @@ class AnimationSampler():
         return all_enc_mean[-1].data.numpy()
 
     def train_parameters(self, iterations=100):
-        thetas = torch.randn(7)
         for i in range(iterations):
             while True:
                 expert_sample = np.random.choice(self.survey)
@@ -85,10 +84,28 @@ class AnimationSampler():
 
             pg = self.scene.sample()
             s_pg = torch.Tensor(get_pg_score_list(pg))
-            s_survey = torch.Tensor(get_survey_score_list(expert_sample))
-            thetas = thetas + self.lr * (s_pg - s_survey)
 
-        self.thetas = thetas
+            while True:
+                soso_sample = np.random.choice(self.survey)
+                if soso_sample['quality'] == "Just so so":
+                    break
+
+            while True:
+                bad_sample = np.random.choice(self.survey)
+                if bad_sample['quality'] == "Bad":
+                    break
+
+            s_good = torch.Tensor(get_survey_score_list(expert_sample))
+            s_soso = torch.Tensor(get_survey_score_list(soso_sample))
+            s_bad = torch.Tensor(get_survey_score_list(bad_sample))
+            # self.thetas.data = self.thetas.data + self.lr * (s_pg - s_survey)
+
+            #s_survey = torch.Tensor(get_survey_score_list(expert_sample))
+            #self.thetas.data = self.thetas.data + self.lr * (s_pg - s_survey)
+
+            self.thetas.data = self.thetas.data + self.lr * (s_good - s_pg)
+            self.thetas.data = self.thetas.data + 0.5 * self.lr * (s_good - s_soso)
+            self.thetas.data = self.thetas.data + self.lr * (s_good - s_bad)
 
     def get_survey_item_score(self, survey_item):
         return np.sum(self.thetas.data.numpy() * get_survey_score_list(survey_item))

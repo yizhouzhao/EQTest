@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab0b3210-784f-432b-ace9-d7565e54d18f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SocialAffordance/mcmc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialAffordance/Evaluate_Transformer_VRNN.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/Evaluate_Transformer_VRNN.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialAffordance/Learn.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/Learn.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Maya/test_mixamo.mb" beforeDir="false" afterPath="$PROJECT_DIR$/Maya/test_mixamo.mb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialAffordance/MCMC.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/MCMC.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SocialAffordance/MotionGPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/MotionGPT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialAffordance/Test AOG.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/Test AOG.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SocialAffordance/Transf_test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/Transf_test.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialAffordance/Params.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/Params.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialAffordance/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialAffordance/mcmc.py" beforeDir="false" afterPath="$PROJECT_DIR$/SocialAffordance/mcmc.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,70 +32,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SocialAffordance/Params.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2450">
-              <caret line="98" column="56" selection-start-line="98" selection-start-column="50" selection-end-line="98" selection-end-column="56" />
+            <state relative-caret-position="2500">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SocialAffordance/SceneMaker.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="0" />
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/mcmc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2550">
+              <caret line="108" selection-start-line="108" selection-end-line="108" />
+              <folding>
+                <element signature="e#26#49#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SocialAffordance/mcmc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SocialAffordance/SceneGenerator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SocialAffordance/Raven/BuildTree2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
-              <caret line="259" column="27" selection-start-line="259" selection-start-column="27" selection-end-line="259" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-                <element signature="e#80#1156#0" />
-                <element signature="e#1207#1467#0" />
-                <element signature="e#1546#1757#0" />
-                <element signature="e#1817#2144#0" />
-                <element signature="e#2201#2948#0" />
-                <element signature="e#3019#4243#0" />
-                <element signature="e#4313#5410#0" />
-                <element signature="e#5479#6395#0" />
-                <element signature="e#6463#7429#0" />
-                <element signature="e#7516#8385#0" />
-                <element signature="e#8470#9571#0" />
-                <element signature="e#9619#9686#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SocialAffordance/MotionGPT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9950">
-              <caret line="411" selection-start-line="411" selection-end-line="411" />
+            <state relative-caret-position="338">
+              <caret line="333" column="32" selection-start-line="333" selection-start-column="32" selection-end-line="333" selection-end-column="32" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -106,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SocialAffordance/DataAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2875">
-              <caret line="122" column="2" selection-start-line="122" selection-start-column="2" selection-end-line="122" selection-end-column="2" />
+            <state relative-caret-position="5500">
+              <caret line="227" column="19" selection-start-line="227" selection-start-column="19" selection-end-line="227" selection-end-column="19" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -119,10 +78,22 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="3850">
-                <caret line="154" column="6" selection-start-line="154" selection-start-column="6" selection-end-line="154" selection-end-column="6" />
+              <first_editor relative-caret-position="3700">
+                <caret line="148" selection-start-line="148" selection-end-line="150" selection-end-column="37" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialAffordance/MakeLabelDataSingle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="925">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,14 +107,21 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>qu</find>
+      <find>PCA</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/SocialAffordance/MotionGPT.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/Params.py" />
         <option value="$PROJECT_DIR$/SocialAffordance/mcmc.py" />
+        <option value="$PROJECT_DIR$/SocialAffordance/MotionGPT.py" />
       </list>
     </option>
   </component>
@@ -171,7 +149,7 @@
             <path>
               <item name="EQTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="EQTest" type="462c0819:PsiDirectoryNode" />
-              <item name="SocialAffordance" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -224,14 +202,14 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.18438178" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2494577" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.22017354" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -292,38 +270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SocialAffordance/TrainVRNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SocialAffordance/Params.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2450">
-          <caret line="98" column="56" selection-start-line="98" selection-start-column="50" selection-end-line="98" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SocialAffordance/SceneMaker.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SocialAffordance/SceneGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SocialAffordance/Raven/BuildTree2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1100">
@@ -346,20 +292,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SocialAffordance/MotionGPT.py">
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/SceneMaker.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/SceneGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9950">
-          <caret line="411" selection-start-line="411" selection-end-line="411" />
+        <state>
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/MakeLabelData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/README">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/TrainVRNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/Params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2500">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/mcmc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+          <folding>
+            <element signature="e#26#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SocialAffordance/DataAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2875">
-          <caret line="122" column="2" selection-start-line="122" selection-start-column="2" selection-end-line="122" selection-end-column="2" />
+        <state relative-caret-position="5500">
+          <caret line="227" column="19" selection-start-line="227" selection-start-column="19" selection-end-line="227" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -369,17 +359,30 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="3850">
-            <caret line="154" column="6" selection-start-line="154" selection-start-column="6" selection-end-line="154" selection-end-column="6" />
+          <first_editor relative-caret-position="3700">
+            <caret line="148" selection-start-line="148" selection-end-line="150" selection-end-column="37" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SocialAffordance/mcmc.py">
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/MakeLabelDataSingle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="925">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialAffordance/MotionGPT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="333" column="32" selection-start-line="333" selection-start-column="32" selection-end-line="333" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

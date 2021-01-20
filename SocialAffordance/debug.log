@@ -1,3 +1,4 @@
 [0819/151219.377:ERROR:process_reader_win.cc(151)] SuspendThread: Acceso denegado. (0x5)
 [0819/151219.377:ERROR:exception_snapshot_win.cc(98)] thread ID 16240 not found in process
 [0819/151219.378:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Se intentó obtener acceso a un proceso que está cerrándose. (0xc000010a)
+[0118/091742.433:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)

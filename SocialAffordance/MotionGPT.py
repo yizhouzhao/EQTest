@@ -331,10 +331,12 @@ class FBXDataMaker():
         data = df.iloc[:, :].to_numpy()
         y = data[:, 1:4].astype(float)
         x = data[:, 4:].astype(float)
-        pca = PCA(n_components=3)
+        pca = PCA(n_components=6)
         pca_result = pca.fit_transform(x)
         y_tilda = np.c_[y, np.ones(len(y))]
         result = np.linalg.lstsq(y_tilda, pca_result, rcond=None)[0]
+
+        print("PCA explained variance ratio:", pca.explained_variance_ratio_)
 
         self.lstsq_result = result
         self.pca_components = pca.components_
